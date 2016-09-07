@@ -5,8 +5,17 @@ $cell-height: 48px;
     border-style:solid;
     border-color: $color-border-default;
     padding-left: px2rem(10px);
-    margin-bottom: px2rem(20px);
+    margin-bottom: px2rem(10px);
     background: #fff;
+    &.border-none{
+        border: none;
+    }
+    &.border-top-none{
+        border-width: 0 0 1px 0;
+    }
+    &.border-bottom-none{
+        border-width: 1px 0 0 0;
+    }
     .cell{
         width: 100%;
         height: px2rem($cell-height);
@@ -68,6 +77,11 @@ $cell-height: 48px;
         color: #000;
 
         line-height: px2rem($cell-height);
+    }
+    .label-icon{
+        width: px2rem(30px);
+        height: 100%;
+        display: block;
     }
     .content{
         font-size: px2rem(map_get($map-font-size, m));

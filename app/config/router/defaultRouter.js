@@ -27,7 +27,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_me/view/index.html'
         })
         .state('layout.login', {
-            url: '/login?redirectUri&redirectRoute',
+            url: '/login?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_login/view/login.html'
         })
         .state('layout.register', {

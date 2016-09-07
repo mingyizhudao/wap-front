@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', 'dialog', 'helper', 'CommonService', 'StorageConfig', function ($scope, $rootScope, $state, LoginService, dialog, helper, CommonService, StorageConfig) {
+app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', 'dialog', 'helper', 'CommonService', 'StorageConfig', '$stateParams', function ($scope, $rootScope, $state, LoginService, dialog, helper, CommonService, StorageConfig, $stateParams) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -15,8 +15,21 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     window.footerConfig = {
         enableFooter: false
     };
+
+
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
+
+    var headerBackOption = {};
+    if ($stateParams.backRoute) {
+        headerBackOption.route = $stateParams.backRoute;
+        $rootScope.$broadcast('setHeaderBack', headerBackOption);
+    }
+    if ($stateParams.backUrl) {
+        headerBackOption.url = $stateParams.backUrl;
+        $rootScope.$broadcast('setHeaderBack', headerBackOption);
+    }
+
 
     /*****the business*******/
     $scope.selectedTab = 0;

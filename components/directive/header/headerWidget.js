@@ -55,29 +55,29 @@ app.directive('headerWidget', [function () {
          * });
          *
          */
-        var headerBackOptions = {};
-        $scope.$on('setHeaderBack', function (event, data) {
-            headerBackOptions = data;
+        $scope.headerBackOptions = {};
+        $rootScope.$on('setHeaderBack', function (event, data) {
+            $scope.headerBackOptions = data;
         });
         $scope.goBack = function () {
             helper.closeAllPopAndDialog();
-            if (headerBackOptions && !helper.isEmptyObject(headerBackOptions)) {
-                if (headerBackOptions.route) {
-                    var route = headerBackOptions.route;
-                    var params = headerBackOptions.params || {};
-                    headerBackOptions = {};
+            if ($scope.headerBackOptions && !helper.isEmptyObject($scope.headerBackOptions)) {
+                if ($scope.headerBackOptions.route) {
+                    var route = $scope.headerBackOptions.route;
+                    var params = $scope.headerBackOptions.params || {};
+                    $scope.headerBackOptions = {};
                     $state.go(route, params);
                     return 'back with route.';
                 }
-                if (headerBackOptions.url) {
-                    var url = headerBackOptions.url;
-                    headerBackOptions = {};
+                if ($scope.headerBackOptions.url) {
+                    var url = $scope.headerBackOptions.url;
+                    $scope.headerBackOptions = {};
                     window.location.href = url;
                     return 'back with url.';
                 }
-                if (headerBackOptions.step && typeof (headerBackOptions.step) === 'number') {
-                    var step = headerBackOptions.step;
-                    headerBackOptions = {};
+                if ($scope.headerBackOptions.step && typeof ($scope.headerBackOptions.step) === 'number') {
+                    var step = $scope.headerBackOptions.step;
+                    $scope.headerBackOptions = {};
                     window.history.go(step);
                     return 'back with step.';
                 }
