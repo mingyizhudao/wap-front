@@ -1,0 +1,73 @@
+<div ng-controller="Style.FormCtrl">
+    <div class="buttons">
+        <div class="btn-dock">
+            <button class="btn btn-primary">主按钮</button>
+        </div>
+        <div class="btn-dock">
+            <button class="btn btn-primary" disabled>主按钮disabled</button>
+        </div>
+        <div class="btn-dock">
+            <button class="btn btn-minor">次按钮</button>
+        </div>
+        <div class="btn-dock">
+            <button class="btn btn-minor" disabled>次按钮disabled</button>
+        </div>
+        <div class="btn-dock">
+            <div class="left-dock">
+                <button class="btn btn-minor">次按钮</button>
+            </div>
+            <div class="right-dock">
+                <button class="btn btn-primary">主按钮</button>
+            </div>
+        </div>
+        <div class="btn-dock">
+            <div class="btn btn-aid">辅助按钮</div>
+        </div>
+    </div>
+
+    <div class="cell-group">
+        <div class="cell">
+            <div class="left-box clearly-width">
+                <span class="label">医院名称</span>
+            </div>
+            <div class="middle-box">
+                <span class="content">复旦大学附属华山医院</span>
+            </div>
+            <div class="right-box">
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="left-box clearly-width">
+                <span class="label">医院地址</span>
+            </div>
+            <div class="middle-box">
+                <span class="content">上海市长宁区凯旋路0121号8123弄</span>
+            </div>
+            <div class="right-box">
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+    <div class="cell-group">
+        <div class="cell">
+            <div class="left-box clearly-width">
+                <span class="label">患者姓名</span>
+            </div>
+            <div class="middle-box">
+                <input class="text-right" type="text" placeholder="请输入患者姓名">
+            </div>
+        </div>
+        <div class="cell">
+            <div class="left-box clearly-width">
+                <span class="label">验证码</span>
+            </div>
+            <div class="middle-box">
+                <input type="tel" placeholder="短信验证码">
+            </div>
+            <div class="right-box">
+                <button class="btn btn-small btn-primary in-cell">发送验证码</button>
+            </div>
+        </div>
+    </div>
+</div>
