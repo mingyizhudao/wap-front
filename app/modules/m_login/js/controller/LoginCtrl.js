@@ -49,7 +49,7 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
      * User login by the mobile & password.
      */
     $scope.doPasswordLogin = function () {
-        var spinner = dialog.showSpinner();
+        var a = dialog.showSpinner();
         var params = {
             userLogin: {
                 username: $scope.passwordLogin_phone,
@@ -57,10 +57,10 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
             }
         };
         LoginService.passwordLogin(params).then(function (res) {
-            dialog.closeSpinner(spinner.id);
+            dialog.closeSpinner(a.id);
             loginSuccessDo(res);
         }, function (res) {
-            dialog.closeSpinner(spinner.id);
+            dialog.closeSpinner(a.id);
             dialog.alert(res.errorMsg);
         });
     };

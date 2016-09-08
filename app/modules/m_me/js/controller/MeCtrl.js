@@ -1,4 +1,4 @@
-app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state',function($scope,$rootScope,StorageConfig,$state){
+app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserService',function($scope,$rootScope,StorageConfig,$state,UserService){
     window.headerConfig={
         enableHeader: false
     };
@@ -17,6 +17,19 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state',function
         $state.go('layout.login',{
             redirectRoute: 'layout.me',
             backRoute: 'layout.home'
+        });
+    };
+
+    $scope.getData = function(){
+        var params = {
+            booking:{
+                hospital_name: 'test医院'
+            }
+        };
+        UserService.getData(params).then(function(res){
+            console.log('success', res);
+        },function(res){
+            console.log('error', res);
         });
     };
 }]);

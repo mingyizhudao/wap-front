@@ -3,7 +3,7 @@ app.directive('footerWidget', function () {
         var defaults = {
             enableFooter: false
         };
-        $scope.defaults = angular.extend(defaults, window.footerConfig);
+        $scope.defaults = angular.extend(angular.copy(defaults), window.footerConfig);
         $rootScope.$on('setFooterConfig', function (event, data) {
             var temp = angular.copy(defaults);
             $scope.defaults = angular.extend(temp, data);

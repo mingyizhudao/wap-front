@@ -16,6 +16,9 @@ $cell-height: 48px;
     &.border-bottom-none{
         border-width: 1px 0 0 0;
     }
+    &.margin-none{
+        margin-bottom: 0;
+    }
     .cell{
         width: 100%;
         height: px2rem($cell-height);
