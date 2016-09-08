@@ -119,10 +119,18 @@ app.directive('headerWidget', [function () {
         $scope.showAreaList = function () {
             $scope.showAreas = !$scope.showAreas;
         };
+        //select the current area, change the areas list hidden & set the $scope.currentArea.
         $scope.selectCurrentArea = function (item) {
             $scope.currentArea = item;
             $scope.showAreas = false;
         };
+        //watch the currentArea. If changed, send broadcast to the page.
+        $scope.$watch('currentArea', function(n, o){
+            var selectedCallback = $scope.defaults.areaOperate.selectedCall;
+            if(selectedCallback && typeof selectedCallback === 'function'){
+                selectedCallback($scope.currentArea);
+            }
+        });
     }];
     return {
         restrict: 'A',

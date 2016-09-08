@@ -25,6 +25,9 @@ app.controller('HospitalCtrl', ['$scope','$rootScope',function($scope,$rootScope
             currentArea: {
                 name: '上海',
                 cityId: 1
+            },
+            selectedCall: function(item){
+                console.log('I selected ' + item.name);
             }
         }
     };
