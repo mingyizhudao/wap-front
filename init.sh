@@ -25,5 +25,8 @@ npm install gulp-connect
 echo 'install gulp-template...'
 npm install gulp-template
 
+echo 'install gulp-sourcemaps...'
+npm install gulp-sourcemaps
+
 echo 'install gulp in global..'
 npm install -g gulp
