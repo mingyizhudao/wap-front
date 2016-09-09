@@ -19,17 +19,4 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserSer
             backRoute: 'layout.home'
         });
     };
-
-    $scope.getData = function(){
-        var params = {
-            booking:{
-                hospital_name: 'test医院'
-            }
-        };
-        UserService.getData(params).then(function(res){
-            console.log('success', res);
-        },function(res){
-            console.log('error', res);
-        });
-    };
 }]);

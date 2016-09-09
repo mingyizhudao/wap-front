@@ -6,6 +6,9 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
     function validCaptchaDto(res){
         return res;
     }
+    function getCityDto(res){
+        return res;
+    }
 
     var service = {
         sendSMSCode: function(params){
@@ -21,6 +24,13 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
                 data: params
             };
             return BaseHttpRequest.post(requestObj, validCaptchaDto);
+        },
+        getCity: function(params){
+            var requestObj = {
+                url: apiUrl + '/apiwap/city',
+                params: params
+            };
+            return BaseHttpRequest.get(requestObj, validCaptchaDto);
         }
     };
     return service;
