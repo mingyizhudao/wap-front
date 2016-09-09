@@ -18,6 +18,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/hospital',
             templateUrl: 'app/modules/m_hospital/view/index.html'
         })
+        .state('layout.hospital-detail', {
+            url: '/hospital/:hospitalId',
+            templateUrl: 'app/modules/m_hospital/view/hospital-detail.html'
+        })
         .state('layout.find', {
             url: '/find',
             templateUrl: 'app/modules/m_find/view/index.html'
@@ -31,7 +35,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_login/view/login.html'
         })
         .state('layout.register', {
-            url: '/register',
+            url: '/register?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_register/view/register.html'
         })
 }]);

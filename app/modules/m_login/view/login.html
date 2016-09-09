@@ -21,7 +21,10 @@
                                 <span class="label-icon password"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="password" placeholder="请输入密码" minlength="4" name="passwordLogin_password" ng-model="passwordLogin_password" required>
+                                <input type="{{pwdInputType}}" placeholder="请输入密码" minlength="4" name="passwordLogin_password" ng-model="passwordLogin_password" required>
+                            </div>
+                            <div class="right-box">
+                                <span class="eye-icon" ng-class="{'active':showPwd}" ng-click="ctrlPwd()"></span>
                             </div>
                         </div>
                     </div>

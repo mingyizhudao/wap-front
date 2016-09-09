@@ -22,12 +22,17 @@ $cell-height: 48px;
     .cell{
         width: 100%;
         height: px2rem($cell-height);
+        line-height: px2rem($cell-height);
         border-bottom: 1px solid $color-border-default;
         display: -webkit-box;
         display: flex;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         flex-direction: row;
+        &.height-auto{
+            height: auto;
+            mim-height: px2rem($cell-height);
+        }
         &:last-child{
             border-bottom: none;
         }

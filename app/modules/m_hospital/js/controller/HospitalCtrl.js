@@ -1,4 +1,4 @@
-app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog', 'StorageConfig', 'HospitalService', function ($scope, $rootScope, CommonService, dialog, StorageConfig, HospitalService) {
+app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog', 'StorageConfig', 'HospitalService','$state', function ($scope, $rootScope, CommonService, dialog, StorageConfig, HospitalService, $state) {
     var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
     window.headerConfig = {
         enableHeader: true,
@@ -29,6 +29,12 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
     if (!(StorageConfig.CITY_STORAGE.getItem('hospitalCities') && StorageConfig.CITY_STORAGE.getItem('hospitalCities').length)) {
         requestGetCities();
     }
+
+    $scope.goToDetail = function(item){
+        $state.go('layout.hospital-detail', {
+            hospitalId: item.id
+        });
+    };
 
     /**
      * the function about how to request get cities.

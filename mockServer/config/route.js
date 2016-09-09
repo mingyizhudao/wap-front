@@ -4,6 +4,7 @@ var p1 = require('../controllers/p1');
 var m_login = require('../controllers/m_login/login.js');
 var m_common = require('../controllers/m_common/common');
 var m_hospital = require('../controllers/m_hospital/hospital');
+var m_register = require('../controllers/m_register/register');
 
 var _app = null;
 /// error handlers
@@ -55,6 +56,7 @@ module.exports = {
         _app.use('/', m_login);
         _app.use('/', m_common);
         _app.use('/', m_hospital);
+        _app.use('/', m_register);
         /// catch 404 and forward to error handler
         // _app.use(errorHandler404);
 

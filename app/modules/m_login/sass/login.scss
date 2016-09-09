@@ -24,4 +24,15 @@
         -webkit-background-size: px2rem(25px);
         background-size:px2rem(25px);
     }
+    .eye-icon{
+        width: px2rem(40px);
+        height: 100%;
+        background: url('http://static.mingyizhudao.com/146372593763783') no-repeat center center;
+        background-size: 25px 14px;
+        display: block;
+        &.active{
+            background: url('http://static.mingyizhudao.com/146372587208410') no-repeat center center;
+            background-size: 25px 14px;
+        }
+    }
 }

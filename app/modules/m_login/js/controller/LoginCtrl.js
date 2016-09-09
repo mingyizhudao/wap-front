@@ -36,13 +36,19 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     $scope.checkTab = function (value) {
         $scope.selectedTab = value;
     };
-    $scope.sendSMSText = '发送验证码';
 
     //TODO you should change the baseUrl to "window.envs.api_url" when the interface build.
     var baseUrl = 'http://m.mingyizhudao.com';
     $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
     $scope.refreshCaptcha = function () {
         $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    };
+
+    $scope.showPwd = false;
+    $scope.pwdInputType = 'password';
+    $scope.ctrlPwd = function(){
+        $scope.showPwd = !$scope.showPwd;
+        $scope.pwdInputType = $scope.showPwd?'text':'password';
     };
 
     /**
@@ -67,6 +73,7 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     /**
      * send the phone message code.
      */
+    $scope.sendSMSText = '发送验证码';
     $scope.sendSMSCode = function () {
         $scope.lockEnabled = true;
         var validParams = {
