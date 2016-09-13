@@ -17,7 +17,7 @@ app.directive('landscapeScroll', function(){
 		var _warp,_containt,_pagination;
 		var _timeFlag = 0, _timer, _timeInterval = 2000;
 		var _startX,_endX;
-		function _init (){ //初始化，无法获取子元素数量和集
+		function _init (){ //初始化，生成html，绑定滑动事件
 			var _innerPagination = '';
 			for(var i = 0; i<$scope.itemNum; i++){
 				_innerPagination += '<span></span>'
