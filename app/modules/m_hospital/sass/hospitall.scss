@@ -73,3 +73,111 @@
         background: #fff;
     }
 }
+
+.department-page{
+    .color-warning{
+        color: $brand-warning;
+    }
+    .border-warning{
+        border-color: $brand-warning;
+    }
+    .tip{
+        font-size: px2rem(map_get($map-font-size, m));
+        line-height: px2rem(map_get($map-font-size, m)) * 2;
+        font-weight:bold;
+    }
+    .bt{
+        border-top: 1px solid $color-border-default;
+    }
+    .progress-box{
+        padding: px2rem(10px) 0 px2rem(10px) 0;
+    }
+    .circle-box{
+        width: 100%;
+        height: px2rem(28px);
+        position: relative;
+        .quarter{
+            width: 33.333%;
+            height: 100%;
+            position: relative;
+            float: left;
+            line-height:px2rem(28px);
+        }
+        .circle{
+            width: px2rem(28px);
+            height: px2rem(28px);
+            border-radius: px2rem(14px);
+            background: #feb23f;
+            line-height:px2rem(28px);
+            text-align: center;
+            font-size:px2rem(map_get($map-font-size, m));
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            margin-left: px2rem(-14px);
+            &.left{
+                left: 0;
+                margin-left: 0;
+            }
+            &.right{
+                left: inherit;
+                right: 0;
+                margin-right: px2rem(10px);
+            }
+        }
+        .line{
+            width: 96%;
+            height: px2rem(4px);
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: #feb23f;
+        }
+        .w38{
+            width: 38%;
+        }
+        .w28{
+            width: 28%;
+        }
+    }
+    .border-none{
+        border: none;
+    }
+    .desc-info{
+        width: 100%;
+        background: #fff;
+        padding-bottom: px2rem(70px);
+    }
+    .desc-header{
+        width: 100%;
+        height: px2rem(40px);
+        line-height:px2rem(40px);
+        border-bottom: 1px solid $color-border-default;
+        font-size: px2rem(map_get($map-font-size, m));
+        color: #0068b7;
+        padding: 0 0 0 px2rem(10px);
+    }
+    .desc-item{
+        padding: px2rem(10px);
+        .title{
+            width: 100%;
+            height: px2rem(28px);
+            line-height: px2rem(28px);
+            background: url("http://static.mingyizhudao.com/146398652922158") no-repeat left;
+            background-size: px2rem(100px) px2rem(28px);
+            padding-left: px2rem(5px);
+            font-size: px2rem(map_get($map-font-size, m));
+            color: #fff;
+        }
+        .as-html{
+            font-size:px2rem(map_get($map-font-size, s));
+            color: #666;
+            line-height: px2rem(map_get($map-font-size, s)) * 1.5;
+            padding-top: px2rem(10px);
+        }
+    }
+    .bottom-button{
+        border-top: 1px solid $color-border-default;
+        background: #fff;
+    }
+}

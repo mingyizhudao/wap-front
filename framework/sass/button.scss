@@ -1,4 +1,4 @@
-$btn-height: 48px;
+$btn-height: 44px;
 $btn-disabled-bg: #d6d6d6;
 $btn-disabled-color: rgba(0,0,0,.4);
 .btn{
@@ -17,7 +17,7 @@ $btn-disabled-color: rgba(0,0,0,.4);
         line-height: px2rem($btn-height * 0.8);
         font-size: px2rem(map_get($map-font-size, m)) * 0.8;
         &.in-cell{
-            margin-top: px2rem($btn-height * 0.1);
+            margin-top: px2rem($btn-height * 0.1 + 2px);
         }
     }
     &.btn-xsmall{
@@ -35,6 +35,45 @@ $btn-disabled-color: rgba(0,0,0,.4);
     &:active,
     .active{
         background: darken($color-primary, 5%);
+    }
+    &:disabled,
+    .disabled{
+        background: $btn-disabled-bg;
+        color: $btn-disabled-color;
+    }
+}
+.btn-warning{
+    color: #ffffff;
+    background: $brand-warning;
+    &:active,
+    .active{
+        background: darken($brand-warning, 5%);
+    }
+    &:disabled,
+    .disabled{
+        background: $btn-disabled-bg;
+        color: $btn-disabled-color;
+    }
+}
+.btn-danger{
+    color: #ffffff;
+    background: $brand-danger;
+    &:active,
+    .active{
+        background: darken($brand-danger, 5%);
+    }
+    &:disabled,
+    .disabled{
+        background: $btn-disabled-bg;
+        color: $btn-disabled-color;
+    }
+}
+.btn-success{
+    color: #ffffff;
+    background: $brand-success;
+    &:active,
+    .active{
+        background: darken($brand-success, 5%);
     }
     &:disabled,
     .disabled{

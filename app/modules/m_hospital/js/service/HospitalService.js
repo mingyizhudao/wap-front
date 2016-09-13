@@ -6,6 +6,9 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
     function getHospitalDetailDto(res){
         return res;
     }
+    function getDepartmentInfoDto(res){
+        return res;
+    }
 
     var service = {
         getHospitalByQuery: function(params){
@@ -21,6 +24,13 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
                 params: params
             };
             return BaseHttpRequest.get(requestObj, getHospitalDetailDto);
+        },
+        getDepartmentInfo: function(params, urlOptions){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/hospital/'+urlOptions.hospitalId+'/department/'+urlOptions.departmentId,
+                params: params
+            };
+            return BaseHttpRequest.get(requestObj, getDepartmentInfoDto);
         }
     };
     return service;

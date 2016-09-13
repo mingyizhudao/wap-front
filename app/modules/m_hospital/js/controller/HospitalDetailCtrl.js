@@ -1,4 +1,4 @@
-app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'HospitalService', function ($rootScope, $scope, dialog, $stateParams, HospitalService) {
+app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'HospitalService', '$state', function ($rootScope, $scope, dialog, $stateParams, HospitalService, $state) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -25,11 +25,20 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     var urlOptions = {
         id: $stateParams.hospitalId
     };
-    HospitalService.getHospitalDetail(params, urlOptions).then(function(res){
+    HospitalService.getHospitalDetail(params, urlOptions).then(function (res) {
         dialog.closeSpinner(spinner.id);
         $scope.hospitalInfo = res.results;
-    },function(res){
+    }, function (res) {
         dialog.closeSpinner(spinner.id);
         dialog.alert(res.errorMsg);
     });
+
+    $scope.goDepartment = function (hospital, department) {
+        $state.go('layout.department',{
+            hospitalId: hospital.id,
+            departmentId: department.id,
+            departmentName: department.name,
+            hospitalName: hospital.name
+        });
+    };
 }]);

@@ -24,7 +24,7 @@
                     <div class="cell height-auto">
                         <div class="left-box"></div>
                         <div class="middle-box">
-                            <span class="department-item" ng-repeat="item in value track by $index" ng-bind="item.name"></span>
+                            <span class="department-item" ng-repeat="item in value track by $index" ng-bind="item.name" ng-click="goDepartment(hospitalInfo.hospital, item)"></span>
                         </div>
                     </div>
                 </div>

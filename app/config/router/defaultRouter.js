@@ -22,6 +22,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/hospital/:hospitalId',
             templateUrl: 'app/modules/m_hospital/view/hospital-detail.html'
         })
+        .state('layout.department', {
+            url: '/hospital/:hospitalId/:departmentId?departmentName&hospitalName',
+            templateUrl: 'app/modules/m_hospital/view/department.html'
+        })
+        .state('layout.booking-department', {
+            url: '/booking/department/:hospitalId/:departmentId?departmentName&hospitalName',
+            templateUrl: 'app/modules/m_booking/view/booking-department.html'
+        })
         .state('layout.find', {
             url: '/find',
             templateUrl: 'app/modules/m_find/view/index.html'
