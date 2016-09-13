@@ -26,6 +26,29 @@
 	.h-12tubes{
 		$tubes-height: 60px;
 		$tubes-padding: 5px;
+		width: 100%;
+		height: px2rem($tubes-height*2+$tubes-padding*4);
+		landscape-scroll>div{
+			overflow-x: hidden;
+			overflow-y: visible;
+		}
+		.landscapeScroll-pagination-bar{
+		    top: 90%;
+		    justify-content: center;
+			span{
+				width: px2rem(40px);
+			    height: px2rem(3px);
+			    border-radius: none;
+			    margin-left: px2rem(5px);
+			    transition: background 0.5s ease-out;
+			    &.land-pag-cur{
+			    	background: #17d7c2;
+			    }
+			    &.land-pag-other{
+			    	background: #dcdcdd;
+			    }
+			}
+		}
 		.h-tube-ul{
 			padding: px2rem($tubes-padding*2) 0 px2rem($tubes-padding) px2rem($tubes-padding); 
 			&:after{
@@ -124,7 +147,8 @@
 		}
 	}
 	.h-ad{
-		// height: px2rem(100px);
+		height: px2rem(120px);
+		width: 100%;
 		img{
 			width: 100%;
 		}
@@ -164,16 +188,4 @@
 		}
 	}
 
-	.landscape-scroll{
-		width: 200%;
-		// height: 100%;
-		// background: #ddd;
-	    display: flex;
-	    overflow: hidden;
-	    /* transform: translateX(-100px); */
-		li {
-			width: 50%;
-			// height: 100%;
-		}
-	}
 }

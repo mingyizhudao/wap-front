@@ -20,9 +20,13 @@ app.directive('landscapeScroll', function(){
 		function _init (){ //初始化，生成html，绑定滑动事件
 			var _innerPagination = '';
 			for(var i = 0; i<$scope.itemNum; i++){
-				_innerPagination += '<span></span>'
+				if (i==0) {
+					_innerPagination = '<span class="land-pag-cur"></span>';
+				}else{
+					_innerPagination += '<span class="land-pag-other"></span>';
+				}
 			}
-			_pagination = document.getElementsByClassName('landscapeScroll-pagination-bar')[0];
+			_pagination = _warp.getElementsByClassName('landscapeScroll-pagination-bar')[0];
 			_pagination.innerHTML=_innerPagination;
 
 			_warp.addEventListener('touchstart', function(e){
@@ -70,8 +74,8 @@ app.directive('landscapeScroll', function(){
 			//动画
 			_curChild.style.opacity = '0.0';
 			_nextChild.style.opacity = '1.0';
-			_curPagination.style.opacity = '0.5';
-			_nextPagination.style.opacity = '1.0';
+			_curPagination.className = 'land-pag-other';
+			_nextPagination.className = 'land-pag-cur';
 		}
 		//根据keyid获取当前修改目标
 		for(var i=0; i<_warps.length; i++){
