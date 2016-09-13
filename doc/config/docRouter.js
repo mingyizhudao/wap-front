@@ -27,8 +27,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/widget',
             templateUrl: 'doc/modules/m_widget/view/index.html'
         })
+        //弹出框
         .state('doc.dialog', {
             url: '/dialog',
             templateUrl: 'doc/modules/m_widget/view/dialog.html'
+        })
+        //横向滚动
+        .state('doc.landscapeScroll', {
+            url: '/landscapeScroll',
+            templateUrl: 'doc/modules/m_widget/view/landscapeScroll.html'
         })
 }]);
