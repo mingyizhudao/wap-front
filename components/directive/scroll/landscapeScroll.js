@@ -51,28 +51,29 @@ app.directive('landscapeScroll', function(){
 		    }, false);
 			_timeStart();
 		}
-		function _timeStart(){
+		function _timeStart(){ //设置时间周期
 			_timer = setInterval(function(){
 				_transformContent();
 			},_timeInterval);
 		}
-		function _transformContent(x){
+		function _transformContent(x){ //切换
 			//运动方向
 			var _direction = x?x:1;
 			//查找当前运动对象
-			var _curChild = _warp.getElementsByClassName('testsroll')[_timeFlag];
-			var _curPagination = _warp.getElementsByClassName('landscapeScroll-pagination-bar')[0].getElementsByTagName('span')[_timeFlag];
+			var _curChild = _containt.children[_timeFlag];
+			var _curPagination = _pagination.getElementsByTagName('span')[_timeFlag];
 			//设置标记
 			_timeFlag = (_timeFlag+_direction)==$scope.itemNum?0:(_timeFlag+_direction)<0?($scope.itemNum-1):(_timeFlag+_direction);
 			//查找下一个运动对象
-			var _nextChild = _warp.getElementsByClassName('testsroll')[_timeFlag];
-			var _nextPagination = _warp.getElementsByClassName('landscapeScroll-pagination-bar')[0].getElementsByTagName('span')[_timeFlag];
+			var _nextChild = _containt.children[_timeFlag];
+			var _nextPagination = _pagination.getElementsByTagName('span')[_timeFlag];
 			//动画
 			_curChild.style.opacity = '0.0';
 			_nextChild.style.opacity = '1.0';
 			_curPagination.style.opacity = '0.5';
 			_nextPagination.style.opacity = '1.0';
 		}
+		//根据keyid获取当前修改目标
 		for(var i=0; i<_warps.length; i++){
 			if (_warps[i].getAttribute('scroll-id') == $scope.scrollId) {
 				_warp = _warps[i];
