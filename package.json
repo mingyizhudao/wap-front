@@ -1,0 +1,37 @@
+{
+  "name": "wap-front",
+  "version": "1.0.0",
+  "description": "The angular framework for mingyizhudao.",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp": "^3.9.0",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-template": "^4.0.0",
+    "gulp-uglify": "^2.0.0",
+    "supports-color": "^3.1.2",
+    "through2": "^2.0.1",
+    "gulp-ruby-sass": "^2.1.0",
+    "has-color": "^0.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mingyizhudao/wap-front.git"
+  },
+  "author": "AtomicRose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mingyizhudao/wap-front/issues"
+  },
+  "homepage": "https://github.com/mingyizhudao/wap-front#readme"
+}
