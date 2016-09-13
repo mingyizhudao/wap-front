@@ -95,7 +95,38 @@ router.get("/apiwap/hospital", function (req, res) {
         }
     }
 });
-
+/**
+ * get the department info by hospital's id & department's id
+ */
+router.get("/apiwap/hospital/*/department/*", function (req, res) {
+    var reqBody = req.body;
+    var reqQuery = req.query;
+    logger.debug("/apiwap/hospital&department", reqBody);
+    logger.debug("/apiwap/hospital&department", reqQuery);
+    setTimeout(function () {
+        base.apiOkOutput(res, {
+            "status": "ok",
+            "errorCode": 0,
+            "errorMsg": "success",
+            "results": {
+                department:{
+                    id: 828292,
+                    description: {
+                        position:'国内最早成立的独立骨科专业科室、目前已发展壮大成为国内外颇具一定影响的临床骨科医疗中心之一',
+                        scale: '现已治疗患者3000余例，并率先在国内开展了髋关节翻修术200余例，达国内领先水平、矫正青少年脊柱侧弯畸形200余例，矫正率达60%、脊柱骨折脱位伴截瘫500余例，大大减少了伤者的伤残率；现拥有102张固定床位。 ',
+                        speciality:'老年性髋关节和膝关节骨关节病、类风关、股' +
+                        '骨头缺血性坏死、成年人髋关节发育不良、血友病性关节炎、膝关节韧带和半月板；镜下开展膝关节损伤半月板成形修补、交叉韧带重建、受损软骨修复、关节内骨折复位；金属假体置换、自异体腓骨移植、瘤骨灭活再植 ',
+                        power:'目前的学科带头人杨庆铭教授是中华医学会骨科学会副主任委员、上海市骨科专业技术委员会主任委员、中华骨科杂志副主编，在人工关节领域享有很高的声誉，5个亚学科专业组，配有一支国内唯一的骨科手术专业护士队伍、具备独立的门急诊，拥有主任医师6名、副主任医师10名。 ',
+                        honor:'•骨科先后承担国家级、部市级科研课题和局级课题41项，获奖项目7项，在核心期刊发表论文200余篇•荣获上海市第三届临床医疗成果三等奖'
+                    }
+                }
+            }
+        });
+    }, 1000);
+});
+/**
+ * get the hospital info
+ */
 router.get("/apiwap/hospital/*", function (req, res) {
     var reqBody = req.body;
     var reqQuery = req.query;
@@ -141,5 +172,4 @@ router.get("/apiwap/hospital/*", function (req, res) {
         });
     }, 1000);
 });
-
 module.exports = router;

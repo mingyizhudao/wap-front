@@ -1,0 +1,14 @@
+.booking-department-page{
+    .agreement{
+        text-align: center;
+        font-size: px2rem(map_get($map-font-size, s));
+        color: #666;
+        padding: px2rem(10px);
+        span{
+            color: $color-primary;
+        }
+    }
+    .btn-dock{
+        background: #fff;
+    }
+}
