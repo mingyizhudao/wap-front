@@ -1,0 +1,38 @@
+<div class="search-page" ng-controller="SearchCtrl">
+    <div class="search-header">
+        <div><input type="" name="" placeholder="搜索疾病、医生或医院" ng-model="searchContent"></div>
+        <div ng-click="routerGo('layout.home')">取消</div>
+    </div>
+    <div class="search-result">
+        <ul>
+            <li>
+                <div class="search-title"><p>搜索医生</p></div>
+                <div class="cell-group">
+                    <div class="cell double-line">
+                        <div class="left-box clearly-width">
+                            <high-light-widget default-value="docname" high-light-value="searchContent"></high-light-widget>
+                        </div>
+                        <div class="middle-box">
+                            <span class="content">(重庆西南医院)</span>
+                            <span class="minor">神经外科，主任医师</span>
+                        </div>
+                        <div class="right-box">
+                        </div>
+                    </div>
+                </div>
+                <div class="search-move">搜索更多<span>共48条</span></div>
+            </li>
+            <li>
+                <div class="search-title"><p>搜索医生</p></div>
+                <div class="cell-group">
+                    <div class="cell">
+                        <span class="label">
+                            <high-light-widget default-value="hospitalname" high-light-value="searchContent"></high-light-widget>
+                        </span>
+                    </div>
+                </div>
+                <div class="search-move">搜索更多<span>共12条</span></div>
+            </li>
+        </ul>
+    </div>
+</div>

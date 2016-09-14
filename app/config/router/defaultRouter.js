@@ -46,4 +46,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/register?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_register/view/register.html'
         })
+        .state('layout.search',{
+            url: '/search',
+            templateUrl: 'app/modules/m_search/view/index.html'
+        })
 }]);
