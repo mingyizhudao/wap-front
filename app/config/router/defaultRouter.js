@@ -50,4 +50,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/search',
             templateUrl: 'app/modules/m_search/view/index.html'
         })
+        .state('layout.searchMore',{
+            url: '/search/more',
+            templateUrl: 'app/modules/m_search/view/searchMove.html'
+        })
 }]);

@@ -23,14 +23,14 @@
         },
         dev: {
             env:'dev',
-            api_url: 'http://192.168.11.173/dev'
+            api_url: 'http://192.168.11.152'
         },
         localhost: {
             env:'localhost',
             api_url: 'http://localhost:20000'
         }
     };
-    var envs = allEnvs.localhost;//默认连接dev开发环境
+    var envs = allEnvs.dev;//默认连接dev开发环境
     switch (window.location.host) {
         case 'm.mingyizhudao.com':
         {

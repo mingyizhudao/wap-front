@@ -1,5 +1,7 @@
 .search-page{
 	$search-header-height: 40px;
+	$hp-btn-color: #F48124;
+	$doc-btn-color: #0168B7;
 	.search-header{
 		height: px2rem($search-header-height);
 		&:after{
@@ -9,14 +11,27 @@
 		}
 		background:#fff;
 		border-bottom: 1px solid #c2c0c0;
-		>div:first-child{
-			float:left;
+		&.search-more{
+			.leftOpt{
+				width: 15%;
+			}
+			.centerOpt{
+				width: 70%;
+				padding: px2rem(5px) 0;
+			}
+			.rightOpt{
+				width: 15%;
+			}
+		}
+		>div{
 			height: 100%;
+			float:left;
+		}
+		.centerOpt{
 			width: 80%;
 			padding: px2rem(5px) 0 px2rem(5px) px2rem(10px);
 		}
-		>div:last-child{
-			float:left;
+		.rightOpt{
 			width: 20%;
 			text-align: center;
 			color: $color-ligth-text;
@@ -36,6 +51,9 @@
 		li{
 			margin: 0 0 px2rem(15px) 0;
 		}
+		i{
+			font-style: normal;
+		}
 	}
 	.search-title{
 		padding: px2rem(10px) 0;
@@ -48,6 +66,14 @@
 	}
 	.cell-group{
 		margin: 0px;
+		.cell{
+			.search-cell-fc,.search-cell-lc{
+				width: 50%;
+			}
+			.search-cell-lc{
+				text-align: right;
+			}
+		}
 	}
 	.search-move{
 		font-size: px2rem(map_get($map-font-size, m));
@@ -62,5 +88,33 @@
 		    right: px2rem(20px);
 		    color: #666;
 		}
+	}
+	.btn-hp,.btn-doc{
+		width: 40%;
+		display: inline-block;
+		margin-right: 5%;
+	}
+	.btn-hp{
+	    color: #fff;
+	    background: $hp-btn-color;
+	    border: 1px solid #dddddd;
+	}
+	.btn-doc{
+	    color: #fff;
+	    background: $doc-btn-color;
+	    border: 1px solid #dddddd;
+	}
+	.leftOpt .icon-back {
+	    width: 1.16667rem;
+	    height: 1.16667rem;
+	    border-top: 2px solid #757575;
+	    border-left: 2px solid #757575;
+	    transform: rotate(-45deg);
+	    position: relative;
+	    left: 50%;
+	    top: 50%;
+	    margin-left: -.41667rem;
+	    margin-top: -.66667rem;
+	    display: block;
 	}
 }
