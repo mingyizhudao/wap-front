@@ -9,7 +9,11 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
         var config = {
             method: 'GET'
         };
-        var obj = angular.extend(defaults, angular.extend(config, requestObj));
+        var _def = {
+            timeout: 60000,
+            responseType: "json"
+        };
+        var obj = angular.extend(_def, angular.extend(config, requestObj));
         _setRequestHeaderAuthor();
         return _responseDto($http(obj), dataDto);
     };
@@ -17,7 +21,11 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
         var config = {
             method: 'POST'
         };
-        var obj = angular.extend(defaults, angular.extend(config, requestObj));
+        var _def = {
+            timeout: 60000,
+            responseType: "json"
+        };
+        var obj = angular.extend(_def, angular.extend(config, requestObj));
         _setRequestHeaderAuthor();
         return _responseDto($http(obj), dataDto);
     };
@@ -25,7 +33,11 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
         var config = {
             method: 'DELETE'
         };
-        var obj = angular.extend(defaults, angular.extend(config, requestObj));
+        var _def = {
+            timeout: 60000,
+            responseType: "json"
+        };
+        var obj = angular.extend(_def, angular.extend(config, requestObj));
         _setRequestHeaderAuthor();
         return _responseDto($http(obj), dataDto);
     };
@@ -33,7 +45,11 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
         var config = {
             method: 'JSONP'
         };
-        var obj = angular.extend(defaults, angular.extend(config, requestObj));
+        var _def = {
+            timeout: 60000,
+            responseType: "json"
+        };
+        var obj = angular.extend(_def, angular.extend(config, requestObj));
         _setRequestHeaderAuthor();
         return _responseDto($http(obj), dataDto);
     };
@@ -41,7 +57,11 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
         var config = {
             method: 'PUT'
         };
-        var obj = angular.extend(defaults, angular.extend(config, requestObj));
+        var _def = {
+            timeout: 60000,
+            responseType: "json"
+        };
+        var obj = angular.extend(_def, angular.extend(config, requestObj));
         _setRequestHeaderAuthor();
         return _responseDto($http(obj), dataDto);
     };

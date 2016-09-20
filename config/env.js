@@ -23,7 +23,7 @@
         },
         dev: {
             env:'dev',
-            api_url: 'http://192.168.11.152'
+            api_url: 'http://121.40.127.64:8228'
         },
         localhost: {
             env:'localhost',
