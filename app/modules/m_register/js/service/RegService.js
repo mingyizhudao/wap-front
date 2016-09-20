@@ -6,7 +6,7 @@ app.service('RegService', ['BaseHttpRequest', function(BaseHttpRequest){
     var service = {
         reg: function(params){
             var requestObj = {
-                url: apiUrl +　'/apiwap/register',
+                url: apiUrl +　'/apiwap/userregister',
                 data: params
             };
             return BaseHttpRequest.post(requestObj, regDto);

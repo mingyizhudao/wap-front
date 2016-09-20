@@ -38,11 +38,28 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     };
 
     //TODO you should change the baseUrl to "window.envs.api_url" when the interface build.
-    var baseUrl = 'http://m.mingyizhudao.com';
-    $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // var baseUrl = 'http://m.mingyizhudao.com';
+    // $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // $scope.refreshCaptcha = function () {
+    //     $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // };
+    var _captchaId = ''; 
+    var apiUrl = window.envs.api_url;
+    getCaptcha();
     $scope.refreshCaptcha = function () {
-        $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+        getCaptcha();
     };
+    function getCaptcha(){
+        CommonService.getCaptcha().then(
+            function(res){
+                $scope.captchaUrl = apiUrl + res.result.image;
+                _captchaId = res.result.id;
+            },
+            function(res){
+                console.log('err',res);
+            }
+        );
+    }
 
     $scope.showPwd = false;
     $scope.pwdInputType = 'password';
@@ -77,7 +94,8 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     $scope.sendSMSCode = function () {
         $scope.lockEnabled = true;
         var validParams = {
-            co_code: parseInt($scope.codeLogin_captcha)
+            captcha_code: parseInt($scope.codeLogin_captcha),
+            id: _captchaId
         };
         var smsParams = {
             smsVerifyCode: {

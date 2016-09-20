@@ -17,7 +17,7 @@ app.service('LoginService',['BaseHttpRequest',function(BaseHttpRequest){
         },
         codeLogin: function(params){
             var requestObj = {
-                url: apiUrl + '/apiwap/codelogin',
+                url: apiUrl + '/apiwap/usermobilelogin',
                 data: params
             };
             return BaseHttpRequest.post(requestObj, codeLoginDto);

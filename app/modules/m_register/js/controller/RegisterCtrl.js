@@ -30,11 +30,28 @@ app.controller('RegisterCtrl', ['$scope', '$rootScope', '$state', 'CommonService
 
 
     //TODO you should change the baseUrl to "window.envs.api_url" when the interface build.
-    var baseUrl = 'http://m.mingyizhudao.com';
-    $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // var baseUrl = 'http://m.mingyizhudao.com';
+    // $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // $scope.refreshCaptcha = function () {
+    //     $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+    // };
+    var _captchaId = ''; 
+    var apiUrl = window.envs.api_url;
+    getCaptcha();
     $scope.refreshCaptcha = function () {
-        $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
+        getCaptcha();
     };
+    function getCaptcha(){
+        CommonService.getCaptcha().then(
+            function(res){
+                $scope.captchaUrl = apiUrl + res.result.image;
+                _captchaId = res.result.id;
+            },
+            function(res){
+                console.log('err',res);
+            }
+        );
+    }
 
     $scope.showPwd = false;
     $scope.pwdInputType = 'password';
@@ -50,12 +67,13 @@ app.controller('RegisterCtrl', ['$scope', '$rootScope', '$state', 'CommonService
     $scope.sendSMSCode = function () {
         $scope.lockEnabled = true;
         var validParams = {
-            co_code: parseInt($scope.reg_captcha)
+            captcha_code: parseInt($scope.reg_captcha),
+            id: _captchaId
         };
         var smsParams = {
             smsVerifyCode: {
                 mobile: $scope.reg_phone,
-                action_type: 102 // the action_type, login:102, fast booking:200
+                action_type: 100 // the action_type, login:102, fast booking:200
             }
         };
         /**
@@ -89,7 +107,7 @@ app.controller('RegisterCtrl', ['$scope', '$rootScope', '$state', 'CommonService
     $scope.doRegister = function () {
         var spinner = dialog.showSpinner();
         var params = {
-            userReg: {
+            userRegister: {
                 username: $scope.reg_phone,
                 verify_code: $scope.reg_verifyCode,
                 password: $scope.reg_password
