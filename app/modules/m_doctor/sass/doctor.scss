@@ -1,0 +1,67 @@
+.doctor-page{
+    $doc-img-wh: 60px;
+    $doc-description-mt: 10px;
+    .doc-list{
+    	li{
+    		padding: 0 px2rem(10px) px2rem(10px) px2rem(10px);
+    		background: #fff;
+    		margin-buttom: px2rem(10px);
+    		border: 1px solid #ddd;
+    		border-width: 1px 0;
+    		.doc-description{
+    			&:after{
+    				content:'';
+    				display:block;
+    				clear: both;
+    			}
+    			.yz-img,.qy-img{
+    				font-style: normal;
+    				font-size: 0.8rem;
+    				text-align: center;
+    				line-height: px2rem(25px);
+    				color: #fff;
+    				width: px2rem(25px);
+    				height: px2rem(30px);
+    				display: inline-block;
+				    position: absolute;
+    				margin-right: px2rem(10px);
+    			}
+    			.yz-img{
+    				background: url('http://static.mingyizhudao.com/146364500313741') no-repeat;
+    				background-size: cover;
+				    right: px2rem(50px);
+    			}
+    			.qy-img{
+    				background: url('http://static.mingyizhudao.com/146364522977843') no-repeat;
+    				background-size: cover;
+				    right: px2rem(10px);
+    			}
+    			>div,>img{
+    				float: left;
+    			}
+    			>img{
+    				width: px2rem($doc-img-wh);
+    				height: px2rem($doc-img-wh);
+    				border-radius: px2rem($doc-img-wh/2);
+    				margin-right: px2rem($doc-img-wh/2);
+    				margin-top: px2rem($doc-description-mt);
+    			}
+    			>div{
+    				p{
+    					color:#666;
+    					line-height:px2rem($doc-img-wh/3);
+    					font-size: px2rem(map_get($map-font-size, s));
+    				}
+    				p:first-child{
+    					margin-top: px2rem($doc-description-mt);
+    					color:#033;
+    					font-size: px2rem(map_get($map-font-size, m));
+    				}
+    			}
+    		}
+    	}
+    	.doc-goodat-span{
+    		color: #f39700;
+    	}
+    }
+}
