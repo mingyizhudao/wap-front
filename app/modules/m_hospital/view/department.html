@@ -58,23 +58,27 @@
         <div class="desc-header">科室介绍</div>
         <div class="desc-item">
             <div class="title">学科地位</div>
-            <div class="as-html" ng-bind="departmentInfo.description.position | trustAsHtml"></div>
+            <div class="as-html" ng-bind="departmentInfo.position | trustAsHtml"></div>
         </div>
         <div class="desc-item">
             <div class="title">学科规模</div>
-            <div class="as-html" ng-bind="departmentInfo.description.scale | trustAsHtml"></div>
+            <div class="as-html" ng-bind="departmentInfo.scale | trustAsHtml"></div>
         </div>
         <div class="desc-item">
             <div class="title">学科专长</div>
-            <div class="as-html" ng-bind="departmentInfo.description.speciality | trustAsHtml"></div>
+            <div class="as-html" ng-bind="departmentInfo.specialty | trustAsHtml"></div>
         </div>
         <div class="desc-item">
             <div class="title">学科力量</div>
-            <div class="as-html" ng-bind="departmentInfo.description.power | trustAsHtml"></div>
+            <div class="as-html" ng-bind="departmentInfo.strength | trustAsHtml"></div>
         </div>
         <div class="desc-item">
             <div class="title">学科荣誉</div>
-            <div class="as-html" ng-bind="departmentInfo.description.honor | trustAsHtml"></div>
+            <div class="as-html">
+                <ul>
+                    <li ng-repeat="hli in departmentInfo.honor" ng-bind="hli"></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="btn-dock fixed bottom-button">

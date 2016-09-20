@@ -27,7 +27,8 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
         },
         getDepartmentInfo: function(params, urlOptions){
             var requestObj = {
-                url: apiUrl +　'/apiwap/hospital/'+urlOptions.hospitalId+'/department/'+urlOptions.departmentId,
+                // url: apiUrl +　'/apiwap/hospital/'+urlOptions.hospitalId+'/department/'+urlOptions.departmentId,
+                url: apiUrl +　'/apiwap/hospitaldept/'+urlOptions.departmentId,
                 params: params
             };
             return BaseHttpRequest.get(requestObj, getDepartmentInfoDto);

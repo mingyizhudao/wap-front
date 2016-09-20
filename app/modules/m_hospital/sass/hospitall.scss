@@ -175,6 +175,9 @@
             line-height: px2rem(map_get($map-font-size, s)) * 1.5;
             padding-top: px2rem(10px);
         }
+        ul{
+            padding-left: px2rem(20px);
+        }
     }
     .bottom-button{
         border-top: 1px solid $color-border-default;

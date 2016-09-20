@@ -79,16 +79,17 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
         var spinner = dialog.showSpinner();
         StorageConfig.CITY_STORAGE.putItem('hospitalCityCurrent', item);
         var params = {
-            city: item.id,
-            cate: 111,
-            page: 0,
-            pagesize: 10,
-            disease_name: ''
+            city: item.id
+            // city: item.id,
+            // cate: 111,
+            // page: 0,
+            // pagesize: 10,
+            // disease_name: ''
         };
         HospitalService.getHospitalByQuery(params).then(function(res){
             dialog.closeSpinner(spinner.id);
-            if(res.results && res.results.length){
-                $scope.hospitalList = res.results;
+            if(res.hospitals && res.hospitals.length){
+                $scope.hospitalList = res.hospitals;
             }else{
                 dialog.toast('该地区暂时没有医院哦~');
             }

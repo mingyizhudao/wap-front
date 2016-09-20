@@ -34,11 +34,13 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     });
 
     $scope.goDepartment = function (hospital, department) {
+        console.log('department',department);
         $state.go('layout.department',{
-            hospitalId: hospital.id,
-            departmentId: department.id,
-            departmentName: department.name,
-            hospitalName: hospital.name
+            departmentId: department.id
+            // hospitalId: hospital.id,
+            // departmentId: department.id,
+            // departmentName: department.name,
+            // hospitalName: hospital.name
         });
     };
 }]);

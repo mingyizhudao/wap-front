@@ -21,11 +21,13 @@ app.controller('DepartmentCtrl', ['$rootScope', '$scope', 'dialog', '$stateParam
     var spinner = dialog.showSpinner();
     var params = {};
     var urlOptions = {
-        hospitalId: $stateParams.hospitalId,
+        // hospitalId: $stateParams.hospitalId,
         departmentId: $stateParams.departmentId
     };
     HospitalService.getDepartmentInfo(params, urlOptions).then(function (res) {
         $scope.departmentInfo = res.results.department;
+        window.headerConfig.title = res.results.department.name;
+        $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
         dialog.closeSpinner(spinner.id);
     }, function (res) {
         dialog.closeSpinner(spinner.id);
