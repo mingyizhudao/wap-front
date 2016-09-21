@@ -31,6 +31,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/booking/department/:hospitalId/:departmentId?departmentName&hospitalName',
             templateUrl: 'app/modules/m_booking/view/booking-department.html'
         })
+        .state('layout.booking-doctor', {
+            url: '/booking/doctor',
+            templateUrl: 'app/modules/m_booking/view/booking-doctor.html'
+        })
         .state('layout.find', {
             url: '/find',
             templateUrl: 'app/modules/m_find/view/index.html'
@@ -58,5 +62,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         .state('layout.doctor',{
             url: '/doctor',
             templateUrl: 'app/modules/m_doctor/view/index.html'
+        })
+        .state('layout.doctor-detail', {
+            url: '/doctor/:doctorId',
+            templateUrl: 'app/modules/m_doctor/view/doctor-detail.html'
         })
 }]);

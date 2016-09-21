@@ -10,4 +10,26 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
+
+    $scope.routerGo = function(url){
+        $state.go(url);
+    }
+
+    $scope.isShowContent = false;
+    $scope.showContent = function(_index){
+        $scope.isShowContent = true;
+        if (_index==$scope.selectedIndex) {
+            $scope.hideContent();
+        }else{
+            $scope.selectedIndex = _index;
+        }
+    }
+    $scope.hideContent = function(){
+        $scope.selectedIndex = false;
+        $scope.isShowContent = false;
+    }
+    $scope.clickList = function($event){
+        $event.stopPropagation();
+    }
+
 }]);
