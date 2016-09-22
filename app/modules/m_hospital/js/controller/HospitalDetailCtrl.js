@@ -34,7 +34,7 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     });
 
     $scope.goDepartment = function (hospital, department) {
-        console.log('department',department);
+        // console.log('department',department);
         $state.go('layout.department',{
             departmentId: department.id
             // hospitalId: hospital.id,

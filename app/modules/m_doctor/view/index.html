@@ -13,28 +13,28 @@
    </div>
    <div class="doc-list">
    		<ul>
-   			<li ng-click="routerGo('layout.doctor-detail')">
+   			<li ng-click="goDoc(doc.id)" ng-repeat="doc in doctorList">
    				<div class="doc-description">
-					<i class="yz-img">义诊</i>
-					<i class="qy-img">签约</i>
-   					<img src="http://dr.static.mingyizhudao.com/25B5C5A2C885B62AE8ED01901FF6F552">
+					<i ng-if="doc.isServiceId==2" class="yz-img">义诊</i>
+					<i ng-if="doc.isContracted==1" class="qy-img">签约</i>
+   					<img src="{{doc.imageUrl}}">
    					<div>
    						<p>
-   							<span>白继</span>
-   							<span>教授</span>
+   							<span ng-bind="doc.name"></span>
+   							<span ng-bind="doc.aTitle"></span>
    						</p>
    						<p>
-   							<span>眼科</span>
-   							<span>主任医师</span>
+   							<span ng-bind="doc.hpDeptName"></span>
+   							<span ng-bind="doc.mTitle"></span>
    						</p>
    						<p>
-   							<span>重庆大坪医院</span>
+   							<span ng-bind="doc.hpName"></span>
    						</p>
    					</div>
    				</div>
-   				<p>
+   				<p class="doc-desc">
    					<span class="doc-goodat-span">擅长：</span>
-   					<span>对角膜屈光手术及青少年近视防控方面有着丰富的临床经验。</span>
+   					<span ng-bind="doc.desc"></span>
    				</p>
    			</li>
    		</ul>

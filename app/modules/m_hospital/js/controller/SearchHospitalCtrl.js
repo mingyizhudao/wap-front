@@ -1,4 +1,5 @@
-app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', function ($scope, $rootScope, CommonService, dialog, StorageConfig, HospitalService, $state, $stateParams) {
+app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', function ($scope, $rootScope, dialog, StorageConfig, HospitalService, $state, $stateParams) {
+
     var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
     window.headerConfig = {
         enableHeader: true,
@@ -32,7 +33,7 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
 
     $scope.goToDetail = function(item){
         $state.go('layout.hospital-detail', {
-            hospitalId: item.hospital_id
+            hospitalId: item.id
         });
     };
 
@@ -81,6 +82,17 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
         var params = {
             city: item.id
         };
+        if($stateParams.diseasesId!=''){
+            params.disease = $stateParams.diseasesId;
+            var urlOptions = {id:$stateParams.diseasesId};
+            HospitalService.getDiseasesById(urlOptions).then(function(res){
+                window.headerConfig.title = res.results.disease.name;
+                $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+            },function(res){
+                dialog.closeSpinner(spinner.id);
+                dialog.alert(res.errorMsg);
+            });
+        }
         HospitalService.getHospitalByQuery(params).then(function(res){
             dialog.closeSpinner(spinner.id);
             if(res.results && res.results.length){

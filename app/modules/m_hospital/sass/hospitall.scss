@@ -1,7 +1,7 @@
 .hospital-page{
     .ad-banner{
         width: 100%;
-        height: px2rem(157.5px);
+        // height: px2rem(157.5px);
         a{
             display: block;
         }
@@ -26,6 +26,31 @@
             height: px2rem(40px);
             padding-top: px2rem(4px);
             padding-bottom: px2rem(4px);
+        }
+    }
+}
+.search-hospital{
+    .hospital-list{
+        .info{
+            display: flex;
+            background: #fff;
+            height: px2rem(70px);
+            >div:first-child{
+                width:90%;
+                .sub-name{
+                    color: #666;
+                }
+            }
+            .right-box{
+                width:10%;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                .arrow-right{
+                    width:px2rem(12px);
+                    height:px2rem(12px);
+                }
+            }
         }
     }
 }

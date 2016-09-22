@@ -23,18 +23,16 @@
     				width: px2rem(25px);
     				height: px2rem(30px);
     				display: inline-block;
-				    position: absolute;
     				margin-right: px2rem(10px);
+                    float: right;
     			}
     			.yz-img{
     				background: url('http://static.mingyizhudao.com/146364500313741') no-repeat;
     				background-size: cover;
-				    right: px2rem(50px);
     			}
     			.qy-img{
     				background: url('http://static.mingyizhudao.com/146364522977843') no-repeat;
     				background-size: cover;
-				    right: px2rem(10px);
     			}
     			>div,>img{
     				float: left;
@@ -63,6 +61,15 @@
     	.doc-goodat-span{
     		color: #f39700;
     	}
+        .doc-desc{
+            display: inline-block;display: -webkit-box; 
+            text-overflow: ellipsis;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
     }
     .doc-tab-nav{
         $tab-height: 40px;

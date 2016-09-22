@@ -1,4 +1,4 @@
-app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', function ($scope, $rootScope, DoctorService, $state) {
+app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 'dialog', '$stateParams', function ($scope, $rootScope, DoctorService, $state, dialog, $stateParams) {
     
     window.headerConfig={
         enableHeader: true,
@@ -11,8 +11,10 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
-    $scope.routerGo = function(url){
-        $state.go(url);
+    $scope.goDoc = function(_id){
+        $state.go('layout.doctor-detail', {
+            doctorId: _id
+        });
     }
 
     $scope.isShowContent = false;
@@ -30,6 +32,30 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
     }
     $scope.clickList = function($event){
         $event.stopPropagation();
+    }
+
+    selectedCall({id:0});
+    function selectedCall(item) {
+        var spinner = dialog.showSpinner();
+        // StorageConfig.CITY_STORAGE.putItem('hospitalCityCurrent', item);
+        var params = {
+            city: item.id
+        };
+        if($stateParams.diseasesId!=''){
+            params.disease = $stateParams.diseasesId;
+        }
+        DoctorService.getDoctorByQuery(params).then(function(res){
+            dialog.closeSpinner(spinner.id);
+            if(res.results && res.results.length){
+                // "isContracted": "1", 签约专家    isServiceId  2-义诊
+                $scope.doctorList = res.results;
+            }else{
+                dialog.toast('该地区暂时没有医生哦~');
+            }
+        },function(res){
+            dialog.closeSpinner(spinner.id);
+            dialog.alert(res.errorMsg);
+        });
     }
 
 }]);

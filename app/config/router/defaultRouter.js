@@ -18,6 +18,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/hospital',
             templateUrl: 'app/modules/m_hospital/view/index.html'
         })
+        .state('layout.search-hospital',{
+            url: '/search/hospital?diseasesId',
+            templateUrl: 'app/modules/m_hospital/view/search-hospital.html'
+        })
         .state('layout.hospital-detail', {
             url: '/hospital/:hospitalId',
             templateUrl: 'app/modules/m_hospital/view/hospital-detail.html'
@@ -60,7 +64,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_search/view/searchMove.html'
         })
         .state('layout.doctor',{
-            url: '/doctor',
+            url: '/doctor?diseasesId',
             templateUrl: 'app/modules/m_doctor/view/index.html'
         })
         .state('layout.doctor-detail', {

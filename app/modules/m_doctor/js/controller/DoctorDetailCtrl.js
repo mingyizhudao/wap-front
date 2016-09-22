@@ -18,18 +18,18 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         $scope.selectedTab = index;
     };
 
-    // var spinner = dialog.showSpinner();
-    // var params = {};
-    // var urlOptions = {
-    //     id: $stateParams.doctorId
-    // };
-    // DoctorService.getDoctorDetail(params, urlOptions).then(function (res) {
-    //     dialog.closeSpinner(spinner.id);
-    //     $scope.doctorInfo = res.results;
-    // }, function (res) {
-    //     dialog.closeSpinner(spinner.id);
-    //     dialog.alert(res.errorMsg);
-    // });
+    var spinner = dialog.showSpinner();
+    var params = {};
+    var urlOptions = {
+        id: $stateParams.doctorId
+    };
+    DoctorService.getDoctorDetail(params, urlOptions).then(function (res) {
+        dialog.closeSpinner(spinner.id);
+        $scope.doctorInfo = res.results;
+    }, function (res) {
+        dialog.closeSpinner(spinner.id);
+        dialog.alert(res.errorMsg);
+    });
 
     $scope.bookingDoctor = function () {
         $state.go('layout.booking-doctor',{

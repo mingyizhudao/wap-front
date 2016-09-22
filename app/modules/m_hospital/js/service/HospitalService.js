@@ -3,6 +3,9 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
     function getHospitalByQueryDto(res){
         return res;
     }
+    function getDiseasesByIdDto(res){
+        return res;
+    }
     function getHospitalDetailDto(res){
         return res;
     }
@@ -13,10 +16,16 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
     var service = {
         getHospitalByQuery: function(params){
             var requestObj = {
-                url: apiUrl +　'/apiwap/hospital',
+                url: apiUrl +　'/apiwap/findhospital',
                 params: params
             };
             return BaseHttpRequest.get(requestObj, getHospitalByQueryDto);
+        },
+        getDiseasesById: function(urlOptions){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/disease/'+ urlOptions.id
+            };
+            return BaseHttpRequest.get(requestObj, getDiseasesByIdDto);
         },
         getHospitalDetail: function(params,urlOptions){
             var requestObj = {

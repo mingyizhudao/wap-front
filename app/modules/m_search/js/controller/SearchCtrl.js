@@ -96,4 +96,28 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
         }
     }
 
+    $scope.findHospital = function(_id){
+        $state.go('layout.search-hospital',{
+            diseasesId: _id
+        });
+    }
+
+    $scope.findDoctor = function(_id){
+        $state.go('layout.doctor',{
+            diseasesId: _id
+        });
+    }
+
+    $scope.goHp = function(_id){
+        $state.go('layout.hospital-detail',{
+            hospitalId: _id
+        });
+    }
+
+    $scope.goDoc = function(_id){
+        $state.go('layout.doctor-detail',{
+            doctorId: _id
+        });
+    }
+
 }]);
