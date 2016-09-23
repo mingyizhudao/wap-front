@@ -1,4 +1,4 @@
-app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 'dialog', '$stateParams', function ($scope, $rootScope, DoctorService, $state, dialog, $stateParams) {
+app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 'dialog', '$stateParams', 'StorageConfig', 'CommonService', function ($scope, $rootScope, DoctorService, $state, dialog, $stateParams, StorageConfig, CommonService) {
     
     window.headerConfig={
         enableHeader: true,
@@ -49,6 +49,13 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         $scope.hideContent();
         $scope.diseaseName = _diseaseObj.name;
         defaultParams.disease = _diseaseObj.id;
+        selectedCall(defaultParams);//刷新医生列表
+    }
+    $scope.clickCityList = function(_cityObj,$event){
+        $event.stopPropagation();
+        $scope.hideContent();
+        $scope.cityName = _cityObj.city;
+        defaultParams.city = _cityObj.id;
         selectedCall(defaultParams);//刷新医生列表
     }
 
@@ -116,6 +123,33 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         if (_list&&_list.length) {
             $scope.diseaseList = _list;
         }
+    }
+    function openCityList(_list){
+        if (_list&&_list.length) {
+            $scope.cityList = _list;
+        }
+    }
+
+    //  获取地区
+    var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
+    if (!(StorageConfig.CITY_STORAGE.getItem('doctorCities') && StorageConfig.CITY_STORAGE.getItem('doctorCities').length)) {
+        requestGetCities();
+    }else{
+        openCityList((StorageConfig.CITY_STORAGE.getItem('doctorCities')));
+    }
+    function requestGetCities() {
+        var params = {
+            has_team: 0,
+            type: 'doctor'
+        };
+        CommonService.getCity(params).then(function (res) {
+            var allCities = [defaultAllCity].concat(res.results);
+            openCityList(allCities);
+            StorageConfig.CITY_STORAGE.putItem('doctorCities', allCities);
+        }, function (res) {
+            dialog.closeSpinner(spinner.id);
+            dialog.alert(res.errorMsg);
+        });
     }
 
 }]);
