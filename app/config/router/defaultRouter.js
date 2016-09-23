@@ -71,4 +71,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/doctor/:doctorId',
             templateUrl: 'app/modules/m_doctor/view/doctor-detail.html'
         })
+        .state('layout.order', {
+            url: '/me/order/:orderType',
+            templateUrl: 'app/modules/m_me/view/order.html'
+        })
 }]);

@@ -19,4 +19,8 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserSer
             backRoute: 'layout.home'
         });
     };
+
+    $scope.goOrder = function(_type){
+        $state.go('layout.order');
+    }  
 }]);

@@ -1,0 +1,40 @@
+.order-page{
+	>ul{
+		li{
+			padding: px2rem(10px) px2rem(10px) 0 px2rem(10px);
+			>div{
+				background: #fff;
+				border-radius: px2rem(5px);
+				padding: 0 px2rem(10px) px2rem(10px) px2rem(10px);
+				>p{
+					line-height: px2rem(25px);
+				}
+			}
+ 		}
+	}
+	.o-title{
+		&:after{
+			display:block;
+			height:0px;
+			content:'';
+			clear: both;
+		}
+		color:#666;
+		border-bottom: 1px solid #ddd;
+		line-height: px2rem(30px);
+		padding: px2rem(5px) 0;
+	}
+	.o-label{
+
+	}
+	.o-aid{
+		width: px2rem(60px);
+	    display: inline-block;
+	    float: right;
+	    border-color: #ffc591;
+	    color: #fd5f19;
+	}
+	.o-label{
+		color:#666;
+	}
+}
