@@ -19,33 +19,35 @@
                 <div class="cell-group border-none">
                     <div class="cell">
                         <p>擅长</p>
-                        <p>对角膜屈光手术及青少年近视。。。</p>
+                        <p ng-bind="doctorInfo.description"></p>
                     </div>
                     <div class="cell height-auto">
                         <p>推荐理由</p>
-                        <p>科室水平领先全国</p>
+                        <p ng-repeat="info in doctorInfo.reasons" ng-bind="info"></p>
                     </div>
                     <div class="cell height-auto">
                         <p>荣誉</p>
-                        <p>科室水平领先全国</p>
+                        <p ng-repeat="honour in doctorInfo.honour" ng-bind="honour"></p>
                     </div>
                     <div class="cell height-auto">
                         <p>职业经历</p>
-                        <p>科室水平领先全国</p>
+                        <p ng-bind="doctorInfo.careerExp"></p>
                     </div>
                 </div>
             </div>
             <div class="item-content" ng-show="selectedTab == 1">
                 <ul class="doc-remark-list">
-                    <li>
+                    <li ng-repeat="comment in comments">
                         <div class="doc-remark-user">
                             <img src="http://static.mingyizhudao.com/146303241586665">
                             <div>
-                                <p>h***</p>
-                                <p><i class="star"></i></p>
+                                <p ng-bind="comment.user_name"></p>
+                                <p>
+                                    <i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i>
+                                </p>
                             </div>
                         </div>
-                        <p class="doc-remark-p">非常认真的给我做了手术，术中一直鼓励我，是个很不错的医生，，态度很好，thank you very much！</p>
+                        <p class="doc-remark-p" ng-bind="comment.comment_text"></p>
                     </li>
                 </ul>
             </div>

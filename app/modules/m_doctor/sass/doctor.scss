@@ -111,6 +111,7 @@
                 list-style-type: none;
                 background: #fff;
                 max-height:50%;
+                overflow-y: scroll;
                 li{
                     height: px2rem($tab-height);
                     line-height: px2rem($tab-height);
@@ -151,6 +152,15 @@
         >p:first-child{
             color: #f39700;
         }
+    }
+    .tab-box{
+        width: 100%;
+        background: #fff;
+        padding-bottom: px2rem(70px);
+    }
+    .bottom-button{
+        border-top: 1px solid $color-border-default;
+        background: #fff;
     }
     .doc-header {
         background: url('http://static.mingyizhudao.com/147062699107071') no-repeat;

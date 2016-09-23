@@ -19,13 +19,14 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     };
 
     var spinner = dialog.showSpinner();
-    var params = {};
     var urlOptions = {
         id: $stateParams.doctorId
     };
-    DoctorService.getDoctorDetail(params, urlOptions).then(function (res) {
+    DoctorService.getDoctorDetail(urlOptions).then(function (res) {
         dialog.closeSpinner(spinner.id);
-        $scope.doctorInfo = res.results;
+        console.log(res.results.doctor);
+        $scope.doctorInfo = res.results.doctor;
+        $scope.comments = res.results.comment;
     }, function (res) {
         dialog.closeSpinner(spinner.id);
         dialog.alert(res.errorMsg);
