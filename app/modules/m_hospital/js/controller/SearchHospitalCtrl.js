@@ -33,7 +33,7 @@ app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'Storage
 
     $scope.goToDetail = function(item){
         $state.go('layout.hospital-detail', {
-            hospitalId: item.id
+            hospitalId: item.hospital_id
         });
     };
 
