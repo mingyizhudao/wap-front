@@ -7,7 +7,21 @@ app.directive('headerWidget', [function () {
             enableTitle: true,
             enableRefresh: true,
             enableArea: false,
-            enableTab: false,
+            otherThemeClass: '',
+            tabOperate: {
+                enableTab: false,
+                options: [
+                    {
+                        name: 'A',
+                        id: '0'
+                    },
+                    {
+                        name: 'B',
+                        id: '1'
+                    }
+                ],
+                currentTab: 0
+            },
             otherRightOperate: {
                 enable: false,
                 html: '',
@@ -39,6 +53,7 @@ app.directive('headerWidget', [function () {
             $scope.defaults = angular.extend(temp, data);
             document.title = $scope.defaults.title;
             $scope.currentArea = helper.isEmptyObject($scope.defaults.areaOperate.currentArea) ? $scope.defaults.areaOperate.areas[0] : $scope.defaults.areaOperate.currentArea;
+            $scope.currentTab = $scope.defaults.tabOperate.currentTab;
         });
 
         /**
@@ -125,10 +140,24 @@ app.directive('headerWidget', [function () {
             $scope.showAreas = false;
         };
         //watch the currentArea. If changed, send broadcast to the page.
-        $scope.$watch('currentArea', function(n, o){
+        $scope.$watch('currentArea', function (n, o) {
             var selectedCallback = $scope.defaults.areaOperate.selectedCall;
-            if(selectedCallback && typeof selectedCallback === 'function'){
+            if (selectedCallback && typeof selectedCallback === 'function') {
                 selectedCallback($scope.currentArea);
+            }
+        });
+
+        /**
+         * control the tab widget
+         */
+        $scope.currentTab = $scope.defaults.tabOperate.currentTab;
+        $scope.clickHeaderTab = function (item, index) {
+            $scope.currentTab = index;
+        };
+        $scope.$watch('currentTab', function(n, o) {
+            var selectedCallback = $scope.defaults.tabOperate.selectedCall;
+            if (selectedCallback && typeof selectedCallback === 'function') {
+                selectedCallback($scope.defaults.tabOperate.options[$scope.currentTab], $scope.currentTab);
             }
         });
     }];
@@ -146,7 +175,7 @@ app.directive('headerWidget', [function () {
 }]);
 app.run(['$templateCache', function ($templateCache) {
     $templateCache.put('template/header.html',
-        '<header class="layout-header" id="layoutHeader" ng-show="defaults.enableHeader">\
+        '<header class="layout-header {{defaults.otherThemeClass}}" id="layoutHeader" ng-show="defaults.enableHeader">\
         <div class="header {{defaults.otherClass}}">\
        <div class="left-operate">\
            <div class="btn-back" ng-show="defaults.enableBack" ng-click="goBack()">\
@@ -154,7 +183,10 @@ app.run(['$templateCache', function ($templateCache) {
            </div>\
            <div class="btn-close" ng-show="defaults.enableClose" ng-click="closeHeader()"></div>\
        </div>\
-       <div class="title" ng-bind="defaults.title"></div>\
+       <div class="title" ng-bind="defaults.title" ng-show="defaults.enableTitle"></div>\
+       <div class="header-tab" ng-show="defaults.tabOperate.enableTab && !defaults.enableTitle">\
+            <div class="tab-options" ng-class="{\'active\':currentTab == $index}" ng-repeat="tabItem in defaults.tabOperate.options track by $index" ng-bind="tabItem.name" ng-click="clickHeaderTab(tabItem, $index)"></div>\
+       </div>\
        <div class="right-operate">\
            <div class="btn-refresh" ng-show="defaults.enableRefresh" ng-click="refresh()"></div>\
            <div class="other-right-operate" ng-show="defaults.otherRightOperate.enable" ng-click="clickOtherRightOperate()" ng-bind-html="defaults.otherRightOperate.html | trustAsHtml"></div>\
