@@ -3,7 +3,7 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         enableHeader: true,
         enableBack: true,
         enableRefresh: true,
-        title: '医生名?'
+        title: '医生名'
     };
     window.footerConfig = {
         enableFooter: false
@@ -24,7 +24,9 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     };
     DoctorService.getDoctorDetail(urlOptions).then(function (res) {
         dialog.closeSpinner(spinner.id);
-        console.log(res.results.doctor);
+        // console.log(res.results.doctor);
+        window.headerConfig.title = res.results.doctor.name;
+        $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
         $scope.doctorInfo = res.results.doctor;
         $scope.comments = res.results.comment;
     }, function (res) {
