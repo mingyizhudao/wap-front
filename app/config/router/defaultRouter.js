@@ -43,6 +43,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/find',
             templateUrl: 'app/modules/m_find/view/index.html'
         })
+        .state('layout.find-detail', {
+            url: '/find/:storyName',
+            templateUrl: 'app/modules/m_find/view/findingDetail.html'
+        })
         .state('layout.me', {
             url: '/me',
             templateUrl: 'app/modules/m_me/view/index.html'

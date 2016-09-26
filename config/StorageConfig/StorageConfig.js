@@ -7,10 +7,13 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
     var footer_storage = ngStorage.sessionStorage('myzd_footer');
     //临时存储城市等数据
     var city_storage = ngStorage.sessionStorage('myzd_city');
+    //临时存储发现页中的tab状态
+    var find_storage = ngStorage.sessionStorage('myzd_find');
     return {
         COMMON_STORAGE: common_storage,
         FOOTER_STORAGE: footer_storage,
         TOKEN_STORAGE: session_token,
-        CITY_STORAGE: city_storage
+        CITY_STORAGE: city_storage,
+        FIND_STORAGE: find_storage
     };
 }]);
