@@ -1,4 +1,4 @@
-app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 'dialog', '$stateParams', 'StorageConfig', 'CommonService', function ($scope, $rootScope, DoctorService, $state, dialog, $stateParams, StorageConfig, CommonService) {
+app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 'dialog', '$stateParams', 'DoctorStotage', 'CommonService', 'StorageConfig', function ($scope, $rootScope, DoctorService, $state, dialog, $stateParams, DoctorStotage, CommonService, StorageConfig) {
     
     window.headerConfig={
         enableHeader: true,
@@ -17,6 +17,29 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         });
     }
 
+    var defaultParams = {
+        city: 0,
+        disease: '',
+        disease_sub_category: ''
+    }
+    var tabObj = {dept:'',disease:'',city:''};
+    if(!DoctorStotage.DOCTOR_TAB_STORAGE.getItem('tabObj')){
+        selectedCall(defaultParams);
+        console.log('无tab缓存');
+    }else{
+        getLocalTab(DoctorStotage.DOCTOR_TAB_STORAGE.getItem('tabObj'));
+    }
+    function getLocalTab(_tabObj){
+        $scope.deptName = _tabObj.dept.name||'';
+        $scope.diseaseName = _tabObj.disease.name||'';
+        $scope.cityName = _tabObj.city.city||0;
+        defaultParams = {
+            city: _tabObj.city.id||0,
+            disease: _tabObj.disease.id||'',
+            disease_sub_category: _tabObj.dept.id||''
+        };
+        selectedCall(defaultParams);//刷新医生列表
+    }
 
     $scope.isShowContent = false;
     $scope.showContent = function(_index){
@@ -43,6 +66,8 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         defaultParams.disease_sub_category = _deptObj.id;
         selectedCall(defaultParams);//刷新医生列表
         getDiseaseList(_deptObj.id);//获取疾病列表
+        tabObj.dept = _deptObj;
+        DoctorStotage.DOCTOR_TAB_STORAGE.putItem('tabObj', tabObj);
     }
     $scope.clickDiseaseList = function(_diseaseObj,$event){
         $event.stopPropagation();
@@ -50,6 +75,8 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         $scope.diseaseName = _diseaseObj.name;
         defaultParams.disease = _diseaseObj.id;
         selectedCall(defaultParams);//刷新医生列表
+        tabObj.disease = _diseaseObj;
+        DoctorStotage.DOCTOR_TAB_STORAGE.putItem('tabObj', tabObj);
     }
     $scope.clickCityList = function(_cityObj,$event){
         $event.stopPropagation();
@@ -57,22 +84,32 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         $scope.cityName = _cityObj.city;
         defaultParams.city = _cityObj.id;
         selectedCall(defaultParams);//刷新医生列表
+        tabObj.city = _cityObj;
+        DoctorStotage.DOCTOR_TAB_STORAGE.putItem('tabObj', tabObj);
+    }
+    function openDeptList(_list){
+        if (_list&&_list.length) {
+            $scope.deptList = _list;
+        }
+    }
+    function openDiseaseList(_list){
+        if (_list&&_list.length) {
+            $scope.diseaseList = _list;
+        }
+    }
+    function openCityList(_list){
+        if (_list&&_list.length) {
+            $scope.cityList = _list;
+        }
     }
 
-    var defaultParams = {
-        city: 0,
-        disease: 123,
-        disease_sub_category: ''
-    }
-    selectedCall(defaultParams);
     function selectedCall(params) {
         var spinner = dialog.showSpinner();
-        // StorageConfig.CITY_STORAGE.putItem('hospitalCityCurrent', item);
         var _params = params;
         if($stateParams.diseasesId!=''){
             _params.disease = $stateParams.diseasesId;
         }
-        console.log('_params',_params);
+        // console.log('_params',_params);
         DoctorService.getDoctorByQuery(_params).then(function(res){
             dialog.closeSpinner(spinner.id);
             if(res.results && res.results.length){
@@ -113,21 +150,6 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
                 console.log('res',res);
             }
         );
-    }
-    function openDeptList(_list){
-        if (_list&&_list.length) {
-            $scope.deptList = _list;
-        }
-    }
-    function openDiseaseList(_list){
-        if (_list&&_list.length) {
-            $scope.diseaseList = _list;
-        }
-    }
-    function openCityList(_list){
-        if (_list&&_list.length) {
-            $scope.cityList = _list;
-        }
     }
 
     //  获取地区
