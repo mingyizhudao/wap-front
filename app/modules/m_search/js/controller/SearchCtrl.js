@@ -37,6 +37,7 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
         $scope.resHp = false;
         $scope.resDes = false;
         if(searchText){
+            $scope.searchTips = '正在查询"'+searchText+'"的结果,请稍等...';
             var params = {
                 name: searchText
             };
@@ -46,7 +47,14 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
                         results: res.results,
                         text: searchText
                     });
-                    getSimpleList(res.results);
+                    for(var obj in res.results) {
+                        if(res.results.hasOwnProperty(obj)){
+                            $scope.searchTips = false;
+                            getSimpleList(res.results);
+                            return true;
+                        }
+                    }
+                    $scope.searchTips = '抱歉，没有找到任何关于"'+searchText+'"的结果。';
                 }, 
                 function (res) {
                     console.log('err',res);

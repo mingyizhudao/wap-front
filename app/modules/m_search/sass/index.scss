@@ -2,6 +2,11 @@
 	$search-header-height: 40px;
 	$hp-btn-color: #F48124;
 	$doc-btn-color: #0168B7;
+	.search-tips{
+		padding-top: px2rem(10px);
+		text-align: center;
+		color: #ccc;
+	}
 	.search-header{
 		height: px2rem($search-header-height);
 		&:after{

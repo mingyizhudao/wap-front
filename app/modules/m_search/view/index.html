@@ -4,6 +4,8 @@
         <div class="rightOpt" ng-click="routerGo('layout.home')">取消</div>
     </div>
     <div class="search-result">
+        <div ng-if="searchTips" class="search-tips" ng-bind="searchTips">
+        </div>
         <ul>
             <!-- 疾病 -->
             <li ng-if="resDes">
