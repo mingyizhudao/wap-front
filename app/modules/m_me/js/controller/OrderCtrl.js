@@ -38,6 +38,7 @@ app.controller('OrderCtrl',['$scope','$rootScope','$state','$stateParams','UserS
             function(res){
                 // $scope.orderList
                 console.log('suc',res);
+                $scope.orderList = res.results;
             },
             function(res){
                 console.log('err',res);
