@@ -1,6 +1,6 @@
 app.controller('FindCtrl', ['$scope','$rootScope',function($scope,$rootScope){
     window.headerConfig={
-        enableHeader: false,
+        enableHeader: true,
         enableBack: false,
         title: '发现',
         enableTitle: false,
@@ -27,14 +27,14 @@ app.controller('FindCtrl', ['$scope','$rootScope',function($scope,$rootScope){
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
-    function selectedTab(item, index){
-        console.log('item',item);
-        console.log('index',index);
-    }
-
     var frameHeight = document.getElementById('layoutContent').clientHeight;
     var iframe = document.getElementById('iframe');
     iframe.style.height = frameHeight+'px';
-    // var innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
-    // innerDoc.getElementsByTagName('footer')[0].style.display='none';
+    function selectedTab(item, index){
+        console.log('item',item);
+        console.log('index',index);
+        var frameSrc = 'http://wap.dev.mingyizd.com/mobile/event/index/page/'+index+'/header/0.html';
+        iframe.src = frameSrc;
+    }
+
 }]);

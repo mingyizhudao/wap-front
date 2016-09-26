@@ -3,6 +3,7 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         enableHeader: true,
         enableBack: true,
         enableRefresh: true,
+        otherThemeClass: 'header-doc-img',
         title: '医生名'
     };
     window.footerConfig = {
