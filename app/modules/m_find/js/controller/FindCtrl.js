@@ -1,6 +1,6 @@
 app.controller('FindCtrl', ['$scope','$rootScope',function($scope,$rootScope){
     window.headerConfig={
-        enableHeader: true,
+        enableHeader: false,
         enableBack: false,
         title: '发现',
         enableTitle: false,
@@ -31,4 +31,10 @@ app.controller('FindCtrl', ['$scope','$rootScope',function($scope,$rootScope){
         console.log('item',item);
         console.log('index',index);
     }
+
+    var frameHeight = document.getElementById('layoutContent').clientHeight;
+    var iframe = document.getElementById('iframe');
+    iframe.style.height = frameHeight+'px';
+    // var innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
+    // innerDoc.getElementsByTagName('footer')[0].style.display='none';
 }]);

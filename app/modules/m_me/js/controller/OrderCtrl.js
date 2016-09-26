@@ -36,6 +36,7 @@ app.controller('OrderCtrl',['$scope','$rootScope','$state','$stateParams','UserS
         }
         UserService.getOrderList(opt).then(
             function(res){
+                // $scope.orderList
                 console.log('suc',res);
             },
             function(res){
