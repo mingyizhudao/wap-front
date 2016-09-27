@@ -21,6 +21,7 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
 .arrow-up {
     width: px2rem(24px);
     height: px2rem(24px);
@@ -70,9 +71,9 @@
 .triangle-up,
 .triangle-down,
 .triangle-left,
-.triangle-right{
+.triangle-right {
     position: relative;
-    &:before{
+    &:before {
         content: '';
         height: 0;
         width: 0;
@@ -81,26 +82,29 @@
     }
 }
 
-.triangle-up{
-    &:before{
+.triangle-up {
+    &:before {
         border-top-width: 0;
         border-bottom-color: #fff;
     }
 }
-.triangle-down{
-    &:before{
+
+.triangle-down {
+    &:before {
         border-down-width: 0;
         border-top-color: #fff;
     }
 }
-.triangle-left{
-    &:before{
+
+.triangle-left {
+    &:before {
         border-left-width: 0;
         border-right-color: #fff;
     }
 }
-.triangle-right{
-    &:before{
+
+.triangle-right {
+    &:before {
         border-right-width: 0;
         border-left-color: #fff;
     }
