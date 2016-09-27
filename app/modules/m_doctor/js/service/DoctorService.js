@@ -4,6 +4,9 @@ app.service('DoctorService',['BaseHttpRequest',function(BaseHttpRequest){
     function getDoctorByQueryDto(res){
     	return res;
     }
+    function getMYYZDoctorDto(res){
+        return res;
+    }
     function getDoctorDetailDto(res){
         return res;
     }
@@ -21,6 +24,14 @@ app.service('DoctorService',['BaseHttpRequest',function(BaseHttpRequest){
                 params: params
             };
             return BaseHttpRequest.get(requestObj, getDoctorByQueryDto);
+        },
+        //名医义诊医生列表
+        getMYYZDoctor: function(params){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/commonwealdoctors',
+                params: params
+            };
+            return BaseHttpRequest.get(requestObj, getMYYZDoctorDto);
         },
         getDoctorDetail: function(opt){
             var requestObj = {

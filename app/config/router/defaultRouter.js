@@ -55,6 +55,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/me/problems',
             templateUrl: 'app/modules/m_me/view/problems.html'
         })
+        .state('layout.aboutus', {
+            url: '/me/aboutus',
+            templateUrl: 'app/modules/m_me/view/aboutus.html'
+        })
+        .state('layout.mygy', {
+            url: '/me/mygy',
+            templateUrl: 'app/modules/m_me/view/mygy.html'
+        })
         .state('layout.login', {
             url: '/login?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_login/view/login.html'

@@ -85,3 +85,48 @@ app.controller('ProblemAgreementCtrl',['$scope','$rootScope', function($scope,$r
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 }]);
+
+app.controller('AboutUsCtrl',['$scope','$rootScope', function($scope,$rootScope){
+    window.headerConfig={
+        enableHeader: true,
+        enableBack: true,
+        enableRefresh: true,
+        title: '关于我们'
+    };
+    window.footerConfig = {
+        enableFooter: false
+    };
+    $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+    $rootScope.$broadcast('setFooterConfig', window.footerConfig);
+}]);
+
+app.controller('MygyCtrl',['$scope','$state','$stateParams','dialog','$rootScope','DoctorService', function($scope,$state,$stateParams,dialog,$rootScope,DoctorService){
+    window.headerConfig={
+        enableHeader: true,
+        enableBack: true,
+        enableRefresh: true,
+        title: '名医公益行'
+    };
+    window.footerConfig = {
+        enableFooter: false
+    };
+    $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+    $rootScope.$broadcast('setFooterConfig', window.footerConfig);
+    
+
+    selectedCall();
+    function selectedCall() {
+        var spinner = dialog.showSpinner();
+        DoctorService.getMYYZDoctor({}).then(function(res){
+            dialog.closeSpinner(spinner.id);
+            if(res.results.page[0] && res.results.page[0].length){
+                $scope.doctorList = res.results.page[0];
+            }else{
+                dialog.toast('暂时没有义诊医生哦~');
+            }
+        },function(res){
+            dialog.closeSpinner(spinner.id);
+            dialog.alert(res.errorMsg);
+        });
+    }
+}]);
