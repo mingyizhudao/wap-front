@@ -1,4 +1,18 @@
 .me-page{
+    .order-num{
+        $o-num-wh: 20px;
+        background: #fc4329;
+        width: px2rem($o-num-wh);
+        height: px2rem($o-num-wh);
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        color: #fff;
+        font-style: normal;
+        line-height: px2rem($o-num-wh);
+        float: right;
+        margin-right: px2rem(15px);
+    }
     .user-box{
         width: 100%;
         height: px2rem(144px);

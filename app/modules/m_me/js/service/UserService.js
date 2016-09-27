@@ -3,6 +3,9 @@ app.service('UserService', ['BaseHttpRequest',function (BaseHttpRequest) {
     function getDataDto(res){
         return res;
     }
+    function getUserInfoDto(res){
+        return res;
+    }
     function getOrderListDto(res){
         return res;
     }
@@ -14,6 +17,13 @@ app.service('UserService', ['BaseHttpRequest',function (BaseHttpRequest) {
                 data: params
             };
             return BaseHttpRequest.post(requestObj, getDataDto());
+        },
+        getUserInfo: function(params){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/userinfo',
+                data: params
+            };
+            return BaseHttpRequest.get(requestObj, getUserInfoDto());
         },
         getOrderList: function(opt){
             console.log('opt',opt);

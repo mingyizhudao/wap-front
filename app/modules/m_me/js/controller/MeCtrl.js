@@ -42,5 +42,47 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserSer
     $scope.routerGo = function(url){
         $state.go(url);
     }
+
+    getUserInfo();
+    function getUserInfo(){
+        var spinner = dialog.showSpinner();
+        UserService.getUserInfo({}).then(
+            function(res){
+                dialog.closeSpinner(spinner.id);
+                $scope.userName = res.user.username;
+                // $scope.orderNum1 = res.bookings.bookings;
+                if (res.bookings && res.bookings.length) {
+                    getOrderNum(res.bookings);
+                }
+            },
+            function(res){
+                dialog.closeSpinner(spinner.id);
+                dialog.alert(res.errorMsg);
+            }
+        );
+    }
+    function getOrderNum(_orderList){
+        var list = _orderList;
+        for(var i=0; i<list.length; i++){
+            switch (list[i].bkStatus){
+                case '1':{
+                    $scope.orderNum1 = list[i].num;
+                    break;
+                }
+                case '2':{
+                    $scope.orderNum2 = list[i].num;
+                    break;
+                }
+                case '5': {
+                    $scope.orderNum5 = list[i].num;
+                    break;
+                }
+                case '6':{
+                    $scope.orderNum6 = list[i].num;
+                    break;
+                }
+            }
+        }
+    }
     
 }]);
