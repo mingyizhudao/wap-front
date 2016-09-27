@@ -1,29 +1,72 @@
 app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', function ($scope, $rootScope, dialog, StorageConfig, HospitalService, $state, $stateParams) {
 
     var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
-    window.headerConfig = {
-        enableHeader: true,
-        enableBack: $stateParams.diseasesId?true:false,
-        enableRefresh: false,
-        title: '推荐',
-        areaOperate: {
-            enable: true,
-            areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
-            trackKey: 'city',
-            currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
-                city: '全部地区',
-                id: 0,
-                is_hot: 0
-            },
-            selectedCall: function (item) {
-                selectedCall(item);
-            }
-        }
+    
+    var defaultParams = {
+        city: 0
     };
+    if($stateParams.diseasesId!=undefined){
+        defaultParams.disease = $stateParams.diseasesId;
+        var urlOptions = {id:$stateParams.diseasesId};
+        HospitalService.getDiseasesById(urlOptions).then(function(res){
+            window.headerConfig = {
+                enableHeader: true,
+                enableBack: true,
+                enableRefresh: false,
+                title: res.results.disease.name,
+                areaOperate: {
+                    enable: true,
+                    areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
+                    trackKey: 'city',
+                    currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
+                        city: '全部地区',
+                        id: 0,
+                        is_hot: 0
+                    },
+                    selectedCall: function (item) {
+                        selectedCall(item);
+                    }
+                }
+            };
+            $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        },function(res){
+            dialog.closeSpinner(spinner.id);
+            dialog.alert(res.errorMsg);
+        });
+    }
+    if($stateParams.deptId != undefined){
+        defaultParams.disease_sub_category = $stateParams.deptId;
+        var urlOptions = {id:$stateParams.deptId};
+        HospitalService.getSubcategoryById(urlOptions).then(function(res){
+            window.headerConfig = {
+                enableHeader: true,
+                enableBack: true,
+                enableRefresh: false,
+                title: res.results.catName,
+                areaOperate: {
+                    enable: true,
+                    areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
+                    trackKey: 'city',
+                    currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
+                        city: '全部地区',
+                        id: 0,
+                        is_hot: 0
+                    },
+                    selectedCall: function (item) {
+                        selectedCall(item);
+                    }
+                }
+            };
+            $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        },function(res){
+            dialog.closeSpinner(spinner.id);
+            dialog.alert(res.errorMsg);
+        });
+    }
+    
     window.footerConfig = {
-        enableFooter: $stateParams.diseasesId?false:true
+        enableFooter: false
     };
-    $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
     //If not find the cities info in the sessionStorage. It should request the service to get them.
@@ -76,28 +119,19 @@ app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'Storage
      *      is_hot: 1
      * }
      */
+
+    
     function selectedCall(item) {
-        var spinner = dialog.showSpinner();
+    
+        defaultParams.city= item.id
         StorageConfig.CITY_STORAGE.putItem('hospitalCityCurrent', item);
-        var params = {
-            city: item.id
-        };
-        if($stateParams.diseasesId!=''){
-            params.disease = $stateParams.diseasesId;
-            var urlOptions = {id:$stateParams.diseasesId};
-            HospitalService.getDiseasesById(urlOptions).then(function(res){
-                window.headerConfig.title = res.results.disease.name;
-                $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
-            },function(res){
-                dialog.closeSpinner(spinner.id);
-                dialog.alert(res.errorMsg);
-            });
-        }
-        HospitalService.getHospitalByQuery(params).then(function(res){
+        var spinner = dialog.showSpinner();
+        HospitalService.getHospitalByQuery(defaultParams).then(function(res){
             dialog.closeSpinner(spinner.id);
             if(res.results && res.results.length){
                 $scope.hospitalList = res.results;
             }else{
+                $scope.hospitalList = [];
                 dialog.toast('该地区暂时没有医院哦~');
             }
         },function(res){

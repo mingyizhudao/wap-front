@@ -32,7 +32,7 @@ app.directive('landscapeScroll', function(){
 			_warp.addEventListener('touchstart', function(e){
 		        var touchobj = e.changedTouches[0];
 				_startX = touchobj.pageX;
-			    e.preventDefault();
+			//     e.preventDefault();
 			}, false);
 			 
 			_warp.addEventListener('touchmove', function(e){
@@ -51,7 +51,7 @@ app.directive('landscapeScroll', function(){
 					_transformContent(-1);
 					_timeStart();
 				}
-		        e.preventDefault()
+		//         e.preventDefault()
 		    }, false);
 			_timeStart();
 		}
@@ -73,7 +73,9 @@ app.directive('landscapeScroll', function(){
 			var _nextPagination = _pagination.getElementsByTagName('span')[_timeFlag];
 			//动画
 			_curChild.style.opacity = '0.0';
+			_curChild.style.zIndex = '0';
 			_nextChild.style.opacity = '1.0';
+			_nextChild.style.zIndex = '1';
 			_curPagination.className = 'land-pag-other';
 			_nextPagination.className = 'land-pag-cur';
 		}

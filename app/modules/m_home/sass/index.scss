@@ -1,6 +1,19 @@
 .home-page{
 	background: #fff;
 	li{ list-style-type: none}
+	.h-phone{
+		$h-phone-wh:50px;
+		width: px2rem($h-phone-wh);
+		height: px2rem($h-phone-wh);
+		background: url('http://static.mingyizhudao.com/146710564184583') no-repeat;
+	    background-size: contain;
+	    color: #fff;
+	    position: absolute;
+	    right: 0px;
+	    top: 50%;
+	    padding: px2rem(26px) 0 0 0;
+	    text-align: center;
+	}
 	.h-top{
 		height: px2rem(196px); 
 		background: url('http://static.mingyizhudao.com/146243634396635') no-repeat;

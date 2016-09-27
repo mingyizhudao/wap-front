@@ -6,6 +6,9 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
     function getDiseasesByIdDto(res){
         return res;
     }
+    function getSubcategoryByIdDto(res){
+        return res;
+    }
     function getHospitalDetailDto(res){
         return res;
     }
@@ -26,6 +29,12 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
                 url: apiUrl +　'/apiwap/disease/'+ urlOptions.id
             };
             return BaseHttpRequest.get(requestObj, getDiseasesByIdDto);
+        },
+        getSubcategoryById: function(urlOptions){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/subcategory/'+ urlOptions.id
+            };
+            return BaseHttpRequest.get(requestObj, getSubcategoryByIdDto);
         },
         getHospitalDetail: function(params,urlOptions){
             var requestObj = {

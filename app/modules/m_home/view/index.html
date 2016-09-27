@@ -9,31 +9,31 @@
         <landscape-scroll scroll-id="12tubeScroll" item-num="2">
             <div>
                 <ul class="h-tube-ul">
-                    <li class="h-t1">普外科</li>
-                    <li class="h-t2">骨科</li>
-                    <li class="h-t3">神经外科</li>
-                    <li class="h-t4">胸外科</li>
-                    <li class="h-t5">泌尿外科</li>
-                    <li class="h-t6">眼科</li>
+                    <li class="h-t1" ng-click="goHospital('101')">普外科</li>
+                    <li class="h-t2" ng-click="goHospital('102')">骨科</li>
+                    <li class="h-t3" ng-click="goHospital('103')">神经外科</li>
+                    <li class="h-t4" ng-click="goHospital('105')">胸外科</li>
+                    <li class="h-t5" ng-click="goHospital('104')">泌尿外科</li>
+                    <li class="h-t6" ng-click="goHospital('108')">眼科</li>
                 </ul>
             </div>
             <div>
                 <ul class="h-tube-ul">
-                    <li class="h-t7">心血管外科</li>
-                    <li class="h-t8">耳鼻喉科</li>
-                    <li class="h-t9">整形外科</li>
-                    <li class="h-t10">颌面外科</li>
-                    <li class="h-t11">妇科</li>
-                    <li class="h-t12">小儿外科</li>
+                    <li class="h-t7" ng-click="goHospital('106')">心血管外科</li>
+                    <li class="h-t8" ng-click="goHospital('109')">耳鼻喉科</li>
+                    <li class="h-t9" ng-click="goHospital('107')">整形外科</li>
+                    <li class="h-t10" ng-click="goHospital('110')">颌面外科</li>
+                    <li class="h-t11" ng-click="goHospital('111')">妇科</li>
+                    <li class="h-t12" ng-click="goHospital('112')">小儿外科</li>
                 </ul>
             </div>
         </landscape-scroll>
     </div>
     <div class="h-ad">
         <landscape-scroll scroll-id="adScroll" item-num="3">
-            <div><img src="http://static.mingyizhudao.com/147330339912652"></div>
-            <div><img src="http://static.mingyizhudao.com/146606890329840"></div>
-            <div><img src="http://static.mingyizhudao.com/147150951177488"></div>
+            <div><img ng-click="goDetailUrl('loveOperation')" src="http://static.mingyizhudao.com/147330339912652"></div>
+            <div><img ng-click="goDetailUrl('loveOperation')" src="http://static.mingyizhudao.com/146606890329840"></div>
+            <div><img ng-click="goDetailUrl('loveOperation')" src="http://static.mingyizhudao.com/147150951177488"></div>
         </landscape-scroll>
     </div>
     <div class="h-channel">
@@ -51,11 +51,12 @@
     			</a>
     		</li>
     		<li>
-	    		<a class="h-service-a" ng-click="routerGo('')">
+	    		<a class="h-service-a" ng-click="goBaidukf()">
 		    		<h5>在线客服</h5>
 		    		<span>咨询了解我们</span>
 	    		</a>
     		</li>
     	</ul>
     </div>
+    <div class="h-phone" ng-click="callPhone()">免费</div>
 </div>
