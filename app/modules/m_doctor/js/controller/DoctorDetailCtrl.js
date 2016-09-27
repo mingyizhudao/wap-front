@@ -30,6 +30,7 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
         $scope.doctorInfo = res.results.doctor;
         $scope.comments = res.results.comment;
+        $scope.commentNum = res.results.comment.length;
     }, function (res) {
         dialog.closeSpinner(spinner.id);
         dialog.alert(res.errorMsg);

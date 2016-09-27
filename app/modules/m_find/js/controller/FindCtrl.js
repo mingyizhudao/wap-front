@@ -44,6 +44,7 @@ app.controller('FindCtrl', ['$scope','$rootScope', '$state', '$stateParams', 'St
 
     function selectedTab(item, index){
         $scope.tabSelected = index;
+        document.getElementById('layoutContent').scrollTop = 0;
         StorageConfig.FIND_STORAGE.putItem('findTab', index);
     }
 

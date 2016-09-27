@@ -12,7 +12,7 @@
     <div class="tab-box">
         <div class="tab-header">
             <div class="tab-item" ng-class="{'active': selectedTab == 0}" ng-click="checkTab(0)">医生信息</div>
-            <div class="tab-item" ng-class="{'active': selectedTab == 1}" ng-click="checkTab(1)">评价</div>
+            <div class="tab-item" ng-class="{'active': selectedTab == 1}" ng-click="checkTab(1)">评价(<span ng-bind="commentNum"></span>)</div>
         </div>
         <div class="tab-content">
             <div class="item-content" ng-show="selectedTab == 0">
