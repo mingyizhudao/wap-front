@@ -1,4 +1,4 @@
-app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserService',function($scope,$rootScope,StorageConfig,$state,UserService){
+app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserService', 'dialog', function($scope,$rootScope,StorageConfig,$state,UserService,dialog){
     window.headerConfig={
         enableHeader: false
     };
@@ -25,4 +25,22 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserSer
             orderType: _type
         });
     }  
+
+    $scope.contactUs = function(){
+        var _confirm = dialog.confirm('立即拨打免费客服热线400-6277-120',{
+            title: '友情提示',
+            closeCallback: function(value){
+                if(value == 0){
+                }
+                if(value == 1){
+                   location.href = 'tel://4006277120';
+                }
+            }
+        });   
+    }
+
+    $scope.routerGo = function(url){
+        $state.go(url);
+    }
+    
 }]);

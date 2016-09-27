@@ -51,6 +51,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/me',
             templateUrl: 'app/modules/m_me/view/index.html'
         })
+        .state('layout.problems', {
+            url: '/me/problems',
+            templateUrl: 'app/modules/m_me/view/problems.html'
+        })
         .state('layout.login', {
             url: '/login?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_login/view/login.html'
@@ -78,5 +82,27 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         .state('layout.order', {
             url: '/me/order/:orderType',
             templateUrl: 'app/modules/m_me/view/order.html'
+        })
+
+
+        .state('layout.aboutLogin', {
+            url: '/me/problems/aboutLogin',
+            templateUrl: 'app/modules/m_me/view/problems/aboutLogin.html'
+        })
+        .state('layout.aboutBooking', {
+            url: '/me/problems/aboutBooking',
+            templateUrl: 'app/modules/m_me/view/problems/aboutBooking.html'
+        })
+        .state('layout.aboutCost', {
+            url: '/me/problems/aboutCost',
+            templateUrl: 'app/modules/m_me/view/problems/aboutCost.html'
+        })
+        .state('layout.aboutPlatform', {
+            url: '/me/problems/aboutPlatform',
+            templateUrl: 'app/modules/m_me/view/problems/aboutPlatform.html'
+        })
+        .state('layout.aboutAgreement', {
+            url: '/me/problems/aboutAgreement',
+            templateUrl: 'app/modules/m_me/view/problems/aboutAgreement.html'
         })
 }]);

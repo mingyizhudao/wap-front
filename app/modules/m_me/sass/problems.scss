@@ -1,0 +1,20 @@
+.problems-page{
+	>p{
+		padding: 0 px2rem(10px);
+		color: #666;
+		line-height: px2rem(18px);
+	}
+	>h3{
+		&:first-child{
+			margin-top: px2rem(10px);
+		}
+		padding: 0 px2rem(10px);
+		color: #222;
+		margin: px2rem(10px) 0;
+	}
+	>h2{
+		padding: 0 px2rem(10px);
+		margin-top: px2rem(10px);
+		text-align: center;
+	}
+}
