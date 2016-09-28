@@ -91,6 +91,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/me/order/:orderType',
             templateUrl: 'app/modules/m_me/view/order.html'
         })
+        .state('layout.pay', {
+            url: '/pay',
+            templateUrl: 'app/modules/m_pay/view/index.html'
+        })
 
 
         .state('layout.aboutLogin', {
