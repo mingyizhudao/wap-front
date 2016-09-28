@@ -23,7 +23,7 @@ var frameworkPaths = {
         'framework/js/lib/angular.js',
         'framework/js/lib/angular-ui-router.js',
         'framework/js/lib/md5.js',
-        'framework/js/lib/sha1.js',
+        'framework/js/lib/hex_sha1.js',
         'framework/js/baseApp.js',
         'framework/js/provider/**/*.js'
     ],

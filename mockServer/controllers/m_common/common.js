@@ -2,6 +2,21 @@ var express = require('express');
 var router = express.Router();
 var base = require("../base");
 var logger = require("../../helpers/log");
+var CryptoJS = require('crypto-js');
+
+router.get("/getAccessKey", function (req, res) {
+    var reqBody = req.body;
+    logger.debug("/getAccessKey", reqBody);
+    logger.debug(CryptoJS.HmacSHA1("Message", "Key"));
+    setTimeout(function () {
+        base.apiOkOutput(res, {
+            "status": "ok",
+            "errorCode": 0,
+            "errorMsg": "success",
+            "results": CryptoJS.HmacSHA1("Message", "Key")
+        });
+    }, 1000);
+});
 
 /**
  * send the phone message about the code
