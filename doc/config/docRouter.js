@@ -37,4 +37,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/landscapeScroll',
             templateUrl: 'doc/modules/m_widget/view/landscapeScroll.html'
         })
+        //图片上传
+        .state('doc.uploadImg', {
+            url: '/uploadImg',
+            templateUrl: 'doc/modules/m_widget/view/uploadImg.html'
+        })
 }]);

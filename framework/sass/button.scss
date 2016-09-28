@@ -69,11 +69,24 @@ $btn-disabled-color: rgba(0,0,0,.4);
     }
 }
 .btn-success{
+     color: #ffffff;
+     background: $brand-success;
+     &:active,
+     .active{
+         background: darken($brand-success, 5%);
+     }
+     &:disabled,
+     .disabled{
+         background: $btn-disabled-bg;
+         color: $btn-disabled-color;
+     }
+ }
+.btn-info{
     color: #ffffff;
-    background: $brand-success;
+    background: $brand-info;
     &:active,
     .active{
-        background: darken($brand-success, 5%);
+        background: darken($brand-info, 5%);
     }
     &:disabled,
     .disabled{
