@@ -26,8 +26,8 @@ app.controller('UploadImgCtrl', ['$scope', '$rootScope', 'dialog', function ($sc
             params: {}
         }
     });
-    setInterval(function(){
-        console.log('isFinished', UploadImg.isFinished('uploadImgBox'));
-        console.log(UploadImg.getImgInfo('uploadImgBox'));
-    }, 500);
+    // setInterval(function(){
+    //     console.log('isFinished', UploadImg.isFinished('uploadImgBox'));
+    //     console.log(UploadImg.getImgInfo('uploadImgBox'));
+    // }, 500);
 }]);
