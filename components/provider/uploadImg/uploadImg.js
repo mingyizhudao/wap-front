@@ -23,12 +23,14 @@
         return o;
     };
     var UploadImg = {};
+    var isFinished = {};
 
     var defaults = {
         id: '',//The container dom id
         multiple: true,
         maxCount: null,
         autoUpload: false,
+        required: true,
         imgListArray: [],
         upload: {
             uploadUrl: 'https://up-z0.qbox.me/',
@@ -44,6 +46,7 @@
 
     function _init(config) {
         var options = extend(defaults, config);
+        isFinished[options.id] = !options.required;
         var container = document.getElementById(options.id);
         container.innerHTML = '<div class="upload-img">\
                 <div class="title">上传您的图片</div>\
@@ -60,7 +63,7 @@
          * the flag to control ReadFile obj is success. Then you can click the submit button. Because the user could
          * see the images before submit
          */
-        var isFinished = false;
+        var previewFinished = false;
         var uploadInputFile = document.getElementById('uploadInputFile_' + options.id);
         var uploadImgShow = document.getElementById('uploadImgShow_' + options.id);
         var md5_sha1List = {};// the list save the different files md5+sha1 code. use to check the image file is the same or not.
@@ -70,7 +73,7 @@
          * the event when the files changed.
          */
         uploadInputFile.addEventListener('change', function () {
-            isFinished = false;
+            previewFinished = false;
             var filesArray = uploadInputFile.files;
             var onceAddFilesList = {};
             var needCheckArray = [];
@@ -126,7 +129,7 @@
                                     ele.className = 'img-item';
                                     ele.id = code_md5 + '_' + code_sha1;
                                     ele.innerHTML = '<img src="' + dataUrl + '" alt="' + fileName + '" id="img_' + ele.id + '">\
-                                        <div class="operate"><div class="size-tip">' + fileSize + '</div><div class="ct-rotate" operate-tag="upload_ctrlLeftRotate" ctrl-id="img_' + ele.id + '"><span class="counter-clock-wise fn-left" operate-tag="upload_ctrlLeftRotate" ctrl-id="img_' + ele.id + '"></span></div><div class="ct-rotate" operate-tag="upload_ctrlRightRotate" ctrl-id="img_' + ele.id + '"><span class="clock-wise fn-left ct-rotate" operate-tag="upload_ctrlRightRotate" ctrl-id="img_' + ele.id + '"></span></div><div class="btn-remove" operate-tag="upload_ctrlClose" ctrl-id="' + ele.id + '"><span class="circle-close" operate-tag="upload_ctrlClose" ctrl-id="' + ele.id + '"></span></div></div>\
+                                        <div class="operate"><div class="size-tip"><div class="upload-progress" id="progress_' + ele.id + '"></div><span class="size-text">' + fileSize + '</span></div><div class="ct-rotate" operate-tag="upload_ctrlLeftRotate" ctrl-id="img_' + ele.id + '"><span class="counter-clock-wise fn-left" operate-tag="upload_ctrlLeftRotate" ctrl-id="img_' + ele.id + '"></span></div><div class="ct-rotate" operate-tag="upload_ctrlRightRotate" ctrl-id="img_' + ele.id + '"><span class="clock-wise fn-left ct-rotate" operate-tag="upload_ctrlRightRotate" ctrl-id="img_' + ele.id + '"></span></div><div class="btn-remove" operate-tag="upload_ctrlClose" ctrl-id="' + ele.id + '"><span class="circle-close" operate-tag="upload_ctrlClose" ctrl-id="' + ele.id + '"></span></div></div>\
                                     ';
 
                                     // for the new ele add the eventListener
@@ -149,6 +152,7 @@
                                                 }
                                             }
                                             document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
+                                            isFinished[options.id] = upFileList.length? false: !options.required;
                                             box.remove();
                                         }
                                         if (event.target.tagName == 'IMG') {
@@ -170,22 +174,25 @@
                                         id: ele.id,
                                         obj: thisObj.fileObj
                                     });
+                                    isFinished[options.id] = upFileList.length? false: !options.required;
                                     document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
                                 } else {
+                                    isFinished[options.id] = upFileList.length? false: !options.required;
                                     _toast(thisObj.fileObj.name + ',该文件内容重复，已自动过滤', 2);
                                 }
                             }
                         }
 
                         //TODO change the finish flag to ture
-                        isFinished = true;
+                        previewFinished = true;
                         console.log(upFileList);
-                        console.log(isFinished);
+                        console.log(previewFinished);
                     }
                 }, 200);
             } else {
-                isFinished = upFileList.length ? true : false;
-                console.log(isFinished);
+                previewFinished = upFileList.length ? true : false;
+                isFinished[options.id] = upFileList.length? false: !options.required;
+                console.log(previewFinished);
             }
         });
 
@@ -198,20 +205,29 @@
                 _toast('您还未添加图片');
                 return false;
             }
-            if (!isFinished) {
+            if (!previewFinished) {
                 _toast('请等待图片加载后再上传');
                 return false;
             }
-
+            var finishCount = 0;
             for (var i = 0, len = upFileList.length; i < len; i++) {
-                _qiniuUpload(options, upFileList[i], i, function (res, index) {
-                    console.log('res',res);
-                    console.log('index',index);
-                    //TODO check the res. Then add the backUrl to the upFileList by index.
-                    if (res) {
-                        upFileList[index].outsideUrl = res.url;
-                    }
-                });
+                //judge if the file have uploaded, ignore it.
+                if (!upFileList[i].key && !upFileList[i].hash) {
+                    finishCount++;
+                    _qiniuUpload(options, upFileList[i], i, function (res, index) {
+                        console.log('res', res);
+                        console.log('index', index);
+                        //TODO check the res. Then add the backUrl to the upFileList by index.
+                        if (res) {
+                            upFileList[index].key = res.key;
+                            upFileList[index].hash = res.hash;
+                            finishCount--;
+                            if(finishCount == 0){
+                                isFinished[options.id] = true;
+                            }
+                        }
+                    });
+                }
             }
         });
     }
@@ -254,6 +270,7 @@
 
         var upFile = upFile;
         var uploadDefaults = options.upload;
+        var progressBar = document.getElementById('progress_'+upFile.id);
         var formData = new FormData();
         formData.append('file', upFile.obj);
         formData.append('token', token);// the qiniu upload accessKey.
@@ -275,10 +292,23 @@
                         console.log('上传成功');
                     }
                 } else {
+                    progressBar.style.width = '0%';
+                    progressBar.style.color = '#f00';
+                    progressBar.innerHTML = '失败';
                     _toast(upFile.obj.name + '上传失败，请点击重新上传');
                 }
             }
         };
+        if(progressBar){
+            xhr.upload.addEventListener("progress", function (evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                    progressBar.style.color = '#fff';
+                    progressBar.style.width = percentComplete + '%';
+                    progressBar.innerHTML = (percentComplete == 100) ? '完成' : '';
+                }
+            }, false);
+        }
         xhr.send(formData);
     }
 
@@ -313,15 +343,18 @@
             return byte + 'B';
         }
         if (byte < (1024 * 1024) && byte >= 1024) {
-            return (byte / 1024).toFixed(2) + 'Kb';
+            return Math.round((byte / 1024)) + 'Kb';
         }
         if (byte < (1024 * 1024 * 1024) && byte >= 1024 ^ 2) {
-            return (byte / Math.pow(1024, 2)).toFixed(2) + 'Mb';
+            return Math.round((byte / Math.pow(1024, 2))) + 'Mb';
         }
     }
 
     UploadImg.init = function (config) {
         _init(config);
+    };
+    UploadImg.isFinished = function(id){
+        return isFinished[id];
     };
     if (!noGlobal) {
         window.UploadImg = UploadImg;
