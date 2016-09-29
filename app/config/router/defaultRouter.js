@@ -39,6 +39,14 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/booking/doctor',
             templateUrl: 'app/modules/m_booking/view/booking-doctor.html'
         })
+        .state('layout.operation-train', {
+            url: '/booking/operation',
+            templateUrl: 'app/modules/m_booking/view/operation-train.html'
+        })
+        .state('layout.booking-quick', {
+            url: '/booking/quick',
+            templateUrl: 'app/modules/m_booking/view/booking-quick.html'
+        })
         .state('layout.find', {
             url: '/find',
             templateUrl: 'app/modules/m_find/view/index.html'

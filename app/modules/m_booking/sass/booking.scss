@@ -12,3 +12,39 @@
         background: #fff;
     }
 }
+.quick-booking-page{
+    background: #9fd84b;
+    .qb-bg1{
+        width: 100%;
+        height: px2rem(150px);
+        background: url('http://static.mingyizhudao.com/146278046324616') no-repeat;
+        background-size: cover;
+    }
+    .qb-bg2{
+        width: 100%;
+        min-height: px2rem(300px);
+        background: url('http://static.mingyizhudao.com/146243598978929') no-repeat;
+        background-size: contain;
+        padding-top: px2rem(10px);
+        .qb-disc{
+            list-style: none;
+            padding: px2rem(10px) px2rem(10px) 0 px2rem(30px);
+            li{
+                padding-bottom: px2rem(10px);
+                list-style-type: decimal;
+            }
+        }
+    }
+    .qb-bg3{
+        $qb-h: 50px;
+        width: 100%;
+        min-height: px2rem($qb-h);
+        background: url('http://static.mingyizhudao.com/146243616165849') no-repeat;
+        background-size: cover;
+        color: #fff;
+        text-align: center;
+        line-height: px2rem($qb-h);
+        position: absolute;
+        bottom: 0;
+    }
+}
