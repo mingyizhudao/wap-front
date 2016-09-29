@@ -119,11 +119,29 @@
         display: none;
     }
     .size-tip{
-        font-size:px2rem(map_get($map-font-size, s));
-        color: #fff;
-        line-height: px2rem(30px);
+        width: 70%;
         float: left;
+        position: relative;
         padding-left: px2rem(4px);
+        .upload-progress{
+            width: 0%;
+            background: rgba(140, 190, 100, .8);
+            height: px2rem(20px);
+            margin-top: px2rem(5px);
+            border-radius: px2rem(8px);
+            float: left;
+            text-align: right;
+            font-size:px2rem(map_get($map-font-size, xs));
+            color: #fff;
+            line-height: px2rem(20px);
+        }
+        .size-text{
+            font-size:px2rem(map_get($map-font-size, s));
+            color: #fff;
+            line-height: px2rem(30px);
+            position: absolute;
+            left: px2rem(8px);
+        }
     }
     .circle-close{
         width:px2rem(20px);
@@ -133,6 +151,7 @@
         background: #f77;
     }
     .btn-remove{
+        width: 30%;
         height: 100%;
         float: right;
         padding: 0 px2rem(10px) 0 px2rem(10px);
