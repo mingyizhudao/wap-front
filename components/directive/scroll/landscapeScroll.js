@@ -36,7 +36,7 @@ app.directive('landscapeScroll', function(){
 			}, false);
 			 
 			_warp.addEventListener('touchmove', function(e){
-			    e.preventDefault() ;
+			//     e.preventDefault() ;
 			}, false);
 			 
 			_warp.addEventListener('touchend', function(e){
