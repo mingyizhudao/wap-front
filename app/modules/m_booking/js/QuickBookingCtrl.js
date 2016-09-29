@@ -19,7 +19,7 @@ app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
 
     console.log(document.getElementsByClassName('quick-booking-page'));
     console.log(document.getElementById('layoutContent').clientHeight);
-    document.getElementsByClassName('quick-booking-page')[0].style.height = document.getElementById('layoutContent').clientHeight + 'px';
+    document.getElementsByClassName('operation-train-page')[0].style.height = document.getElementById('layoutContent').clientHeight + 'px';
 }]);
 
 app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state',function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state) {
