@@ -24,6 +24,7 @@
     };
     var UploadImg = {};
     var isFinished = {};
+    var imgInfo = {};
 
     var defaults = {
         id: '',//The container dom id
@@ -89,9 +90,9 @@
             for (var i = 0; i < filesArray.length; i++) {
                 if (rFilter.test(filesArray[i].type)) {
                     var fileName = filesArray[i].name + filesArray[i].lastModified;
-                    if (onceAddFilesList.hasOwnProperty(fileName)) {
-                        _toast('文件重名');
-                    } else {
+                    // if (onceAddFilesList.hasOwnProperty(fileName)) {
+                    //     _toast('文件重名');
+                    // } else {
                         if (onceAddFilesList[fileName]) {
                             onceAddFilesList[fileName].fileObj = filesArray[i];
                         } else {
@@ -103,7 +104,7 @@
                         onceAddFilesList[fileName].reader = new FileReader();
                         onceAddFilesList[fileName].reader.readAsDataURL(onceAddFilesList[fileName].fileObj);
                         needCheckArray.push(onceAddFilesList[fileName]);
-                    }
+                    // }
                 } else {
                     _toast('您选择的' + filesArray[i].name + '不是图片文件');
                 }
@@ -114,7 +115,7 @@
                     if (temp.checkReader.readyState == 2 && temp.checkReader.result && temp.reader.readyState == 2 && temp.reader.result) {
                         clearInterval(interval);
                         while (needCheckArray.length) {
-                            var temp = needCheckArray[needCheckArray.length - 1];
+                            var temp = needCheckArray[0];
                             if (temp.checkReader.readyState == 2 && temp.checkReader.result && temp.reader.readyState == 2 && temp.reader.result) {
                                 var thisObj = needCheckArray.shift();
                                 var result = thisObj.checkReader.result;
@@ -223,6 +224,7 @@
                             upFileList[index].hash = res.hash;
                             finishCount--;
                             if(finishCount == 0){
+                                imgInfo[options.id] = upFileList;
                                 isFinished[options.id] = true;
                             }
                         }
@@ -355,6 +357,9 @@
     };
     UploadImg.isFinished = function(id){
         return isFinished[id];
+    };
+    UploadImg.getImgInfo = function(id){
+        return imgInfo[id];
     };
     if (!noGlobal) {
         window.UploadImg = UploadImg;
