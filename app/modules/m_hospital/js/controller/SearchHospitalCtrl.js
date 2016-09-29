@@ -1,4 +1,4 @@
-app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', function ($scope, $rootScope, dialog, StorageConfig, HospitalService, $state, $stateParams) {
+app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', 'CommonService', function ($scope, $rootScope, dialog, StorageConfig, HospitalService, $state, $stateParams, CommonService) {
 
     var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
     
