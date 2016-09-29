@@ -352,8 +352,8 @@
         }
     }
 
-    UploadImg.init = function (config) {
-        _init(config);
+    UploadImg.init = function(config){
+        return new _init(config);
     };
     UploadImg.isFinished = function(id){
         return isFinished[id];

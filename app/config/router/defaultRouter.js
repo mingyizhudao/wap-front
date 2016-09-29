@@ -27,8 +27,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_hospital/view/hospital-detail.html'
         })
         .state('layout.department', {
-            // url: '/hospital/:hospitalId/:departmentId?departmentName&hospitalName',
-            url: '/hospital/booking/:departmentId',
+            url: '/hospital/:hospitalId/:departmentId?departmentName&hospitalName',
+            //url: '/hospital/booking/:departmentId',
             templateUrl: 'app/modules/m_hospital/view/department.html'
         })
         .state('layout.booking-department', {
