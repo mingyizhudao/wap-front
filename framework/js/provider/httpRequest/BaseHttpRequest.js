@@ -1,4 +1,4 @@
-app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper', function ($http, $q, dialog, StorageConfig, helper) {
+app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper','$state', function ($http, $q, dialog, StorageConfig, helper,$state) {
 
     var httpRequest = {};
     var defaults = {
@@ -94,7 +94,17 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
                 if(data.status){
                     if (data.status === 'ok') {
                         deferred.resolve(_successFn(data));
-                    } else {
+                    } 
+                    else {
+                        if(data.errorCode === 401){
+                            // dialog.alert('登录失效啦！请重新登录！')
+                            StorageConfig.TOKEN_STORAGE.putItem('authorization','');
+                            $state.go('layout.login',{
+                                redirectRoute: 'layout.me',
+                                backRoute: 'layout.home'
+                            });
+                            return false;
+                        }
                         deferred.reject(_errorFn(data));
                     }
                 }else{
