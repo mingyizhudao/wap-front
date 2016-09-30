@@ -95,13 +95,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/doctor/:doctorId',
             templateUrl: 'app/modules/m_doctor/view/doctor-detail.html'
         })
-        .state('layout.order', {
-            url: '/me/order/:orderType',
-            templateUrl: 'app/modules/m_me/view/order.html'
+        .state('layout.orders', {
+            url: '/me/orders/:orderType',
+            templateUrl: 'app/modules/m_me/view/orders.html'
         })
-        .state('layout.pay', {
-            url: '/pay',
-            templateUrl: 'app/modules/m_pay/view/index.html'
+        .state('layout.order', {
+            url: '/order/:bookingId',
+            templateUrl: 'app/modules/m_pay/view/order.html'
         })
 
 

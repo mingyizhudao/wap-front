@@ -20,8 +20,8 @@ app.controller('MeCtrl',['$scope','$rootScope','StorageConfig','$state','UserSer
         });
     };
 
-    $scope.goOrder = function(_type){
-        $state.go('layout.order',{
+    $scope.goOrders = function(_type){
+        $state.go('layout.orders',{
             orderType: _type
         });
     }  

@@ -1,4 +1,4 @@
-app.controller('OrderCtrl',['$scope','$rootScope','$state','$stateParams','UserService',function($scope,$rootScope,$state,$stateParams,UserService){
+app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','UserService',function($scope,$rootScope,$state,$stateParams,UserService){
     window.headerConfig={
         enableHeader: true,
         enableBack: true,

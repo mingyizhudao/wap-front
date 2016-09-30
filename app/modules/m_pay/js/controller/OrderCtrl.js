@@ -1,4 +1,4 @@
-app.controller('PayCtrl', ['$scope', '$rootScope', '$state', 'dialog', function ($scope, $rootScope, $state, dialog) {
+app.controller('OrderCtrl', ['$scope', '$rootScope', '$state', 'dialog', function ($scope, $rootScope, $state, dialog) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: false,

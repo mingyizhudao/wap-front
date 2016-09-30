@@ -14,30 +14,30 @@
                     <span class="label">全部订单</span>
                 </div>
                 <div class="middle-box text-right">
-                    <span class="content" ng-click="goOrder()">查看全部订单</span>
+                    <span class="content" ng-click="goOrders()">查看全部订单</span>
                 </div>
                 <div class="right-box">
                     <span class="arrow-right"></span>
                 </div>
             </div>
         </div>
-        <div class="order-type" ng-click="goOrder(1)">
+        <div class="order-type" ng-click="goOrders(1)">
             <div class="order-item">
                 <i class="order-num" ng-if="orderNum1" ng-bind="orderNum1"></i>
                 <div class="item-pic icon-wait"></div>
                 <div class="item-text">待支付</div>
             </div>
-            <div class="order-item" ng-click="goOrder(2)">
+            <div class="order-item" ng-click="goOrders(2)">
                 <i class="order-num" ng-if="orderNum2" ng-bind="orderNum2"></i>
                 <div class="item-pic icon-doing"></div>
                 <div class="item-text">安排中</div>
             </div>
-            <div class="order-item" ng-click="goOrder(5)">
+            <div class="order-item" ng-click="goOrders(5)">
                 <i class="order-num" ng-if="orderNum5" ng-bind="orderNum5"></i>
                 <div class="item-pic icon-confirm"></div>
                 <div class="item-text">待确认</div>
             </div>
-            <div class="order-item" ng-click="goOrder(6)">
+            <div class="order-item" ng-click="goOrders(6)">
                 <i class="order-num" ng-if="orderNum6" ng-bind="orderNum6"></i>
                 <div class="item-pic icon-recommend"></div>
                 <div class="item-text">待评价</div>

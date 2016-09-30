@@ -17,8 +17,7 @@ app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
         $state.go(url);
     }
 
-    console.log(document.getElementsByClassName('quick-booking-page'));
-    console.log(document.getElementById('layoutContent').clientHeight);
+    // console.log(document.getElementById('layoutHeader'));
     document.getElementsByClassName('operation-train-page')[0].style.height = document.getElementById('layoutContent').clientHeight + 'px';
 }]);
 
