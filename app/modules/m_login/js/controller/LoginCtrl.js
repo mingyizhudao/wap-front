@@ -158,8 +158,6 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
         StorageConfig.TOKEN_STORAGE.putItem('authorization', res.results.token);
         //if have the param 'redirectUri', we should redirect to the uri.
         if (helper.getUrlParam('redirectUri')) {
-            console.log('uri');
-            console.log(decodeURIComponent(helper.getUrlParam('redirectUri')));
             // window.location.href = helper.getUrlParam('redirectUri');
             window.location.href = decodeURIComponent(decodeURIComponent(helper.getUrlParam('redirectUri')));
             return true;
@@ -170,10 +168,6 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
             return true;
         }
 
-        // if (helper.getUrlParam('goBack')) {
-        //     window.history.back();
-        //     return true;
-        // }
         //others we go to the home page.
         $state.go('layout.home');
     }

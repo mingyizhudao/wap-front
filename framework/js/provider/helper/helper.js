@@ -31,7 +31,6 @@ app.factory('helper', [function () {
             for (var i = 0; i < length; i++) {
                 paramsObj[arrayParams[i].split('\=')[0]] = arrayParams[i].split('\=')[1];
             }
-            console.log('arrayParams',arrayParams);
             return paramsObj.hasOwnProperty(key) ? paramsObj[key] : false;
         },
         closeAllPopAndDialog: function () {
