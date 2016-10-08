@@ -1,4 +1,4 @@
-app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state', function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state) {
+app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state', 'StorageConfig', function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state, StorageConfig) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -37,12 +37,30 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     });
 
     $scope.bookingDoctor = function () {
-        $state.go('layout.booking-doctor',{
-            // departmentId: department.id
-            // hospitalId: hospital.id,
-            // departmentId: department.id,
-            // departmentName: department.name,
-            // hospitalName: hospital.name
-        });
+        if(!StorageConfig.TOKEN_STORAGE.getItem('authorization')){
+            dialog.confirm('您好！登录后才能进行预约，先去登录吧！',{
+                title: '友情提示',
+                closeCallback: function(value){
+                    if(value == 0){
+                    }
+                    if(value == 1){
+                        // $state.go('layout.login',{
+                        //     redirectUri: encodeURIComponent(window.location.origin +'/#/layout/booking/doctor/'+$scope.doctorInfo.id+'?doctorName='+$scope.doctorInfo.name+'&departmentName='+$scope.doctorInfo.hpDeptName+'&hospitalName='+$scope.doctorInfo.hospitalName),
+                        //     backUrl: encodeURI(window.location.href)
+                        // });
+                    }
+                }
+            });   
+        }else{
+            $state.go('layout.booking-doctor',{
+                // departmentId: department.id
+                // hospitalId: hospital.id,
+                // departmentId: department.id,
+                doctorId: $scope.doctorInfo.id,
+                doctorName: $scope.doctorInfo.name,
+                departmentName: $scope.doctorInfo.hpDeptName,
+                hospitalName: $scope.doctorInfo.hospitalName
+            });
+        }
     };
 }]);

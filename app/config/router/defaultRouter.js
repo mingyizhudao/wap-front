@@ -36,7 +36,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_booking/view/booking-department.html'
         })
         .state('layout.booking-doctor', {
-            url: '/booking/doctor',
+            url: '/booking/doctor/:doctorId?doctorName&departmentName&hospitalName',
             templateUrl: 'app/modules/m_booking/view/booking-doctor.html'
         })
         .state('layout.operation-train', {
@@ -72,7 +72,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_me/view/mygy.html'
         })
         .state('layout.login', {
-            url: '/login?redirectUri&redirectRoute&backRoute&backUrl',
+            url: '/login?redirectUri&redirectRoute&backRoute&backUrl&goBack',
             templateUrl: 'app/modules/m_login/view/login.html'
         })
         .state('layout.register', {

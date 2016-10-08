@@ -1,5 +1,6 @@
 app.service('DoctorService',['BaseHttpRequest',function(BaseHttpRequest){
     var apiUrl = window.envs.api_url;
+    // var apiUrl = 'http://192.168.11.196:80';
 
     function getDoctorByQueryDto(res){
     	return res;
@@ -14,6 +15,9 @@ app.service('DoctorService',['BaseHttpRequest',function(BaseHttpRequest){
         return res;
     }
     function getDiseaseListDto(res){
+        return res;
+    }
+    function postBookingDoctorDto(res){
         return res;
     }
 
@@ -50,6 +54,13 @@ app.service('DoctorService',['BaseHttpRequest',function(BaseHttpRequest){
                 url: apiUrl +　'/apiwap/diseasebycategory/'+opt.deptId
             };
             return BaseHttpRequest.get(requestObj,getDiseaseListDto);
+        },
+        postBookingDoctor: function(params){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/booking',
+                data: params
+            };
+            return BaseHttpRequest.post(requestObj, postBookingDoctorDto);
         }
     };
     return service;
