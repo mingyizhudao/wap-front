@@ -98,7 +98,7 @@ app.directive('headerWidget', [function () {
                 if ($scope.headerBackOptions.url) {
                     var url = $scope.headerBackOptions.url;
                     $scope.headerBackOptions = {};
-                    window.location.href = url;
+                    window.location.href = decodeURIComponent(url);
                     return 'back with url.';
                 }
                 if ($scope.headerBackOptions.step && typeof ($scope.headerBackOptions.step) === 'number') {

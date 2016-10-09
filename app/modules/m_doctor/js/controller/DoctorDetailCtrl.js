@@ -1,4 +1,11 @@
 app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state', 'StorageConfig', function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state, StorageConfig) {
+    if (!$stateParams.doctorId) {
+        $state.go('layout.home');
+    }
+    if (StorageConfig.BOOKING_STORAGE.getItem('booking_doctor')){
+        $state.go('layout.booking-doctor',StorageConfig.BOOKING_STORAGE.getItem('booking_doctor'));
+    }
+
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -38,6 +45,13 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
 
     $scope.bookingDoctor = function () {
         if(!StorageConfig.TOKEN_STORAGE.getItem('authorization')){
+            var bookingObj = {
+                doctorId: $scope.doctorInfo.id,
+                doctorName: $scope.doctorInfo.name,
+                departmentName: $scope.doctorInfo.hpDeptName,
+                hospitalName: $scope.doctorInfo.hospitalName
+            }
+            StorageConfig.BOOKING_STORAGE.putItem('booking_doctor',bookingObj)
             dialog.confirm('您好！登录后才能进行预约，先去登录吧！',{
                 title: '友情提示',
                 closeCallback: function(value){
@@ -45,9 +59,13 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
                     }
                     if(value == 1){
                         // $state.go('layout.login',{
-                        //     redirectUri: encodeURIComponent(window.location.origin +'/#/layout/booking/doctor/'+$scope.doctorInfo.id+'?doctorName='+$scope.doctorInfo.name+'&departmentName='+$scope.doctorInfo.hpDeptName+'&hospitalName='+$scope.doctorInfo.hospitalName),
-                        //     backUrl: encodeURI(window.location.href)
-                        // });
+                        //     redirectRoute:'layout.booking-doctor',
+                        //     backRoute:'layout.doctor-detail'
+                        // })
+                        $state.go('layout.login',{
+                            redirectUri: encodeURIComponent(window.location.href),
+                            backUrl: encodeURIComponent(window.location.href)
+                        });
                     }
                 }
             });   

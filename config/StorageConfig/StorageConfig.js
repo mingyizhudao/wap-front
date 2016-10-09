@@ -9,11 +9,14 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
     var city_storage = ngStorage.sessionStorage('myzd_city');
     //临时存储发现页中的tab状态
     var find_storage = ngStorage.sessionStorage('myzd_find');
+    //存储预约信息（医生，科室，快速，企业）
+    var booking_storage = ngStorage.sessionStorage('myzd_booking');
     return {
         COMMON_STORAGE: common_storage,
         FOOTER_STORAGE: footer_storage,
         TOKEN_STORAGE: session_token,
         CITY_STORAGE: city_storage,
-        FIND_STORAGE: find_storage
+        FIND_STORAGE: find_storage,
+        BOOKING_STORAGE: booking_storage
     };
 }]);

@@ -1,4 +1,5 @@
 app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', 'StorageConfig', '$state', function ($rootScope, $scope, dialog, $stateParams, DoctorService, StorageConfig, $state) {
+
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -10,6 +11,16 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
+
+    $scope.treatmentDoctorName = $stateParams.doctorName;
+    $scope.treatmentHospitalName = $stateParams.hospitalName;
+    $scope.treatmentDeptName = $stateParams.departmentName;
+
+    $scope.isCheck = false;
+    if(StorageConfig.BOOKING_STORAGE.getItem('booking_doctor')){
+        StorageConfig.BOOKING_STORAGE.putItem('booking_doctor',null)
+        $scope.$broadcast('setHeaderBack', null);
+    }
 
     $scope.bookingDoctor = function(_patient){
         var _paramsObj = {
@@ -33,9 +44,4 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
         );
     }
 
-    $scope.treatmentDoctorName = $stateParams.doctorName;
-    $scope.treatmentHospitalName = $stateParams.hospitalName;
-    $scope.treatmentDeptName = $stateParams.departmentName;
-
-    $scope.isCheck = false;
 }]);
