@@ -96,7 +96,7 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
                         deferred.resolve(_successFn(data));
                     } 
                     else {
-                        if(data.errorCode === 401){
+                        if(data.errorCode == 401 || data.errorCode == 403){
                             // dialog.alert('登录失效啦！请重新登录！')
                             StorageConfig.TOKEN_STORAGE.putItem('authorization','');
                             $state.go('layout.login',{

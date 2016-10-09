@@ -1,7 +1,7 @@
 app.controller('OrderCtrl', ['$scope', '$rootScope', '$state', 'dialog', function ($scope, $rootScope, $state, dialog) {
     window.headerConfig = {
         enableHeader: true,
-        enableBack: false,
+        enableBack: true,
         enableRefresh: false,
         title: '订单'
     };
