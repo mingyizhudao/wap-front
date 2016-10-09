@@ -13,7 +13,7 @@
                                 <span class="label-icon phone"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="tel" placeholder="请输入11位手机号" maxlength="11" minlength="11" name="passwordLogin_phone" ng-model="passwordLogin_phone" required>
+                                <input type="tel" placeholder="请输入11位手机号" maxlength="11" minlength="11" name="passwordLogin_phone" ng-model="passwordLogin_phone" validate-mobile required>
                             </div>
                         </div>
                         <div class="cell">
@@ -21,7 +21,7 @@
                                 <span class="label-icon password"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="{{pwdInputType}}" placeholder="请输入密码" minlength="4" name="passwordLogin_password" ng-model="passwordLogin_password" required>
+                                <input type="{{pwdInputType}}" placeholder="请输入密码" minlength="4" name="passwordLogin_password" ng-model="passwordLogin_password" validate-base="请输入4位以上密码" required>
                             </div>
                             <div class="right-box">
                                 <span class="eye-icon" ng-class="{'active':showPwd}" ng-click="ctrlPwd()"></span>
@@ -41,7 +41,7 @@
                                 <span class="label-icon phone"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="tel" placeholder="请输入11位手机号" maxlength="11" minlength="11" name="codeLogin_phone" ng-model="codeLogin_phone" required>
+                                <input type="tel" placeholder="请输入11位手机号" maxlength="11" minlength="11" name="codeLogin_phone" ng-model="codeLogin_phone" validate-mobile required>
                             </div>
                         </div>
                         <div class="cell">
@@ -49,7 +49,7 @@
                                 <span class="label-icon"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="tel" placeholder="请输入图片验证码" name="codeLogin_captcha" ng-model="codeLogin_captcha" required>
+                                <input type="tel" placeholder="请输入图片验证码" name="codeLogin_captcha" ng-model="codeLogin_captcha" validate-base="请输入计算出的数值" required>
                             </div>
                             <div class="right-box captcha-box">
                                 <img src="{{captchaUrl}}" ng-click="refreshCaptcha()" alt="验证码图片">
@@ -60,7 +60,7 @@
                                 <span class="label-icon safe-code"></span>
                             </div>
                             <div class="middle-box">
-                                <input type="tel" placeholder="请输入短信验证码" maxlength="6" minlength="6" name="codeLogin_verifyCode" ng-model="codeLogin_verifyCode" required>
+                                <input type="tel" placeholder="请输入短信验证码" maxlength="6" minlength="6" name="codeLogin_verifyCode" ng-model="codeLogin_verifyCode" validate-base="请输入6位短信验证码" required>
                             </div>
                             <div class="right-box">
                                 <button class="btn btn-xsmall btn-primary in-cell" ng-disabled="codeLoginForm.codeLogin_phone.$invalid || codeLoginForm.codeLogin_captcha.$invalid || lockEnabled" ng-click="sendSMSCode()" ng-bind="sendSMSText"></button>
