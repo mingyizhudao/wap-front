@@ -1,4 +1,4 @@
-app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', 'StorageConfig', '$state', function ($rootScope, $scope, dialog, $stateParams, DoctorService, StorageConfig, $state) {
+app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService', 'StorageConfig', '$state', function ($rootScope, $scope, dialog, $stateParams, BookingService, StorageConfig, $state) {
 
     window.headerConfig = {
         enableHeader: true,
@@ -34,7 +34,7 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
         postBookingInfo(_paramsObj);
     }
     function postBookingInfo(_params){
-        DoctorService.postBookingDoctor(_params).then(
+        BookingService.postBookingDoctor(_params).then(
             function(res){
                 console.log('suc',res);
             },

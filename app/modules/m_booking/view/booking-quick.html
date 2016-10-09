@@ -6,7 +6,7 @@
                 <span class="label">医院名称</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入医院名称，可不填" required>
+                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入医院名称，可不填" ng-model="bookingInfo.hospital_name">
             </div>
         </div>
         <div class="cell">
@@ -14,7 +14,7 @@
                 <span class="label">科室名称</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入科室名称，可不填" required>
+                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入科室名称，可不填" ng-model="bookingInfo.hp_dept_name">
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
                 <span class="label">医生姓名</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入医生姓名，可不填" required>
+                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入医生姓名，可不填" ng-model="bookingInfo.doctor_name">
             </div>
         </div>
         <div class="cell">
@@ -32,7 +32,7 @@
                 <span class="label">患者姓名</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名" required>
+                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名，必填" required ng-model="bookingInfo.contact_name">
             </div>
         </div>
         <div class="cell">
@@ -40,7 +40,7 @@
                 <span class="label">疾病诊断</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请填写确诊疾病" required>
+                <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请填写确诊疾病，必填" required ng-model="bookingInfo.disease_name">
             </div>
         </div>
         <div class="cell">
@@ -48,7 +48,7 @@
                 <span class="label">疾病描述</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请尽可能详细的描述患者的病情" required>
+                <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请尽可能详细的描述患者的病情，必填" required ng-model="bookingInfo.disease_detail">
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
             <input id="appServerAgreement" type="checkbox" ng-model="isCheck">
             <label for="appServerAgreement">我已同意</label><span>名医主刀服务协议</span>
         </div>
-        <button class="btn btn-warning" ng-disabled="!isCheck || bookingInfoForm.$invalid">预约</button>
+        <button class="btn btn-warning" ng-disabled="!isCheck || bookingInfoForm.$invalid" ng-click="bookingQuick()">预约</button>
     </div>
 
 </div>

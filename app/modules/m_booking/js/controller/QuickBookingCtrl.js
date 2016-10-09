@@ -1,4 +1,4 @@
-app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state',function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state) {
+app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', '$state',function ($rootScope, $scope, dialog, $stateParams, $state) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -21,7 +21,7 @@ app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     document.getElementsByClassName('operation-train-page')[0].style.height = document.getElementById('layoutContent').clientHeight + 'px';
 }]);
 
-app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'DoctorService', '$state', 'CommonService', 'StorageConfig', function ($rootScope, $scope, dialog, $stateParams, DoctorService, $state, CommonService, StorageConfig) {
+app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService', '$state', 'CommonService', 'StorageConfig', function ($rootScope, $scope, dialog, $stateParams, BookingService, $state, CommonService, StorageConfig) {
     $scope.isLogin = false;
     if (!StorageConfig.TOKEN_STORAGE.getItem('authorization')){
         $scope.isLogin = true;
@@ -63,6 +63,7 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
 
     $scope.sendSMSText = '发送验证码';
     $scope.sendSMSCode = function () {
+        console.log('_phone',$scope.codeLogin_phone);
         $scope.lockEnabled = true;
         var validParams = {
             captcha_code: parseInt($scope.codeLogin_captcha),
@@ -101,5 +102,35 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
             $scope.lockEnabled = false;
         });
     };
+
+    $scope.bookingQuick = function(){
+        console.log('_phone',$scope.codeLogin_phone,$scope.codeLogin_verifyCode);
+        if($scope.isLogin){
+            var _regObj = {
+                mobile: $scope.codeLogin_phone,
+                verify_code: $scope.codeLogin_verifyCode
+            }
+            var _params = {
+                booking: angular.extend(_regObj, $scope.bookingInfo)
+            };
+        }else{
+            var _params = {
+                booking: $scope.bookingInfo
+            };
+        }
+        console.log('_params',_params);
+        // postBookingInfo(_params);
+    }
+
+    function postBookingInfo(_params){
+        BookingService.postBookingQuick(_params).then(
+            function(res){
+
+            },
+            function(res){
+                
+            }
+        );
+    }
 
 }]);
