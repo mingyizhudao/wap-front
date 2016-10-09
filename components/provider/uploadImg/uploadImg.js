@@ -28,6 +28,7 @@
 
     var defaults = {
         id: '',//The container dom id
+        title: '上传图片',
         multiple: true,
         maxCount: null,
         autoUpload: false,
@@ -40,6 +41,9 @@
             type: 'POST',
             async: true,
             nameSpace: '',
+            submitBtnId: '',
+            beforeCall: '',
+            afterCall: '',
             params: {}
         }
     };
@@ -50,21 +54,21 @@
         isFinished[options.id] = !options.required;
         var container = document.getElementById(options.id);
         container.innerHTML = '<div class="upload-img">\
-                <div class="title">上传您的图片</div>\
+                <div class="title">' + options.title + '</div>\
                 <div class="img-show" id="uploadImgShow_' + options.id + '">\
                 </div>\
                 <div class="form-box">\
                     <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p><p class="text-sm">点击添加图片</p></div></label>\
                     <input type="file" class="fn-hide" ' + (options.multiple ? 'multiple' : '') + ' id="uploadInputFile_' + options.id + '">\
                 </div>\
-                <div><button class="btn btn-info" id="uploadButton_' + options.id + '">上传图片</button></div>\
+                <div class="btn-dock"><button class="btn btn-info" id="uploadButton_' + options.id + '">上传图片</button></div>\
         </div>';
 
         /**
          * the flag to control ReadFile obj is success. Then you can click the submit button. Because the user could
          * see the images before submit
          */
-        var previewFinished = false;
+        var previewFinished = !options.required;
         var uploadInputFile = document.getElementById('uploadInputFile_' + options.id);
         var uploadImgShow = document.getElementById('uploadImgShow_' + options.id);
         var md5_sha1List = {};// the list save the different files md5+sha1 code. use to check the image file is the same or not.
@@ -93,17 +97,17 @@
                     // if (onceAddFilesList.hasOwnProperty(fileName)) {
                     //     _toast('文件重名');
                     // } else {
-                        if (onceAddFilesList[fileName]) {
-                            onceAddFilesList[fileName].fileObj = filesArray[i];
-                        } else {
-                            onceAddFilesList[fileName] = {};
-                            onceAddFilesList[fileName].fileObj = filesArray[i];
-                        }
-                        onceAddFilesList[fileName].checkReader = new FileReader();
-                        onceAddFilesList[fileName].checkReader.readAsBinaryString(onceAddFilesList[fileName].fileObj);
-                        onceAddFilesList[fileName].reader = new FileReader();
-                        onceAddFilesList[fileName].reader.readAsDataURL(onceAddFilesList[fileName].fileObj);
-                        needCheckArray.push(onceAddFilesList[fileName]);
+                    if (onceAddFilesList[fileName]) {
+                        onceAddFilesList[fileName].fileObj = filesArray[i];
+                    } else {
+                        onceAddFilesList[fileName] = {};
+                        onceAddFilesList[fileName].fileObj = filesArray[i];
+                    }
+                    onceAddFilesList[fileName].checkReader = new FileReader();
+                    onceAddFilesList[fileName].checkReader.readAsBinaryString(onceAddFilesList[fileName].fileObj);
+                    onceAddFilesList[fileName].reader = new FileReader();
+                    onceAddFilesList[fileName].reader.readAsDataURL(onceAddFilesList[fileName].fileObj);
+                    needCheckArray.push(onceAddFilesList[fileName]);
                     // }
                 } else {
                     _toast('您选择的' + filesArray[i].name + '不是图片文件');
@@ -153,7 +157,7 @@
                                                 }
                                             }
                                             document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
-                                            isFinished[options.id] = upFileList.length? false: !options.required;
+                                            isFinished[options.id] = upFileList.length ? false : !options.required;
                                             box.remove();
                                         }
                                         if (event.target.tagName == 'IMG') {
@@ -175,10 +179,10 @@
                                         id: ele.id,
                                         obj: thisObj.fileObj
                                     });
-                                    isFinished[options.id] = upFileList.length? false: !options.required;
+                                    isFinished[options.id] = upFileList.length ? false : !options.required;
                                     document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
                                 } else {
-                                    isFinished[options.id] = upFileList.length? false: !options.required;
+                                    isFinished[options.id] = upFileList.length ? false : !options.required;
                                     _toast(thisObj.fileObj.name + ',该文件内容重复，已自动过滤', 2);
                                 }
                             }
@@ -186,23 +190,26 @@
 
                         //TODO change the finish flag to ture
                         previewFinished = true;
-                        console.log(upFileList);
-                        console.log(previewFinished);
                     }
                 }, 200);
             } else {
                 previewFinished = upFileList.length ? true : false;
-                isFinished[options.id] = upFileList.length? false: !options.required;
-                console.log(previewFinished);
+                isFinished[options.id] = upFileList.length ? false : !options.required;
             }
         });
 
         /**
          * add the upload event.
          */
-        var uploadButton = document.getElementById('uploadButton_' + options.id);
+        if (options.upload.submitBtnId) {
+            var uploadButton = document.getElementById(options.upload.submitBtnId);
+            document.getElementById('uploadButton_' + options.id).style.display = 'none';
+        } else {
+            var uploadButton = document.getElementById('uploadButton_' + options.id);
+        }
+
         uploadButton.addEventListener('click', function () {
-            if (!upFileList.length) {
+            if (!upFileList.length && options.required) {
                 _toast('您还未添加图片');
                 return false;
             }
@@ -210,25 +217,40 @@
                 _toast('请等待图片加载后再上传');
                 return false;
             }
-            var finishCount = 0;
-            for (var i = 0, len = upFileList.length; i < len; i++) {
-                //judge if the file have uploaded, ignore it.
-                if (!upFileList[i].key && !upFileList[i].hash) {
-                    finishCount++;
-                    _qiniuUpload(options, upFileList[i], i, function (res, index) {
-                        console.log('res', res);
-                        console.log('index', index);
-                        //TODO check the res. Then add the backUrl to the upFileList by index.
-                        if (res) {
-                            upFileList[index].key = res.key;
-                            upFileList[index].hash = res.hash;
-                            finishCount--;
-                            if(finishCount == 0){
-                                imgInfo[options.id] = upFileList;
-                                isFinished[options.id] = true;
-                            }
+            if (options.upload.beforeCall && typeof(options.upload.beforeCall) === 'function') {
+                options.upload.beforeCall(doingCall);
+            }else{
+                doingCall();
+            }
+            function doingCall(config) {
+                if(config.upload){
+                    options.upload = extend(options.upload, config.upload);
+                }else{
+                    options.upload = extend(options.upload, config);
+                }
+                var finishCount = 0;
+                if(upFileList.length){
+                    for (var i = 0, len = upFileList.length; i < len; i++) {
+                        //judge if the file have uploaded, ignore it.
+                        if (!upFileList[i].key && !upFileList[i].hash) {
+                            finishCount++;
+                            _qiniuUpload(options, upFileList[i], i, function (res, index) {
+                                //TODO check the res. Then add the backUrl to the upFileList by index.
+                                if (res) {
+                                    upFileList[index].key = res.key;
+                                    upFileList[index].hash = res.hash;
+                                    finishCount--;
+                                    if (finishCount == 0) {
+                                        imgInfo[options.id] = upFileList;
+                                        isFinished[options.id] = true;
+                                        if (options.upload.afterCall && typeof(options.upload.afterCall) === 'function') {
+                                            options.upload.afterCall(upFileList);
+                                        }
+                                    }
+                                }
+                            });
                         }
-                    });
+                    }
                 }
             }
         });
@@ -272,11 +294,20 @@
 
         var upFile = upFile;
         var uploadDefaults = options.upload;
-        var progressBar = document.getElementById('progress_'+upFile.id);
+        var progressBar = document.getElementById('progress_' + upFile.id);
         var formData = new FormData();
         formData.append('file', upFile.obj);
+        formData.append('name', upFile.obj.name);
+        formData.append('type', upFile.obj.type);
+        formData.append('lastModifiedDate', upFile.obj.lastModifiedDate);
+        formData.append('size', upFile.obj.size);
         formData.append('token', token);// the qiniu upload accessKey.
-        formData.append('key', (new Date()).getTime() + Math.floor(Math.random() * 100));//the upload file in qiniu server's show name. Include this type nameSpace + fileName. Or an other way you could make sure the file's name is single.
+        formData.append('key', (new Date()).getTime() + Math.floor(Math.random() * 100)+'.'+upFile.obj.name.substr(0, upFile.obj.name.lastIndexOf('.')));//the upload file in qiniu server's show name. Include this type nameSpace + fileName. Or an other way you could make sure the file's name is single.
+        if (uploadDefaults.params) {
+            for (key in uploadDefaults.params) {
+                formData.append(key, uploadDefaults.params[key]);
+            }
+        }
         var xhr = new XMLHttpRequest();
         xhr.open(uploadDefaults.type, uploadDefaults.uploadUrl, uploadDefaults.async);
         if (uploadDefaults.header) {
@@ -301,7 +332,7 @@
                 }
             }
         };
-        if(progressBar){
+        if (progressBar) {
             xhr.upload.addEventListener("progress", function (evt) {
                 if (evt.lengthComputable) {
                     var percentComplete = Math.round(evt.loaded * 100 / evt.total);
@@ -352,13 +383,13 @@
         }
     }
 
-    UploadImg.init = function(config){
+    UploadImg.init = function (config) {
         return new _init(config);
     };
-    UploadImg.isFinished = function(id){
+    UploadImg.isFinished = function (id) {
         return isFinished[id];
     };
-    UploadImg.getImgInfo = function(id){
+    UploadImg.getImgInfo = function (id) {
         return imgInfo[id];
     };
     if (!noGlobal) {
