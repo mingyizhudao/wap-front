@@ -18,7 +18,7 @@ app.controller('UploadImgCtrl', ['$scope', '$rootScope', 'dialog', function ($sc
         // imgListArray: [],
         upload: {
             uploadUrl: 'https://up-z0.qbox.me/',
-            token: 'td6d3pspQec1dUQC_SVUkhyLlqRSYDFqIFHAh44A:cCCnOOq6V_FjR0q1_ML-j4lDcnI=:eyJzY29wZSI6ImltYWdldGVzdCIsImRlYWRsaW5lIjoxNDc1MTM3NzQ3fQ==',
+            token: 'td6d3pspQec1dUQC_SVUkhyLlqRSYDFqIFHAh44A:YPbYsI4SvjJvVxyOS_9LIDHJB0Q=:eyJzY29wZSI6ImltYWdldGVzdCIsImRlYWRsaW5lIjoxNDc1OTk3NjI2fQ==',
             tokenUrl: 'http://121.40.127.64:8089/api/tokenbookingmr',
             type: 'POST',
             async: true,
