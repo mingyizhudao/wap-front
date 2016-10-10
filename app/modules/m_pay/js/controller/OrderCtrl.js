@@ -21,6 +21,7 @@ app.controller('OrderCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '
                 $scope.orderNum = res.results.refNo;
                 $scope.orderTitle = res.results.patientName;
                 $scope.orderDetail = res.results.diseaseDetail;
+                $scope.orderAcount = res.results.depositTotalAmount;
                 var orderStatus = CMSDataConfig.orderStatus;
                 for(var i = 0; i<orderStatus.length; i++){
                     if(orderStatus[i].type == res.results.bkStatus){
