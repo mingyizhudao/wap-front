@@ -29,7 +29,8 @@ var frameworkPaths = {
     ],
     sassPath: [
         'framework/*.scss'
-    ]
+    ],
+    fontPath: ['framework/sass/fontIcon/*']
 };
 
 var debugPaths = {
@@ -94,6 +95,10 @@ gulp.task('framework-sass-debug', function () {
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/framework/'));
+});
+gulp.task('font-icon', function(){
+    return gulp.src(frameworkPaths.fontPath)
+        .pipe(gulp.dest('dist/framework/fontIcon/'));
 });
 /**
  * 构建framework -js
@@ -245,9 +250,9 @@ gulp.task('doc-sass', function () {
 /**
  * 所有资源编译
  */
-gulp.task('sourceBuild', ['framework-sass', 'framework-js', 'app-js', 'app-sass', 'components-provider', 'components-js', 'components-sass', 'html'], function () {
+gulp.task('sourceBuild', ['font-icon','framework-sass', 'framework-js', 'app-js', 'app-sass', 'components-provider', 'components-js', 'components-sass', 'html'], function () {
 });
-gulp.task('sourceBuild-debug', ['framework-sass-debug', 'framework-js-debug', 'app-js-debug', 'app-sass-debug', 'components-provider-debug', 'components-js-debug', 'components-sass-debug', 'html', 'doc-html', 'doc-js', 'doc-sass'], function () {
+gulp.task('sourceBuild-debug', ['font-icon','framework-sass-debug', 'framework-js-debug', 'app-js-debug', 'app-sass-debug', 'components-provider-debug', 'components-js-debug', 'components-sass-debug', 'html', 'doc-html', 'doc-js', 'doc-sass'], function () {
 });
 gulp.task('build', ['clean'], function () {
     return gulp.start('sourceBuild');

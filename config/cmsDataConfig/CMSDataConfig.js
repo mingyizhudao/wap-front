@@ -22,25 +22,25 @@ app.factory('CMSDataConfig', ['StorageConfig', '$state', function (StorageConfig
     data.appMenus = [
         {
             text: '首页',
-            class: 'icon-home',
+            class: 'icon-shouye',
             route: 'layout.home',
             url: '/layout/home'
         },
         {
             text: '医院',
-            class: 'icon-hospital',
+            class: 'icon-zantong',
             route: 'layout.hospital',
             url: '/layout/hospital'
         },
         {
             text: '发现',
-            class: 'icon-find',
+            class: 'icon-xihuan',
             route: 'layout.find',
             url: '/layout/find'
         },
         {
             text: '个人',
-            class: 'icon-me',
+            class: 'icon-wode',
             route: 'layout.me',
             url: '/layout/me',
             beforeCall: function () {
