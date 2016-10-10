@@ -26,7 +26,6 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
         UserService.getOrderList(opt).then(
             function(res){
                 // $scope.orderList
-                console.log('suc',res);
                 $scope.orderList = res.results;
             },
             function(res){
@@ -35,4 +34,9 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
         )    
     }
 
+    $scope.goDetail = function(_id){
+        $state.go('layout.orderDetail',{
+            bookingId: _id
+        })
+    }
 }]);

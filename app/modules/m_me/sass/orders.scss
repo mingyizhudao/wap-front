@@ -40,7 +40,29 @@
 	    border-color: #ffc591;
 	    color: #fd5f19;
 	}
+	.o-aid-cancel{
+		width: px2rem(60px);
+	    display: inline-block;
+	    float: right;
+	    border-color: #51cbaf;
+	    color: #06c1ae;
+	}
 	.o-label{
 		color:#666;
+	}
+}
+
+.order-detail-page{
+	.order-detail-highlight{
+		color:#f07415;
+	}
+	.order-detail-link{
+		span{
+		    background: url('http://static.mingyizhudao.com/146614911146025') no-repeat;
+		    background-size: px2rem(14px) px2rem(16px);
+		    padding-left: px2rem(20px);
+		    color: #666;
+		}
+		text-align: center;
 	}
 }

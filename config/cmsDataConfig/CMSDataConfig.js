@@ -17,6 +17,10 @@ app.factory('CMSDataConfig', ['StorageConfig', '$state', function (StorageConfig
             type : 6,
             text : '待评价'
         },
+        {
+            type : 9,
+            text : '已取消'
+        }
     ];
     
     data.appMenus = [

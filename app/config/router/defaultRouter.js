@@ -103,6 +103,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/order/:bookingId',
             templateUrl: 'app/modules/m_pay/view/order.html'
         })
+        .state('layout.orderDetail', {
+            url: '/order/detail/:bookingId',
+            templateUrl: 'app/modules/m_me/view/orderDetail.html'
+        })
 
 
         .state('layout.aboutLogin', {
