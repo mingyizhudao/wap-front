@@ -41,4 +41,10 @@
             width: 100%;
         }
     }
+    .tip-forget-password{
+        font-size:px2rem(map_get($map-font-size, m));
+        color: $brand-info;
+        line-height:px2rem(30px);
+        text-align: right;
+    }
 }
