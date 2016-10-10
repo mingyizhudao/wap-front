@@ -119,16 +119,21 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
             };
         }
         console.log('_params',_params);
-        // postBookingInfo(_params);
+        postBookingInfo(_params);
     }
 
     function postBookingInfo(_params){
         BookingService.postBookingQuick(_params).then(
             function(res){
-
+                console.log('suc',res.results.booking_id);
+                $state.go('layout.order',{
+                    bookingId: res.results.booking_id
+                    // bookingTitle: _params.contact_name,
+                    // bookingDetail: _params.disease_detail,
+                });
             },
             function(res){
-                
+                console.log('err',res);
             }
         );
     }

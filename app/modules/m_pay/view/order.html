@@ -5,7 +5,7 @@
                 <span class="label">订单号：</span>
             </div>
             <div class="middle-box content">
-                <span>QB16092857090501</span>
+                <span ng-bind="orderNum"></span>
             </div>
         </div>
         <div class="cell">
@@ -13,7 +13,7 @@
                 <span class="label">订单标题：</span>
             </div>
             <div class="middle-box content">
-                <span>我是测试</span>
+                <span ng-bind="orderTitle"></span>
             </div>
         </div>
         <div class="cell">
@@ -21,7 +21,7 @@
                 <span class="label">订单详情：</span>
             </div>
             <div class="middle-box content">
-                <span>我得了面瘫脸不能动！！！哦哦哦哦哦</span>
+                <span  ng-bind="orderDetail"></span>
             </div>
         </div>
         <div class="cell">
@@ -29,7 +29,7 @@
                 <span class="label">订单状态：</span>
             </div>
             <div class="middle-box content">
-                <span>待支付</span>
+                <span ng-bind="orderStatus"></span>
             </div>
         </div>
     </div>
@@ -45,10 +45,10 @@
     </div>
     <div class="btn-dock">
         <div class="left-dock">
-            <button class="btn btn-minor">暂不支付</button>
+            <button class="btn btn-minor" ng-click="cancelPay()">暂不支付</button>
         </div>
         <div class="right-dock">
-            <button class="btn btn-primary">立即支付</button>
+            <button class="btn btn-primary" disabled="true">立即支付</button>
         </div>
     </div>
 </div>
