@@ -7,6 +7,7 @@ app.directive('footerWidget', function () {
         $rootScope.$on('setFooterConfig', function (event, data) {
             var temp = angular.copy(defaults);
             $scope.defaults = angular.extend(temp, data);
+            $scope.selectedIndex = StorageConfig.FOOTER_STORAGE.getItem('selectedItemIndex') || 0;
         });
 
         $rootScope.$on('$locationChangeSuccess',function(){
@@ -60,6 +61,6 @@ app.run(['$templateCache', function ($templateCache) {
     $templateCache.put('template/footer.html',
         '<footer class="layout-footer" id="layoutFooter" ng-show="defaults.enableFooter">\
         <div class="footer">\
-            <div class="item" ng-repeat="item in menuList" ng-click="selectItem(item, $index)"><span class="icon {{item.class}}" ng-class="{\'active\':$index == selectedIndex}"></span><span class="text" ng-class="{\'active\':$index == selectedIndex}" ng-bind="item.text"></span></div>\
+            <div class="item" ng-repeat="item in menuList" ng-click="selectItem(item, $index)"><span class="iconfont" ng-class="{false:item.class, true: item.class+\'fill active\'}[$index == selectedIndex]"></span><span class="text" ng-class="{\'active\':$index == selectedIndex}" ng-bind="item.text"></span></div>\
         </div></footer>');
 }]);

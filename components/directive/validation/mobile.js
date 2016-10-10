@@ -4,11 +4,8 @@ app.directive('validateMobile', ['regexRuleConst', 'ValidationLog', function (re
         require: 'ngModel',
         link: function (scope, ele, attrs, ngModelController) {
             var MOBILE_REGEXP = regexRuleConst.mobile;
-            console.log(attrs);
-            console.log(ngModelController);
             ngModelController.$parsers.push(function (viewValue) {
                 ngModelController.$setValidity('mobile', MOBILE_REGEXP.test(viewValue));
-                console.log(ngModelController.$error.length);
                 return viewValue;
             });
             var inputEle = ele[0];

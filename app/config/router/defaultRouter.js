@@ -75,6 +75,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/login?redirectUri&redirectRoute&backRoute&backUrl&goBack',
             templateUrl: 'app/modules/m_login/view/login.html'
         })
+        .state('layout.password-forgot', {
+            url:'/password/forgot',
+            templateUrl: 'app/modules/m_login/view/passwordForgot.html'
+        })
         .state('layout.register', {
             url: '/register?redirectUri&redirectRoute&backRoute&backUrl',
             templateUrl: 'app/modules/m_register/view/register.html'

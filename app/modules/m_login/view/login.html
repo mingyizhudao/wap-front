@@ -30,6 +30,7 @@
                     </div>
                     <div class="btn-dock">
                         <button class="btn btn-primary" ng-disabled="passwordLoginForm.$invalid" ng-click="doPasswordLogin()">立即登录</button>
+                        <p class="tip-forget-password"><span ng-click="goPasswordForgot()">忘记密码</span></p>
                     </div>
                 </form>
             </div>
@@ -63,7 +64,7 @@
                                 <input type="tel" placeholder="请输入短信验证码" maxlength="6" minlength="6" name="codeLogin_verifyCode" ng-model="codeLogin_verifyCode" validate-base="请输入6位短信验证码" required>
                             </div>
                             <div class="right-box">
-                                <button class="btn btn-xsmall btn-primary in-cell" ng-disabled="codeLoginForm.codeLogin_phone.$invalid || codeLoginForm.codeLogin_captcha.$invalid || lockEnabled" ng-click="sendSMSCode()" ng-bind="sendSMSText"></button>
+                                <button class="btn btn-small btn-primary in-cell" ng-disabled="codeLoginForm.codeLogin_phone.$invalid || codeLoginForm.codeLogin_captcha.$invalid || lockEnabled" ng-click="sendSMSCode()" ng-bind="sendSMSText"></button>
                             </div>
                         </div>
                     </div>

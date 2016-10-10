@@ -43,29 +43,29 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     // $scope.refreshCaptcha = function () {
     //     $scope.captchaUrl = baseUrl + '/mobile/user/getCaptcha/' + Math.random();
     // };
-    var _captchaId = ''; 
+    var _captchaId = '';
     var apiUrl = window.envs.api_url;
     getCaptcha();
     $scope.refreshCaptcha = function () {
         getCaptcha();
     };
-    function getCaptcha(){
+    function getCaptcha() {
         CommonService.getCaptcha().then(
-            function(res){
+            function (res) {
                 $scope.captchaUrl = apiUrl + res.result.image;
                 _captchaId = res.result.id;
             },
-            function(res){
-                console.log('err',res);
+            function (res) {
+                console.log('err', res);
             }
         );
     }
 
     $scope.showPwd = false;
     $scope.pwdInputType = 'password';
-    $scope.ctrlPwd = function(){
+    $scope.ctrlPwd = function () {
         $scope.showPwd = !$scope.showPwd;
-        $scope.pwdInputType = $scope.showPwd?'text':'password';
+        $scope.pwdInputType = $scope.showPwd ? 'text' : 'password';
     };
 
     /**
@@ -148,6 +148,10 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
             dialog.closeSpinner(spinner.id);
             dialog.alert(res.errorMsg);
         });
+    };
+
+    $scope.goPasswordForgot = function () {
+        $state.go('layout.password-forgot');
     };
 
     function loginSuccessDo(res) {
