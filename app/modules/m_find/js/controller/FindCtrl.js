@@ -1,7 +1,7 @@
-app.controller('FindCtrl', ['$scope','$rootScope', '$state', '$stateParams', 'StorageConfig', function($scope,$rootScope,$state,$stateParams, StorageConfig){
+app.controller('FindCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'StorageConfig', function ($scope, $rootScope, $state, $stateParams, StorageConfig) {
     var storageTab = StorageConfig.FIND_STORAGE.getItem('findTab');
-    $scope.tabSelected = storageTab||0;
-    window.headerConfig={
+    $scope.tabSelected = storageTab || 0;
+    window.headerConfig = {
         enableHeader: true,
         enableBack: false,
         title: '发现',
@@ -30,19 +30,23 @@ app.controller('FindCtrl', ['$scope','$rootScope', '$state', '$stateParams', 'St
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
     if ($stateParams.storyName) {
-        window.headerConfig={
+        window.headerConfig = {
             enableHeader: false
         };
+        window.footerConfig = {
+            enableFooter: false
+        };
         $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
-        var frameHeight = document.getElementById('layoutContent').clientHeight;
-        var centent = document.getElementsByClassName('find-story-page')[0];
-        var iframe = document.getElementById('iframe');
-        centent.style.height = frameHeight+'px';
+        // var frameHeight = document.getElementById('layoutContent').clientHeight;
+        // var centent = document.getElementsByClassName('find-story-page')[0];
+        // var iframe = document.getElementById('iframe');
+        // centent.style.height = frameHeight+'px';
         iframe.src = 'http://wap.dev.mingyizd.com/mobile/event/view-page-' + $stateParams.storyName + '.html';
     }
 
-    function selectedTab(item, index){
+    function selectedTab(item, index) {
         $scope.tabSelected = index;
         document.getElementById('layoutContent').scrollTop = 0;
         StorageConfig.FIND_STORAGE.putItem('findTab', index);
@@ -108,9 +112,9 @@ app.controller('FindCtrl', ['$scope','$rootScope', '$state', '$stateParams', 'St
         }
     ];
 
-    $scope.goDetailUrl = function(_url){
-        console.log('_url',_url);
-        $state.go('layout.find-detail',{
+    $scope.goDetailUrl = function (_url) {
+        console.log('_url', _url);
+        $state.go('layout.find-detail', {
             storyName: _url
         })
     }
