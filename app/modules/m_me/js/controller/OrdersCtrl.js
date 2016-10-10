@@ -1,28 +1,17 @@
-app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','UserService',function($scope,$rootScope,$state,$stateParams,UserService){
+app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','UserService','CMSDataConfig',function($scope,$rootScope,$state,$stateParams,UserService,CMSDataConfig){
     window.headerConfig={
         enableHeader: true,
         enableBack: true,
         title: '全部'
     };
+    var orderStatus = CMSDataConfig.orderStatus;
     var orderType = $stateParams.orderType;
-    if(orderType){
-        switch(orderType)
-        {
-            case '1':
-                window.headerConfig.title = '待支付';
-                break;
-            case '2':
-                window.headerConfig.title = '安排中';
-                break;
-            case '5':
-                window.headerConfig.title = '待确认';
-                break;
-            case '6':
-                window.headerConfig.title = '待评价';
-                break;
+    for(var i = 0; i<orderStatus.length; i++){
+        if(orderStatus[i].type == orderType){
+            window.headerConfig.title = orderStatus[i].text;
         }
-
     }
+    
     window.footerConfig = {
         enableFooter: false
     };

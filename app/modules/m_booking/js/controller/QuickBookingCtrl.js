@@ -1,4 +1,4 @@
-app.controller('OperationTrainCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', '$state',function ($rootScope, $scope, dialog, $stateParams, $state) {
+app.controller('OperationTrainCtrl', ['$rootScope', '$scope', '$stateParams', '$state',function ($rootScope, $scope, $stateParams, $state) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -119,16 +119,23 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
             };
         }
         console.log('_params',_params);
-        // postBookingInfo(_params);
+        postBookingInfo(_params);
     }
 
     function postBookingInfo(_params){
+        var spinner = dialog.showSpinner();
         BookingService.postBookingQuick(_params).then(
             function(res){
-
+                dialog.closeSpinner(spinner.id);
+                $state.go('layout.order',{
+                    bookingId: res.results.booking_id
+                    // bookingTitle: _params.contact_name,
+                    // bookingDetail: _params.disease_detail,
+                });
             },
             function(res){
-                
+                dialog.closeSpinner(spinner.id);
+                console.log('err',res);
             }
         );
     }

@@ -1,5 +1,24 @@
 app.factory('CMSDataConfig', ['StorageConfig', '$state', function (StorageConfig, $state) {
     var data = {};
+    data.orderStatus = [
+        {
+            type : 1,
+            text : '待支付'
+        },
+        {
+            type : 2,
+            text : '安排中'
+        },
+        {
+            type : 5,
+            text : '待确认'
+        },
+        {
+            type : 6,
+            text : '待评价'
+        },
+    ];
+    
     data.appMenus = [
         {
             text: '首页',

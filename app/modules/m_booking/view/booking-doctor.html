@@ -32,7 +32,7 @@
                     <span class="label">患者姓名</span>
                 </div>
                 <div class="middle-box">
-                    <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名" ng-model="patient.name" required>
+                    <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名" validate-base="请输入正确的姓名" ng-model="patient.name" required>
                 </div>
             </div>
             <div class="cell">
@@ -40,7 +40,7 @@
                     <span class="label">病例名称</span>
                 </div>
                 <div class="middle-box">
-                    <input type="text" class="text-right" minlength="2" maxlength="50" placeholder="请输入疾病名称" ng-model="patient.diseaseName" required>
+                    <input type="text" class="text-right" minlength="2" maxlength="50" placeholder="请输入疾病名称" validate-base="请输入正确的疾病名称" ng-model="patient.diseaseName" required>
                 </div>
             </div>
             <div class="cell">
@@ -48,7 +48,7 @@
                     <span class="label">疾病描述</span>
                 </div>
                 <div class="middle-box">
-                    <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请您简要描述（至少10个字）" ng-model="patient.diseaseDescription" required>
+                    <input type="text" class="text-right" minlength="10" maxlength="50" placeholder="请您简要描述（至少10个字）" validate-base="请输入至少10个字的描述" ng-model="patient.diseaseDescription" required>
                 </div>
             </div>
         </form>
