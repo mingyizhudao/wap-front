@@ -1,6 +1,7 @@
 <div class="find-page" ng-controller="FindCtrl">
-    <!-- <iframe ng-show="tabSelected==0" class="iframe" src="http://wap.dev.mingyizd.com/mobile/event/index/page/0/header/0.html" style="width: 100%;height:100%;border: 0px;"></iframe>
-    <iframe ng-show="tabSelected==1" class="iframe" src="http://wap.dev.mingyizd.com/mobile/event/index/page/1/header/0.html" style="width: 100%;height:100%;border: 0px;"></iframe> -->
+	<!--<div class="topics-list" ng-show="tabSelected==0">-->
+		<!--<div ng-repeat="item in topicsList" style="height: 100px; background: url('{{item.imgUrl}}');" ng-bind="item.name"></div>-->
+	<!--</div>-->
     <ul class="topics-list" ng-show="tabSelected==0">
     	<li ng-repeat="li in topicsList" ng-click="goDetailUrl(li.src)"><img src="{{li.imgUrl}}"></li>
     </ul>
