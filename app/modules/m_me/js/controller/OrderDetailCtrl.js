@@ -71,6 +71,9 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                 $scope.orderNum = res.results.refNo;
                 $scope.orderDetail = res.results.diseaseDetail;
                 $scope.orderAmount = res.results.depositTotalAmount;
+                $scope.orderFiles = res.results.files;
+                $scope.patientName = res.results.patientName;
+                $scope.mobile = res.results.mobile;
                 $scope.orderStatusNum = res.results.bkStatus;
                 var orderStatus = CMSDataConfig.orderStatus;
                 for(var i = 0; i<orderStatus.length; i++){

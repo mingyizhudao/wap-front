@@ -65,6 +65,22 @@ $double-cell-height: 70px;
             font-size: px2rem(map_get($map-font-size, s));
         }
     }
+    .img-cell{
+        padding: px2rem(10px) 0;
+    }
+    .img-box{
+        &:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        div{
+            padding: px2rem(10px);
+            width: 33%;
+            float: left;
+            text-align: center;
+        }
+    }
     .left-box {
         max-width: px2rem(200px);
         height: 100%;
@@ -117,8 +133,11 @@ $double-cell-height: 70px;
     .label{
         font-size: px2rem(map_get($map-font-size, m));
         color: #000;
-
         line-height: px2rem($cell-height);
+    }
+    .label-box{
+        font-size: px2rem(map_get($map-font-size, m));
+        color: #000;
     }
     .label-icon{
         width: px2rem(30px);

@@ -103,41 +103,112 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         });
     };
 
-    $scope.bookingQuick = function(){
-        console.log('_phone',$scope.codeLogin_phone,$scope.codeLogin_verifyCode);
+    // $scope.bookingQuick = function(){
+    //     console.log('_phone',$scope.codeLogin_phone,$scope.codeLogin_verifyCode);
+    //     if($scope.isLogin){
+    //         var _regObj = {
+    //             mobile: $scope.codeLogin_phone,
+    //             verify_code: $scope.codeLogin_verifyCode
+    //         }
+    //         var _params = {
+    //             booking: angular.extend(_regObj, $scope.bookingInfo)
+    //         };
+    //     }else{
+    //         var _params = {
+    //             booking: $scope.bookingInfo
+    //         };
+    //     }
+    //     console.log('_params',_params);
+    //     postBookingInfo(_params);
+    // }
+
+    // function postBookingInfo(_params){
+    //     var spinner = dialog.showSpinner();
+    //     BookingService.postBookingQuick(_params).then(
+    //         function(res){
+    //             dialog.closeSpinner(spinner.id);
+    //             $state.go('layout.order',{
+    //                 bookingId: res.results.booking_id
+    //                 // bookingTitle: _params.contact_name,
+    //                 // bookingDetail: _params.disease_detail,
+    //             });
+    //         },
+    //         function(res){
+    //             dialog.closeSpinner(spinner.id);
+    //             console.log('err',res);
+    //         }
+    //     );
+    // }
+
+
+    UploadImg.init({
+        id: 'uploadImgBox',
+        title: '请上传您的病例图片',
+        multiple: false, // enable the component can select multiple files in one time. In mobile, please use the false.
+        maxCount: 9, // the max number picture could upload.
+        // autoUpload: false,
+        required: false, //ctrl you must upload images files or not. if false, the UploadImg.isFinished() init is true.
+        // imgListArray: [],
+        upload: {
+            uploadUrl: 'https://up-z0.qbox.me/',
+            token: '',
+            tokenUrl: window.envs.file_url,
+            type: 'POST',
+            async: true,
+            nameSpace: '',
+            submitBtnId: 'btnBooking',
+            beforeCall: beforeCall,
+            afterCall: afterCall,
+            params: {}
+        }
+    });
+    function beforeCall(doingCall){
+        //AJAX first send to get a booking id, then set it to the upload config.
+        var _params;
         if($scope.isLogin){
             var _regObj = {
                 mobile: $scope.codeLogin_phone,
                 verify_code: $scope.codeLogin_verifyCode
             }
-            var _params = {
+            _params = {
                 booking: angular.extend(_regObj, $scope.bookingInfo)
             };
         }else{
-            var _params = {
+            _params = {
                 booking: $scope.bookingInfo
             };
         }
-        console.log('_params',_params);
-        postBookingInfo(_params);
-    }
 
-    function postBookingInfo(_params){
         var spinner = dialog.showSpinner();
         BookingService.postBookingQuick(_params).then(
             function(res){
                 dialog.closeSpinner(spinner.id);
-                $state.go('layout.order',{
-                    bookingId: res.results.booking_id
-                    // bookingTitle: _params.contact_name,
-                    // bookingDetail: _params.disease_detail,
+                doingCall({
+                    upload: {
+                        params: {
+                            'booking[id]': res.results.booking_id
+                        }
+                    }
                 });
+                var finshInterval = setInterval(function(){
+                    if(UploadImg.isFinished('uploadImgBox')){
+                        clearInterval(finshInterval);
+                        dialog.closeSpinner(spinner.id);
+                        //if finshed, do the next
+                        $state.go('layout.order', {
+                            bookingId: res.results.booking_id
+                        });
+                    }
+                },500);
             },
             function(res){
                 dialog.closeSpinner(spinner.id);
-                console.log('err',res);
+                dialog.alert(res.errorMsg);
             }
         );
+    }
+    function afterCall(upFileList){
+
     }
 
 }]);

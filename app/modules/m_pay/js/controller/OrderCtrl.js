@@ -16,6 +16,7 @@ app.controller('OrderCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '
     }
     getOrderDetail(_paramsObj);
     function getOrderDetail(_params){
+        var spinner = dialog.showSpinner()
         OrderService.getOrderDetail(_params).then(
             function(res){
                 $scope.orderNum = res.results.refNo;
@@ -28,9 +29,11 @@ app.controller('OrderCtrl', ['$scope', '$rootScope', '$state', '$stateParams', '
                         $scope.orderStatus = orderStatus[i].text;
                     }
                 }
+                dialog.closeSpinner(spinner.id);
             },
             function(res){
-
+                dialog.closeSpinner(spinner.id);
+                dialog.alert(res.errorMsg);
             }
         );
     }

@@ -32,7 +32,7 @@
                 <span class="label">患者姓名</span>
             </div>
             <div class="middle-box">
-                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名，必填" required ng-model="bookingInfo.contact_name" validate-base="请填写患者姓名">
+                <input type="text" class="text-right" minlength="2" maxlength="10" placeholder="请输入患者姓名，必填" required ng-model="bookingInfo.contact_name" validate-base="请填写患者姓名" validate-base="请输入正确的姓名">
             </div>
         </div>
         <div class="cell">
@@ -85,13 +85,16 @@
             </div>
         </div>
     </div>
+
+    <div id="uploadImgBox"></div>
+
     </form>
     <div class="btn-dock fixed">
         <div class="agreement">
             <input id="appServerAgreement" type="checkbox" ng-model="isCheck">
             <label for="appServerAgreement">我已同意</label><span>名医主刀服务协议</span>
         </div>
-        <button class="btn btn-warning" ng-disabled="!isCheck || bookingInfoForm.$invalid" ng-click="bookingQuick()">预约</button>
+        <button class="btn btn-warning" ng-disabled="!isCheck || bookingInfoForm.$invalid"  id="btnBooking">预约</button> <!-- ng-click="bookingQuick()" -->
     </div>
 
 </div>

@@ -1,4 +1,4 @@
-app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','UserService','CMSDataConfig',function($scope,$rootScope,$state,$stateParams,UserService,CMSDataConfig){
+app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','UserService','CMSDataConfig','dialog',function($scope,$rootScope,$state,$stateParams,UserService,CMSDataConfig,dialog){
     window.headerConfig={
         enableHeader: true,
         enableBack: true,
@@ -20,6 +20,7 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
 
     getOrderList(orderType)
     function getOrderList(orderType){
+        var spinner = dialog.showSpinner();
         var opt = {
             bk_status:orderType
         }
@@ -27,9 +28,11 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
             function(res){
                 // $scope.orderList
                 $scope.orderList = res.results;
+                dialog.closeSpinner(spinner.id);
             },
             function(res){
-                console.log('err',res);
+                dialog.closeSpinner(spinner.id);
+                dialog.alert(res.errorMsg);
             }
         )    
     }
