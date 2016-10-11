@@ -54,27 +54,27 @@ app.controller('FindCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'S
 
     $scope.topicsList = [
         {
-            src: 'catherine',
+            name: 'catherine',
             imgUrl: 'http://static.mingyizhudao.com/146529036735212'
         },
         {
-            src: 'internetOperation',
+            name: 'internetOperation',
             imgUrl: 'http://static.mingyizhudao.com/146529829828030'
         },
         {
-            src: 'cancer',
+            name: 'cancer',
             imgUrl: 'http://static.mingyizhudao.com/146353686584387'
         },
         {
-            src: 'lungCancer',
+            name: 'lungCancer',
             imgUrl: 'http://static.mingyizhudao.com/146348338505141'
         },
         {
-            src: 'shapingHealth',
+            name: 'shapingHealth',
             imgUrl: 'http://static.mingyizhudao.com/14630233122529'
         },
         {
-            src: 'mygy',
+            name: 'mygy',
             imgUrl: 'http://static.mingyizhudao.com/146302377992350'
         }
     ];
@@ -117,6 +117,5 @@ app.controller('FindCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'S
         $state.go('layout.find-detail', {
             storyName: _url
         })
-    }
-
+    };
 }]);
