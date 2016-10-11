@@ -62,17 +62,17 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     }
 
     $scope.sendSMSText = '发送验证码';
-    $scope.sendSMSCode = function () {
-        console.log('_phone',$scope.codeLogin_phone);
+    $scope.sendSMSCode = function (_bookingInfo) {
+        console.log('$scope.bookingInfo',$scope.bookingInfo);
         $scope.lockEnabled = true;
         var validParams = {
-            captcha_code: parseInt($scope.codeLogin_captcha),
+            captcha_code: parseInt(_bookingInfo.captcha),
             id: _captchaId
         };
         var smsParams = {
             smsVerifyCode: {
-                mobile: $scope.codeLogin_phone,
-                action_type: 102 // the action_type, login:102, fast booking:200
+                mobile: _bookingInfo.mobile,
+                action_type: 200 // the action_type, login:102, fast booking:200
             }
         };
         /**
@@ -164,11 +164,13 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     });
     function beforeCall(doingCall){
         //AJAX first send to get a booking id, then set it to the upload config.
+        console.log('$scope.bookingInfo',$scope.bookingInfo);
         var _params;
         if($scope.isLogin){
+            var _pObj = $scope.bookingInfo;
             var _regObj = {
-                mobile: $scope.codeLogin_phone,
-                verify_code: $scope.codeLogin_verifyCode
+                mobile: _pObj.mobile,
+                verify_code: _pObj.verifyCode
             }
             _params = {
                 booking: angular.extend(_regObj, $scope.bookingInfo)
@@ -183,6 +185,8 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         BookingService.postBookingQuick(_params).then(
             function(res){
                 dialog.closeSpinner(spinner.id);
+                console.log('token',res.results.token);
+                StorageConfig.TOKEN_STORAGE.putItem('authorization',res.results.token);
                 doingCall({
                     upload: {
                         params: {
