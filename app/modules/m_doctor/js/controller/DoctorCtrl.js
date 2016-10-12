@@ -116,6 +116,7 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
                 // "isContracted": "1", 签约专家    isServiceId  2-义诊
                 $scope.doctorList = res.results;
             }else{
+                $scope.doctorList = [];
                 dialog.toast('该地区暂时没有医生哦~');
             }
         },function(res){

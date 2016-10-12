@@ -2,7 +2,7 @@
 	background: #fff;
 	li{ list-style-type: none}
 	.h-phone{
-		$h-phone-wh:50px;
+		$h-phone-wh:60px;
 		width: px2rem($h-phone-wh);
 		height: px2rem($h-phone-wh);
 		background: url('http://static.mingyizhudao.com/146710564184583') no-repeat;
@@ -11,7 +11,7 @@
 	    position: absolute;
 	    right: 0px;
 	    top: 50%;
-	    padding: px2rem(26px) 0 0 0;
+	    padding: px2rem(32px) 0 0 0;
 	    text-align: center;
 	    z-index: 10;
 	}

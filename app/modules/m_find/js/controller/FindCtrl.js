@@ -54,27 +54,27 @@ app.controller('FindCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'S
 
     $scope.topicsList = [
         {
-            name: 'catherine',
+            src: 'catherine',
             imgUrl: 'http://static.mingyizhudao.com/146529036735212'
         },
         {
-            name: 'internetOperation',
+            src: 'internetOperation',
             imgUrl: 'http://static.mingyizhudao.com/146529829828030'
         },
         {
-            name: 'cancer',
+            src: 'cancer',
             imgUrl: 'http://static.mingyizhudao.com/146353686584387'
         },
         {
-            name: 'lungCancer',
+            src: 'lungCancer',
             imgUrl: 'http://static.mingyizhudao.com/146348338505141'
         },
         {
-            name: 'shapingHealth',
+            src: 'shapingHealth',
             imgUrl: 'http://static.mingyizhudao.com/14630233122529'
         },
         {
-            name: 'mygy',
+            src: 'mygy',
             imgUrl: 'http://static.mingyizhudao.com/146302377992350'
         }
     ];

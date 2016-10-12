@@ -1,4 +1,4 @@
-app.controller('HomeCtrl', ['$scope', '$rootScope', '$state', 'SearchStorage', 'DoctorStotage', 'dialog', function ($scope, $rootScope, $state, SearchStorage, DoctorStotage, dialog) {
+app.controller('HomeCtrl', ['$scope', '$rootScope', '$state', 'SearchStorage', 'DoctorStotage', 'dialog', 'StorageConfig', function ($scope, $rootScope, $state, SearchStorage, DoctorStotage, dialog, StorageConfig) {
     window.headerConfig = {
         enableHeader: false
     };
@@ -12,6 +12,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$state', 'SearchStorage', '
     SearchStorage.SEARCH_STORAGE.removeItem('searchResult');
     SearchStorage.SEARCH_STORAGE.removeItem('searchMoreResult');
     DoctorStotage.DOCTOR_TAB_STORAGE.removeItem('tabObj');
+    StorageConfig.CITY_STORAGE.removeItem('myzd_city');
 
     $scope.routerGo = function(url){
     	$state.go(url);
