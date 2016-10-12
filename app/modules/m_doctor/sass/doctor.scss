@@ -22,7 +22,8 @@
     				width: px2rem(25px);
     				height: px2rem(30px);
     				display: inline-block;
-    				margin-right: px2rem(10px);
+                    /* margin-right: .83333rem; */
+                    position: relative;
                     float: right;
     			}
     			.yz-img{

@@ -1,5 +1,5 @@
 app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', function ($scope, $rootScope, CommonService, dialog, StorageConfig, HospitalService, $state, $stateParams) {
-    var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
+    var defaultAllCity = {city: '全部', id: 0, is_hot: 0};
     window.headerConfig = {
         enableHeader: true,
         enableBack: $stateParams.diseasesId?true:false,
@@ -10,7 +10,7 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
             areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
             trackKey: 'city',
             currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
-                city: '全部地区',
+                city: '全部',
                 id: 0,
                 is_hot: 0
             },

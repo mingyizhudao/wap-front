@@ -1,6 +1,6 @@
 app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'StorageConfig', 'HospitalService','$state', '$stateParams', 'CommonService', function ($scope, $rootScope, dialog, StorageConfig, HospitalService, $state, $stateParams, CommonService) {
 
-    var defaultAllCity = {city: '全部地区', id: 0, is_hot: 0};
+    var defaultAllCity = {city: '全部', id: 0, is_hot: 0};
     
     var defaultParams = {
         city: 0
@@ -19,7 +19,7 @@ app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'Storage
                     areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
                     trackKey: 'city',
                     currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
-                        city: '全部地区',
+                        city: '全部',
                         id: 0,
                         is_hot: 0
                     },
@@ -48,7 +48,7 @@ app.controller('SearchHospitalCtrl', ['$scope', '$rootScope', 'dialog', 'Storage
                     areas: StorageConfig.CITY_STORAGE.getItem('hospitalCities') ? StorageConfig.CITY_STORAGE.getItem('hospitalCities') : defaultAllCity,
                     trackKey: 'city',
                     currentArea: StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') ? StorageConfig.CITY_STORAGE.getItem('hospitalCityCurrent') : {
-                        city: '全部地区',
+                        city: '全部',
                         id: 0,
                         is_hot: 0
                     },
