@@ -48,7 +48,7 @@
         <div class="btn-dock fixed">
             <div class="agreement">
                 <input id="appServerAgreement" name="agreement" ng-model="agreement" type="checkbox">
-                <label for="appServerAgreement">我已同意</label><span>名医主刀服务协议</span>
+                <label for="appServerAgreement">我已同意</label><span ng-click="goAgreement()">名医主刀服务协议</span>
             </div>
             <button class="btn btn-warning" ng-disabled="bookingForm.$invalid || bookingForm.agreement.$modelValue!=true" id="btnBooking">立即预约</button>
         </div>

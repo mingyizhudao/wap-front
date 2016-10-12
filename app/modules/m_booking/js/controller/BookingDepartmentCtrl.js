@@ -79,4 +79,7 @@ app.controller('BookingDepartmentCtrl', ['$rootScope', '$scope', 'dialog', '$sta
     //     console.log(UploadImg.getImgInfo('uploadImgBox'));
     // }, 500);
 
+    $scope.goAgreement = function(){
+        $state.go('layout.aboutAgreement');
+    }
 }]);

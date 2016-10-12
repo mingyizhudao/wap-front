@@ -215,4 +215,8 @@ app.controller('QuickBookingCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
 
     }
 
+    $scope.goAgreement = function(){
+        $state.go('layout.aboutAgreement');
+    }
+    
 }]);

@@ -126,4 +126,8 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
     function afterCall(upFileList){
 
     }
+    
+    $scope.goAgreement = function(){
+        $state.go('layout.aboutAgreement');
+    }
 }]);
