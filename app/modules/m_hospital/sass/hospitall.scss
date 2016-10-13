@@ -29,6 +29,73 @@
         }
     }
 }
+.hospital-rank-page{
+    background: #fff;
+    .ad-banner{
+        width: 100%;
+        a{
+            display: block;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .hospital-rank-list, .hospital-rank-detail{
+        padding: px2rem(10px);
+    }
+    .hospital-rank-detail p{
+        text-indent: 2rem;
+        line-height: 1.3rem;
+        padding-bottom: .5rem;
+    }
+    .hospital-rank-list{
+        >div{
+            border: 1px #e6e6e6 solid;
+            padding: px2rem(10px);
+            margin-bottom: px2rem(5px);
+            border-radius: px2rem(5px);
+            display: flex;
+            >span{
+                float: left;
+                margin: 5px 0 0 10px;
+                display: inline-block;
+                width: 50%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+    i{
+        &.first {
+            background: url('http://static.mingyizhudao.com/147073254396773') no-repeat center;
+            background-size: contain;
+        }
+        display: inline-block;
+        float: left;
+        width: 10%;
+        height: px2rem(28px);
+        font-style: normal;
+        text-align: center;
+        line-height: px2rem(30px);
+    }
+    .hospital-rank-link{
+        width: 40%;
+        display: inline-block;
+        margin: px2rem(5px) 0 0 0;
+        text-align: right;
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        &.has-link{
+            color: #2c9fd8;
+        }
+        &.no-link{
+            color: #333;
+        }
+    }
+}
 .search-hospital{
     .hospital-list{
         .info{

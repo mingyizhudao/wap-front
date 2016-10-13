@@ -6,10 +6,10 @@
          <li ng-class="{'tab-selected':selectedIndex==3}" ng-click="showContent(3)"><span ng-bind="cityName||'全部'"></span><i class="tab-arrow"></i></li>
       </ul>
       <div ng-show="isShowContent" class="doc-tab-mask" ng-click="hideContent()">
-         <ul>
-            <li ng-show="selectedIndex==1" ng-repeat="obj in deptList" ng-click="clickDeptList(obj,$event)"><span ng-bind="obj.name"></span></li>
-            <li ng-show="selectedIndex==2" ng-repeat="obj in diseaseList" ng-click="clickDiseaseList(obj,$event)"><span ng-bind="obj.name"></span></li>
-            <li ng-show="selectedIndex==3" ng-repeat="obj in cityList" ng-click="clickCityList(obj,$event)"><span ng-bind="obj.city"></span></li>
+         <ul id="scrollContainer">
+            <li ng-show="selectedIndex==1" ng-repeat="obj in deptList" ng-class="{'li-selected':deptName == obj.name}" ng-click="clickDeptList(obj,$event)"><span ng-bind="obj.name"></span></li>
+            <li ng-show="selectedIndex==2" ng-repeat="obj in diseaseList" ng-class="{'li-selected':diseaseName == obj.name}" ng-click="clickDiseaseList(obj,$event)"><span ng-bind="obj.name"></span></li>
+            <li ng-show="selectedIndex==3" ng-repeat="obj in cityList" ng-class="{'li-selected':cityName == obj.city}" ng-click="clickCityList(obj,$event)"><span ng-bind="obj.city"></span></li>
          </ul>
       </div>
    </div>
