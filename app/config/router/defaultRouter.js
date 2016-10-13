@@ -18,6 +18,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/hospital',
             templateUrl: 'app/modules/m_hospital/view/index.html'
         })
+        .state('layout.hospitalRank',{
+            url: '/hospital/rank',
+            templateUrl: 'app/modules/m_hospital/view/hospital-rank.html'
+        })
         .state('layout.search-hospital',{
             url: '/search/hospital?diseasesId&deptId',
             templateUrl: 'app/modules/m_hospital/view/search-hospital.html'

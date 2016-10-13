@@ -36,6 +36,10 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
         });
     };
 
+    $scope.goRouter = function(_router){
+        $state.go('layout.hospitalRank');
+    }
+
     /**
      * the function about how to request get cities.
      */
