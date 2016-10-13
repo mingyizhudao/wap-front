@@ -21,6 +21,10 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
     $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 
     var headerBackOption = {};
+    if ($stateParams.backHash) {
+        headerBackOption.hash = $stateParams.backHash;
+        $rootScope.$broadcast('setHeaderBack', headerBackOption);
+    }
     if ($stateParams.backRoute) {
         headerBackOption.route = $stateParams.backRoute;
         $rootScope.$broadcast('setHeaderBack', headerBackOption);
@@ -160,6 +164,9 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', '$state', 'LoginService', '
          * add the Authorization param in the request headers.
          */
         StorageConfig.TOKEN_STORAGE.putItem('authorization', res.results.token);
+        if (helper.getUrlParam('redirectHash')) {
+            window.location.hash = decodeURIComponent(decodeURIComponent(helper.getUrlParam('redirectHash')));
+        }
         //if have the param 'redirectUri', we should redirect to the uri.
         if (helper.getUrlParam('redirectUri')) {
             // window.location.href = helper.getUrlParam('redirectUri');

@@ -72,7 +72,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_me/view/mygy.html'
         })
         .state('layout.login', {
-            url: '/login?redirectUri&redirectRoute&backRoute&backUrl&goBack',
+            url: '/login?redirectUri&redirectRoute&backRoute&backUrl&goBack&backHash&redirectHash',
             templateUrl: 'app/modules/m_login/view/login.html'
         })
         .state('layout.password-forgot', {

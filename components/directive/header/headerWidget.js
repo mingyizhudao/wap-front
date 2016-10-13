@@ -101,6 +101,12 @@ app.directive('headerWidget', [function () {
                     window.location.href = decodeURIComponent(url);
                     return 'back with url.';
                 }
+                if($scope.headerBackOptions.hash){
+                    var hash = $scope.headerBackOptions.hash;
+                    $scope.headerBackOptions = {};
+                    window.location.hash = decodeURIComponent(hash);
+                    return 'back with hash.';
+                }
                 if ($scope.headerBackOptions.step && typeof ($scope.headerBackOptions.step) === 'number') {
                     var step = $scope.headerBackOptions.step;
                     $scope.headerBackOptions = {};

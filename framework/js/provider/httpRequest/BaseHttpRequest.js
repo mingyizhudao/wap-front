@@ -1,4 +1,4 @@
-app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper','$state', function ($http, $q, dialog, StorageConfig, helper,$state) {
+app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper','$state','$location', function ($http, $q, dialog, StorageConfig, helper,$state,$location) {
 
     var httpRequest = {};
     var defaults = {
@@ -102,12 +102,17 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
                                 closeCallback:function(value){
                                     StorageConfig.TOKEN_STORAGE.putItem('authorization','');
                                     $state.go('layout.login',{
-                                        redirectRoute: 'layout.me',
-                                        backRoute: 'layout.home'
+                                        backHash: encodeURIComponent(window.location.hash),
+                                        redirectHash: encodeURIComponent(window.location.hash)
+                                        //redirectRoute: 'layout.me',
+                                        //redirectUri: window.location.href,
+                                        //backRoute: 'layout.home',
+                                        //backUrl: window.location.href
                                     });
                                     return false;
                                 }
-                            })
+                            });
+                            return false;
                         }
                         deferred.reject(_errorFn(data));
                     }

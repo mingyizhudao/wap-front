@@ -1,4 +1,4 @@
-app.controller('BookingDepartmentCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService','$state', function ($rootScope, $scope, dialog, $stateParams, BookingService,$state) {
+app.controller('BookingDepartmentCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService','$state','$location', function ($rootScope, $scope, dialog, $stateParams, BookingService,$state,$location) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -25,7 +25,7 @@ app.controller('BookingDepartmentCtrl', ['$rootScope', '$scope', 'dialog', '$sta
         upload: {
             uploadUrl: 'https://up-z0.qbox.me/',
             token: '',
-            tokenUrl: window.envs.file_url,
+            tokenUrl: window.envs.api_url+'/apiwap/filetoken',
             type: 'POST',
             async: true,
             nameSpace: '',
