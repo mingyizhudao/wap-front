@@ -117,6 +117,9 @@
                     line-height: px2rem($tab-height);
                     padding: 0 px2rem(10px);
                     border-bottom: 1px solid #ddd;
+                    &.li-selected{
+                        border-left: px2rem(4px) solid #ff6221;
+                    }
                 }
             }
         }

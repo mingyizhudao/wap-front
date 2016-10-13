@@ -30,6 +30,7 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         getLocalTab(DoctorStotage.DOCTOR_TAB_STORAGE.getItem('tabObj'));
     }
     function getLocalTab(_tabObj){
+        console.log('_tabObj',_tabObj);
         $scope.deptName = _tabObj.dept.name||'';
         $scope.diseaseName = _tabObj.disease.name||'';
         $scope.cityName = _tabObj.city.city||0;
@@ -38,15 +39,22 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
             disease: _tabObj.disease.id||'',
             disease_sub_category: _tabObj.dept.id||''
         };
+        if (defaultParams.disease_sub_category) {
+            getDiseaseList(defaultParams.disease_sub_category);
+        }
         selectedCall(defaultParams);//刷新医生列表
     }
+    //  初始化获取科室列表
+    getDeptList();
 
     $scope.isShowContent = false;
     $scope.showContent = function(_index){
         $scope.isShowContent = true;
         if (_index==$scope.selectedIndex) {
+            //重复选中则关闭列表
             $scope.hideContent();
         }else{
+            // console.log('ul',_ulist);
             if(_index==2&&$scope.deptName==undefined){//疾病
                 $scope.selectedIndex = 1;
                 return false;
@@ -57,6 +65,18 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
     $scope.hideContent = function(){
         $scope.selectedIndex = false;
         $scope.isShowContent = false;
+    }
+
+    $scope.getClass = function(_index, _name){
+        if (_name == $scope.deptName) {
+            // var setScrollTime = setTimeout(function() {
+            //     console.log(_index,_name)
+            //     var _ulist = document.getElementById('scrollContainer');
+            //     _ulist.scorllTop = _index*47;
+            // }, 2000);
+            return 'li-selected';
+        }
+        return false;
     }
 
     $scope.clickDeptList = function(_deptObj,$event){
@@ -125,7 +145,6 @@ app.controller('DoctorCtrl', ['$scope', '$rootScope', 'DoctorService','$state', 
         });
     }
 
-    getDeptList();
     // var deptId,diseaseId;
     function getDeptList(){
         DoctorService.getDetpList().then(
