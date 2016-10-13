@@ -85,7 +85,7 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
         var params = {
             city: item.id
         };
-        HospitalService.getHospitalByQuery(params).then(function(res){
+        HospitalService.getHospitalByCity(params).then(function(res){
             dialog.closeSpinner(spinner.id);
             if(res.results && res.results.length){
                 $scope.hospitalList = res.results;

@@ -18,6 +18,9 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
     function getTopHospitalListDto(res){
         return res;
     }
+    function getHospitalByCityDto(res){
+        return res;
+    }
 
     var service = {
         getHospitalByQuery: function(params){
@@ -26,6 +29,13 @@ app.service('HospitalService',['BaseHttpRequest',function(BaseHttpRequest){
                 params: params
             };
             return BaseHttpRequest.get(requestObj, getHospitalByQueryDto);
+        },
+        getHospitalByCity: function(params){
+            var requestObj = {
+                url: apiUrl +　'/apiwap/hospital',
+                params: params
+            };
+            return BaseHttpRequest.get(requestObj, getHospitalByCityDto);
         },
         getDiseasesById: function(urlOptions){
             var requestObj = {
