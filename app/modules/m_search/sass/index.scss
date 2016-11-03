@@ -5,6 +5,11 @@
 	$search-header-height: 40px;
 	$hp-btn-color: #F48124;
 	$doc-btn-color: #0168B7;
+	#listScroll{
+		ul li{
+			margin-bottom: px2rem(10px);
+		}
+	}
 	.search-tips{
 		padding-top: px2rem(10px);
 		text-align: center;
@@ -63,7 +68,10 @@
 			    position: relative;
 			    float: right;
 			    z-index: 1;
-			    transform: translate(-5px,-28px);
+			    transform: translate(-5px,-24px);
+			    background: rgba(72, 72, 72, 0.5);
+			    width: px2rem(15px);
+			    height: px2rem(15px);
 			}
 		}
 		.leftOpt{
