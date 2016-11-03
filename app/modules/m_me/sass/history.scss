@@ -39,9 +39,11 @@
         background: #fff;
         margin-buttom: px2rem(10px);
         border-bottom: 1px solid #ddd;
-
+        .doc-desc span{
+            font-size: px2rem(map_get($map-font-size, s));
+        }
         .doc-goodat-span{
-            color: #666
+            color: #666;
         }
         .doc-description{
             &:after{

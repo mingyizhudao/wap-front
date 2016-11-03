@@ -37,4 +37,10 @@ app.controller('HistoryCtrl',['$scope','$rootScope','StorageConfig','$state', 'd
     setInterval(function(){
         historyScroll.refresh();
     },1000);
+
+    $scope.goDoc = function(){
+        $state.go('layout.doctor-detail', {//无测试数据，暂时写死
+            doctorId: 3131
+        });
+    }
 }]);
