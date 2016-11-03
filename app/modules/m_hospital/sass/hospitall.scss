@@ -1,0 +1,427 @@
+.hospital-page{
+    height: 100%;
+    display: flex;    
+    flex-direction: column;
+    #hospitalNavScroll{
+        .scroll{
+            width: auto;
+            height: 100%;
+        }
+    }
+    #hospitalScroll{
+        .scroll{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .scroll{
+        position: absolute;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        -o-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+    .hospital-nav{
+        background: #fff;
+        // overflow-x: scroll;
+        height: px2rem(40px);
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        ul{
+            width: px2rem(1000px);
+        }
+        ul:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        li{
+            float: left;
+            list-style-type: none;
+            margin: 0 px2rem(10px);
+            padding: px2rem(10px) px2rem(5px);
+            &.selected{
+                color: $color-light;
+                border-bottom: $color-light px2rem(4px) solid;
+            }
+        }
+    }
+    .hospital-tips{
+        text-align: center;
+        color: #bbb;
+        padding: px2rem(15px) 0;
+    }
+    .hospital-list{
+        position: relative;
+        // width: 100%;
+        flex: 1;
+        height: 100%;
+        overflow: hidden;
+    }
+    .left-box.clearly-width{
+        width: px2rem(60px);
+    }
+    .hp-img{
+        background: url('images/icon/icon-top-hospital.png') no-repeat;
+        background-size: contain;
+        width: px2rem(35px);
+        height: px2rem(35px);
+        display: inline-block;
+        margin: px2rem(20px) 0 0 px2rem(20px);
+    }
+}
+.hospital-rank-page{
+    background: #fff;
+    .ad-banner{
+        width: 100%;
+        a{
+            display: block;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .hospital-rank-list, .hospital-rank-detail{
+        padding: px2rem(10px);
+    }
+    .hospital-rank-detail p{
+        text-indent: 2rem;
+        line-height: 1.3rem;
+        padding-bottom: .5rem;
+    }
+    .hospital-rank-list{
+        >div{
+            border: 1px #e6e6e6 solid;
+            padding: px2rem(10px);
+            margin-bottom: px2rem(5px);
+            border-radius: px2rem(5px);
+            display: flex;
+            >span{
+                float: left;
+                margin: 5px 0 0 10px;
+                display: inline-block;
+                width: 50%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+    i{
+        &.first {
+            background: url('http://static.mingyizhudao.com/147073254396773') no-repeat center;
+            background-size: contain;
+        }
+        display: inline-block;
+        float: left;
+        width: 10%;
+        height: px2rem(28px);
+        font-style: normal;
+        text-align: center;
+        line-height: px2rem(30px);
+    }
+    .hospital-rank-link{
+        width: 40%;
+        display: inline-block;
+        margin: px2rem(5px) 0 0 0;
+        text-align: right;
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        &.has-link{
+            color: #2c9fd8;
+        }
+        &.no-link{
+            color: #333;
+        }
+    }
+}
+.search-hospital{
+    .hospital-list{
+        .info{
+            display: flex;
+            background: #fff;
+            height: px2rem(70px);
+            >div:first-child{
+                width:90%;
+                .sub-name{
+                    color: #666;
+                }
+            }
+            .right-box{
+                width:10%;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                .arrow-right{
+                    width:px2rem(12px);
+                    height:px2rem(12px);
+                }
+            }
+        }
+    }
+}
+.filtered{
+    &:after{
+        content: '';
+        display: inline-block;
+        width: px2rem(5px);
+        height: px2rem(5px);
+        background: $color-light;
+        border-radius: px2rem(2.5px);
+        margin-left: px2rem(5px);
+        margin-bottom: px2rem(2px);
+    }
+}
+.hospital-detail-page{
+    .nav-box-out{
+        position: absolute;
+        top: 0;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+        .nav-box-in{
+            background: #fff;
+            min-height: px2rem(150px);
+            max-height: px2rem(250px);
+            overflow-y: scroll;
+        }
+    }
+    .filter-box{
+        >div{
+            padding: px2rem(10px);
+            >p{
+                color: #666;
+            }
+            ul:after{
+                display:block;
+                content: '';
+                clear: both;
+            }
+            li{
+                list-style-type: none;
+                float:left;
+                padding:px2rem(5px) px2rem(10px);
+                margin: px2rem(10px);
+                &.selected{
+                    color: $color-light;
+                    border: $color-light 1px solid;
+                    border-radius: px2rem(5px);
+                }
+            }
+        }
+        >div:first-child{
+            border-bottom: 1px solid #eee;
+        }
+    }
+    .dept-box{
+        padding: px2rem(10px);
+        >h3,>p{
+            text-align: center;
+            padding-bottom: px2rem(5px);
+        }
+        >p{
+            color: #bbb;
+            padding-bottom: px2rem(20px);
+        }
+        >ul{
+            list-style: none;
+            &:after{
+                content: '';
+                clear: both;
+                display: block;
+            }
+            li{
+                text-align: center;
+                float: left;
+                width: 33%;
+                padding-bottom: px2rem(15px);
+                span{
+                    padding:px2rem(5px) px2rem(10px);
+                    &.selected{
+                        color: $color-light;
+                        border: $color-light 1px solid;
+                        border-radius: px2rem(5px);
+                    }
+                }
+            }
+        }
+    }
+    .dt-li{
+        $doc-img-wh: 60px;
+        $doc-description-mt: 10px;
+        padding: 0 px2rem(10px) px2rem(10px) px2rem(10px);
+        background: #fff;
+        margin-buttom: px2rem(10px);
+        border-bottom: 1px solid #ddd;
+
+        .doc-goodat-span{
+            color: #666
+        }
+        .doc-description{
+            &:after{
+                content:'';
+                display:block;
+                clear: both;
+            }
+            >div,>img{
+                float: left;
+            }
+            >img{
+                width: px2rem($doc-img-wh);
+                height: px2rem($doc-img-wh);
+                border-radius: px2rem($doc-img-wh/2);
+                margin-right: px2rem($doc-img-wh/2);
+                margin-top: px2rem($doc-description-mt);
+            }
+            >div{
+                margin: px2rem(10px) 0 0 0;
+                p{
+                    color:#666;
+                    line-height:px2rem($doc-img-wh/3);
+                    font-size: px2rem(map_get($map-font-size, s));
+                }
+                .dt-name{
+                    margin-top: px2rem($doc-description-mt);
+                    color:#033;
+                    font-size: px2rem(map_get($map-font-size, m));
+                }
+            }
+        }
+    }
+    .hp-des{
+        color: #666;
+        padding: px2rem(10px);
+        font-size: px2rem(map_get($map-font-size, s));
+        line-height: px2rem(map_get($map-font-size, s)) * 1.2;
+        text-align: justify;
+        background: #fff;
+        text-indent: 2rem;
+    }
+}
+
+.department-page{
+    .color-warning{
+        color: $brand-warning;
+    }
+    .border-warning{
+        border-color: $brand-warning;
+    }
+    .tip{
+        font-size: px2rem(map_get($map-font-size, m));
+        line-height: px2rem(map_get($map-font-size, m)) * 2;
+        font-weight:bold;
+    }
+    .bt{
+        border-top: 1px solid $color-border-default;
+    }
+    .progress-box{
+        padding: px2rem(10px) 0 px2rem(10px) 0;
+    }
+    .circle-box{
+        width: 100%;
+        height: px2rem(28px);
+        position: relative;
+        .quarter{
+            width: 33.333%;
+            height: 100%;
+            position: relative;
+            float: left;
+            line-height:px2rem(28px);
+        }
+        .circle{
+            width: px2rem(28px);
+            height: px2rem(28px);
+            border-radius: px2rem(14px);
+            background: #feb23f;
+            line-height:px2rem(28px);
+            text-align: center;
+            font-size:px2rem(map_get($map-font-size, m));
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            margin-left: px2rem(-14px);
+            &.left{
+                left: 0;
+                margin-left: 0;
+            }
+            &.right{
+                left: inherit;
+                right: 0;
+                margin-right: px2rem(10px);
+            }
+        }
+        .line{
+            width: 96%;
+            height: px2rem(4px);
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: #feb23f;
+        }
+        .w38{
+            width: 38%;
+        }
+        .w28{
+            width: 28%;
+        }
+    }
+    .border-none{
+        border: none;
+    }
+    .desc-info{
+        width: 100%;
+        background: #fff;
+        padding-bottom: px2rem(70px);
+    }
+    .desc-header{
+        width: 100%;
+        height: px2rem(40px);
+        line-height:px2rem(40px);
+        border-bottom: 1px solid $color-border-default;
+        font-size: px2rem(map_get($map-font-size, m));
+        color: #0068b7;
+        padding: 0 0 0 px2rem(10px);
+    }
+    .desc-item{
+        padding: px2rem(10px);
+        .title{
+            width: 100%;
+            height: px2rem(28px);
+            line-height: px2rem(28px);
+            background: url("http://static.mingyizhudao.com/146398652922158") no-repeat left;
+            background-size: px2rem(100px) px2rem(28px);
+            padding-left: px2rem(5px);
+            font-size: px2rem(map_get($map-font-size, m));
+            color: #fff;
+        }
+        .as-html{
+            font-size:px2rem(map_get($map-font-size, s));
+            color: #666;
+            line-height: px2rem(map_get($map-font-size, s)) * 1.5;
+            padding-top: px2rem(10px);
+        }
+        ul{
+            padding-left: px2rem(20px);
+        }
+    }
+    .bottom-button{
+        border-top: 1px solid $color-border-default;
+        background: #fff;
+    }
+}

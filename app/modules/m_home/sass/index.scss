@@ -1,0 +1,206 @@
+.home-page{
+	background: #fff;
+	.h-ad{
+		width: 100%;
+		img{
+			width: 100%;
+            height: 100%;
+		}
+        .landscapeScroll-containt{
+            width: 100%;
+            height: 100%;
+            div{
+                width: 100%;
+                height: 100%;
+            }
+        }
+		.landscapeScroll-pagination-bar{
+			display:inherit;
+			text-align: center;
+            position: absolute;
+            top: auto;
+            height: px2rem(20px);
+            bottom: px2rem(5px);
+		}
+	}
+    .search-box{
+        width: 100%;
+        height: px2rem(34px);
+        padding: 0 px2rem(10px) 0 px2rem(10px);
+        position: absolute;
+        top: px2rem(10px);
+        z-index: 99;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+        .left{
+            width: px2rem(40px);
+            line-height: px2rem(34px);
+            .iconfont{
+                font-size: px2rem(26px);
+                color: rgba(0,0,0,.5);
+            }
+        }
+        .right{
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            position: relative;
+            .icon-search{
+                font-size: px2rem(20px);
+                color: #fff;
+                position: absolute;
+                top: px2rem(5px);
+                left: px2rem(5px);
+            }
+            input{
+                font-size: px2rem(map_get($map-font-size, m));
+                padding: 0 px2rem(5px) 0 px2rem(30px);
+                background: rgba(0,0,0,.5);
+                background-size: px2rem(15px);
+                width: 100%;
+                height: px2rem(34px);
+                border-radius: px2rem(4px);
+                border: none;
+                color: #333;
+                &:-ms-input-placeholder {
+                    color: #fff !important;
+                    font-size: px2rem(map_get($map-font-size, s));
+                    vertical-align: middle;
+                }
+                // Internet Explorer 10+
+                &::-webkit-input-placeholder {
+                    color: #fff !important;
+                    font-size: px2rem(map_get($map-font-size, s));
+                    vertical-align: middle;
+                }
+                &::-moz-placeholder {
+                    color: #fff;
+                }
+                &:-ms-input-placeholder {
+                    color: #fff;
+                }
+                &::-webkit-input-placeholder {
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .h-top{
+        p{
+            padding: px2rem(5px);
+            input{
+                font-size: px2rem(map_get($map-font-size, m));
+                $lr-padding: 25px;
+                background:#fff url('http://static.mingyizhudao.com/146243645256928') no-repeat 5px 50%;
+                background-size: px2rem(15px);
+                width: 100%;
+                height: px2rem(35px);
+                padding: px2rem(5px) px2rem($lr-padding) px2rem(5px) px2rem($lr-padding);
+                border: none;
+            }
+        }
+    }
+    .nav{
+        .cell{
+            height: px2rem(100px);
+            border-bottom:1px solid #e6e6e6;
+        }
+        .left-box{
+            padding-left: px2rem(10px);
+            img{
+                width: px2rem(50px);
+                height: px2rem(50px);
+                margin-top: px2rem(20px);
+            }
+        }
+        .middle-box{
+            .label,
+            .content{
+                line-height: px2rem(30px);
+            }
+            .label{
+                font-size:px2rem(map_get($map-font-size, l));
+                color: #222;
+                margin-top: px2rem(18px);
+                font-weight: bold;
+            }
+        }
+        .right-box{
+            .arrow-right{
+                font-size:px2rem(30px);
+            }
+        }
+    }
+    .ad-box{
+        width: 100%;
+        height: px2rem(140px);
+        .wrapper{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            .scroll{
+                position: absolute;
+                height: 100%;
+                -webkit-transform: translateZ(0);
+                -moz-transform: translateZ(0);
+                -ms-transform: translateZ(0);
+                -o-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-text-size-adjust: none;
+                -moz-text-size-adjust: none;
+                -ms-text-size-adjust: none;
+                -o-text-size-adjust: none;
+                text-size-adjust: none;
+            }
+            ul{
+                height: 100%;
+                width: 100%;
+                list-style: none;
+            }
+            .item{
+                display: block;
+                width: px2rem(240px);
+                height: 100%;
+                float: left;
+                position: relative;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding-right: px2rem(10px);
+                }
+                &:last-child{
+                    img{
+                        padding-right: 0;
+                    }
+                }
+            }
+
+        }
+        .tag{
+            font-size: px2rem(map_get($map-font-size, s));
+            background: #fff;
+            color: $color-primary;
+            border-radius: 0 px2rem(15px) px2rem(15px) 0;
+            padding: px2rem(5px);
+            position: absolute;
+            top: px2rem(10px);
+            left: 0;
+            &.active{
+                background: $color-primary;
+                color: #fff;
+            }
+        }
+    }
+}

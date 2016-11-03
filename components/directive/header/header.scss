@@ -1,0 +1,271 @@
+.header {
+    background: $color-primary;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    .left-operate {
+        height: 100%;
+        width: px2rem(90px);
+    }
+    .right-operate {
+        height: 100%;
+        width: px2rem(90px);
+    }
+    .title,
+    .header-tab{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        padding: 0 px2rem(10px) 0 px2rem(10px);
+        height: 100%;
+        text-align: center;
+        line-height: px2rem($header-height);
+        color: $header-color;
+        font-size: px2rem(map_get($map-font-size, m));
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .title{
+        .select-icon{
+            &:before{
+                border-width: px2rem(8px);
+            }
+            &.triangle-up{
+                position: absolute;
+                top: px2rem(($header-height - 24px) / 2);
+            }
+            &.triangle-down{
+                position: absolute;
+                top: px2rem(($header-height - 8px) / 2);
+            }
+        }
+    }
+    .header-tab{
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+        height: px2rem($header-height - 14);
+        margin-top: px2rem(7px);
+        border-radius: 4px;
+        border: 1px solid #fff;
+        padding: 0;
+    }
+    .tab-options{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        height: 100%;
+        text-align: center;
+        line-height: px2rem($header-height - 14);
+        color: $header-color;
+        font-size: px2rem(map_get($map-font-size, s));
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        &.active{
+            background: #fff;
+            color: $color-primary;
+        }
+    }
+    .btn-back {
+        width: px2rem(40px);
+        height: 100%;
+        overflow: hidden;
+        .icon-back {
+            color: #fff;
+            font-size: px2rem(30px);
+            position: relative;
+            left: px2rem(5px);
+            top: px2rem(5px);
+        }
+    }
+    .btn-refresh{
+        width: px2rem(40px);
+        height:100%;
+        overflow: hidden;
+        background: url("http://static.mingyizhudao.com/146975853464574") center center no-repeat;
+        -webkit-background-size:60%;
+        background-size: 60%;
+        float: right;
+    }
+    .btn-share{
+        width: px2rem(40px);
+        height:100%;
+        overflow: hidden;
+        float: right;    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .iconfont{
+            color: #fff;
+        }
+    }
+    .other-right-operate,
+    .select-area{
+        height: 100%;
+        line-height:px2rem($header-height);
+        color: $header-color;
+        font-size: px2rem(map_get($map-font-size, s));
+        text-align: right;
+        padding-right: px2rem(10px);
+    }
+    .current-area{
+        height: 100%;
+        position: relative;
+        .current-area-text{
+            display: block;
+            float: right;
+            padding-right: px2rem(20px);
+            color: #fff;
+        }
+        .select-icon{
+            &:before{
+                border-width: px2rem(8px);
+            }
+            &.triangle-up{
+                position: absolute;
+                right: 0;
+                top: px2rem(($header-height - 24px) / 2);
+            }
+            &.triangle-down{
+                position: absolute;
+                right: 0;
+                top: px2rem(($header-height - 8px) / 2);
+            }
+        }
+    }
+    //old style
+    .all-area-box{
+        position: fixed;
+        z-index: 10;
+        top: px2rem($header-height);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.6);
+        .area-list{
+            width: 100%;
+            max-height: px2rem(300px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            background: #fff;
+            .cell-group{
+                padding-left: 0;
+                .cell{
+                    height: px2rem(34px);
+                    line-height: px2rem(34px);
+                }
+                .content{
+                    line-height:px2rem(34px);
+                    font-size: px2rem(map_get($map-font-size, s));
+                }
+            }
+            .active-icon{
+                display: block;
+                width: px2rem(5px);
+                height: 100%;
+                &.active{
+                    background: $color-light;
+                }
+            }
+        }
+    }
+    //new style
+    .all-area-box{
+        .wrap{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .scroll{
+                position: absolute;
+                width: 100%;
+            }
+        }
+        ul{
+            width: 100%;
+            list-style: none;
+            background: #fff;
+            float:left;
+        }
+        li{
+            text-align: left;
+        }
+        li.usual{
+            width: 100%;
+            float: left;
+            height: px2rem(40px);
+            line-height: px2rem(40px);
+            padding: 0 px2rem(20px) 0 px2rem(20px);
+            border-bottom: 1px solid $color-border-default;
+            color: #222;
+            font-size: px2rem(map_get($map-font-size, m));
+            &.tag{
+                background: $color-border-default;
+            }
+            &.active{
+                color: $brand-danger;
+            }
+
+        }
+        li.hot{
+            width: 100%;
+            padding: px2rem(10px) px2rem(10px) px2rem(10px) px2rem(10px);
+            background: $color-main-bg;
+            border-bottom: 1px solid $color-border-default;
+            p{
+                padding-left: px2rem(10px);
+                font-size:px2rem(map_get($map-font-size, m));
+                color: #666;
+            }
+        }
+        .hot{
+            float: left;
+        }
+        .item-box{
+            margin-top: px2rem(10px);
+        }
+        .hot-item{
+            width: 33.333%;
+            float: left;
+            padding: 0 px2rem(10px) 0 px2rem(10px);
+            margin-bottom: px2rem(10px);
+            span{
+                display: block;
+                line-height:px2rem(30px);
+                text-align: center;
+                color: #222;
+                background: #fff;
+                border-radius: px2rem(6px);
+                border: 1px solid $color-border-default;
+                font-size:px2rem(map_get($map-font-size, m));
+                &.active{
+                    color: $brand-danger;
+                }
+            }
+        }
+        .letter-nav{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: px2rem(20px);
+            height: 100%;
+            padding-top:px2rem(100px);
+            .nav{
+                width: 100%;
+                line-height:100%;
+                text-align: center;
+                color: $brand-info;
+                font-size: px2rem(map_get($map-font-size, m));
+                padding: px2rem(4px) 0 px2rem(4px) 0;
+            }
+        }
+    }
+}

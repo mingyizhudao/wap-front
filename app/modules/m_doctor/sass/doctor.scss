@@ -1,0 +1,324 @@
+.doctor-recommend-page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .filter-box{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, .5);
+    }
+    .filter{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: px2rem(40px);
+        border-bottom: 1px solid #e6e6e6;
+        background: #fff;
+        padding: px2rem(10px) 0 ;
+        z-index: 99;
+        .item{
+            width: 33.333%;
+            height: 100%;
+            border-right: 1px solid $color-border-default;
+            float: left;
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0 px2rem(5px) 0 px2rem(5px);
+            .text{
+                font-size:px2rem(map_get($map-font-size, m));
+                color: #222;
+            }
+            .triangle-down{
+                display: inline-block;
+                position: relative;
+                top: px2rem(4px);
+                margin-left: px2rem(5px);
+                &:before{
+                    border: px2rem(6px) transparent solid;
+                    border-top-color: #999;
+                }
+            }
+            &:last-child{
+                border-right:none;
+            }
+            &.active{
+                .text{
+                    color: $brand-danger;
+                }
+                .triangle-down{
+                    &:before{
+                        border-top-color: $brand-danger;
+                    }
+                }
+            }
+        }
+    }
+    .wrap{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .scroll{
+            position: absolute;
+            width: 100%;
+        }
+    }
+    ul{
+        width: 100%;
+        list-style: none;
+        background: #fff;
+        float:left;
+    }
+    .filter-content{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-top: px2rem(40px);
+        z-index: 9;
+        background: rgba(0,0,0,.5);
+        li.usual{
+            width: 100%;
+            float: left;
+            height: px2rem(40px);
+            line-height: px2rem(40px);
+            padding: 0 px2rem(20px) 0 px2rem(20px);
+            border-bottom: 1px solid $color-border-default;
+            color: #222;
+            font-size: px2rem(map_get($map-font-size, m));
+            &.tag{
+                background: $color-border-default;
+            }
+            &.active{
+                color: $brand-danger;
+            }
+
+        }
+        li.hot{
+            width: 100%;
+            padding: px2rem(10px) px2rem(10px) px2rem(10px) px2rem(10px);
+            background: $color-main-bg;
+            border-bottom: 1px solid $color-border-default;
+            p{
+                padding-left: px2rem(10px);
+                font-size:px2rem(map_get($map-font-size, m));
+                color: #666;
+            }
+        }
+        .hot{
+            float: left;
+        }
+        .item-box{
+            margin-top: px2rem(10px);
+        }
+        .hot-item{
+            width: 33.333%;
+            float: left;
+            padding: 0 px2rem(10px) 0 px2rem(10px);
+            margin-bottom: px2rem(10px);
+            span{
+                display: block;
+                line-height:px2rem(30px);
+                text-align: center;
+                color: #222;
+                background: #fff;
+                border-radius: px2rem(6px);
+                border: 1px solid $color-border-default;
+                font-size:px2rem(map_get($map-font-size, m));
+                &.active{
+                    color: $brand-danger;
+                }
+            }
+        }
+        .letter-nav{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: px2rem(20px);
+            height: 100%;
+            padding-top:px2rem(100px);
+            .nav{
+                width: 100%;
+                text-align: center;
+                color: $brand-info;
+                font-size: px2rem(map_get($map-font-size, m));
+                padding: px2rem(4px) 0 px2rem(4px) 0;
+            }
+        }
+    }
+    .doctor-list{
+        width: 100%;
+        height: 100%;
+        padding-top: px2rem(40px);
+        .doctor-item{
+            width: 100%;
+            height: px2rem(150px);
+            padding: px2rem(10px);
+            border-bottom: 1px solid #eee;
+        }
+        .info-box{
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            width: 100%;
+            height: px2rem(80px);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            .img{
+                width: px2rem(70px);
+                height: px2rem(70px);
+                border-radius: px2rem(40px);
+                border: 1px solid $color-border-default;
+                overflow: hidden;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            .info{
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                flex: 1;
+                padding: 0 px2rem(10px) 0 px2rem(10px);
+            }
+            span{
+                font-size:px2rem(map_get($map-font-size, s));
+                color: #666;
+                margin-right: px2rem(10px);
+                &.name{
+                    color: #222;
+                    font-size: px2rem(map_get($map-font-size, m));
+                }
+            }
+            p{
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+        .desc{
+            width: 100%;
+            height: px2rem(42px);
+            font-size: px2rem(map_get($map-font-size, s));
+            line-height: px2rem(map_get($map-font-size, s)) * 1.5;
+            color: #999;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.doctor-detail-page{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .main-info{
+        background: url('images/img/doc-bg.png') no-repeat;//http://static.mingyizhudao.com/147062699107071
+        background-size: 100%;
+        padding: px2rem(15px);
+        >img{
+            $doc-wh: 60px;
+            width: px2rem($doc-wh);
+            height: px2rem($doc-wh);
+            border-radius: px2rem($doc-wh/2);
+            float: left;
+            margin-top: px2rem(5px);
+        }
+        >div{
+            text-align: left;
+            float: left;
+            color: #fff;
+            padding-left: px2rem(15px);
+        }
+        p{
+            line-height: px2rem(25px);
+            font-size: px2rem(map_get($map-font-size, m));
+        }
+        &:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    .cell-group .cell{
+        display: block;
+        height: auto;
+        line-height: px2rem(20px);
+        padding: px2rem(10px) 0;
+        >p:first-child{
+            color: $color-light;
+        }
+    }
+    .tab-box{
+        flex: 1;
+        overflow-y: scroll;
+        width: 100%;
+        background: #fff;
+    }
+    .bottom-button{
+        border-top: 1px solid $color-border-default;
+        background: #fff;
+    }
+    .doc-header {
+        background: url('http://static.mingyizhudao.com/147062699107071') no-repeat;
+    }
+    .doc-yz-tag{
+        padding: px2rem(5px) px2rem(5px) px2rem(5px) px2rem(15px);
+        background: url('http://static.mingyizhudao.com/147062712737692') no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        right: 0;
+    }
+    .doc-remark-list{
+        li{
+            border-bottom: 1px #ddd solid;
+        }
+    }
+    .doc-remark-user{
+        color: #f39700;
+        $user-img-wh: 40px;
+        padding: px2rem(10px);
+        padding-bottom: 0px;
+        &:after{
+            content:'';
+            display: block;
+            clear: both;
+            height: 0px;
+        }
+        >img,>div{
+            float: left;
+        }
+        >img{
+            width: px2rem($user-img-wh);
+            height: px2rem($user-img-wh);
+            border-radius: px2rem($user-img-wh/2);
+            margin-right: px2rem(10px);
+        }
+        .star{
+            background: url('http://static.mingyizhudao.com/146975981120273') no-repeat;
+            width: px2rem($user-img-wh/3);
+            height: px2rem($user-img-wh/3);
+            margin-right: px2rem(5px);
+            display: inline-block;
+            background-size: contain;
+        }
+    }
+    .doc-remark-p{
+        padding: px2rem(10px);
+        padding-top: 0px;
+    }
+}
+.header-doc-img{
+    .header {
+        background: url('images/img/doc-header-bg.png') no-repeat;
+    }
+}

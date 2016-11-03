@@ -1,0 +1,38 @@
+<div ng-controller="TalkAdvisoryCtrl" class="talk-advisory-page">
+    <div id="talkContentScroll" class="talk-content wrap">
+        <div class="scroll">
+            <p class="tips">下拉页面查看之前对话</p>
+            <div class="patient-info">
+                <p>您正在咨询的患者信息：</p>
+                <span>女/ 23岁/ 耳鼻喉科-耳朵疼</span>
+            </div>
+            <ul class="list-talk">
+                <li ng-class="{'l-talk':tli.from == 'myzd', 'r-talk':tli.from == 'client'}" ng-repeat="tli in talkList">
+                    <i ng-if="tli.from == 'myzd'" class="l-talk-i"></i>
+                    <div ng-if="tli.text" ng-bind="tli.text"></div>
+                    <div class="l-talk-doc" ng-if="tli.doc">
+                        <div class="l-talk-doc-info">
+                            <div>
+                                <p>
+                                    <span class="doc-name" ng-bind="tli.doc.name"></span>
+                                    <span ng-bind="tli.doc.title"></span>
+                                    <span ng-bind="tli.doc.class"></span>
+                                </p>
+                                <p ng-bind="tli.doc.hospital"></p>
+                                <p ng-bind="tli.doc.dept"></p>
+                            </div>
+                            <img src="app/images/img/head.jpg">
+                        </div>
+                        <p class="">医生名片</p>
+                    </div>
+                </li>
+                <!-- <li class="r-talk">
+                    <div ng-bind="tli.text"></div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="talk-input">
+        <input placeholder="输入文字描述病情..." type="" name="" ng-keydown="upText($event,talkText)" ng-model="talkText">
+    </div>
+</div>
