@@ -133,6 +133,8 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
             $scope.resDes = resDes.simple;
             $scope.resDesNum = resDes.num;
         }
+        //移动端bug 无法获取100%高度
+        document.getElementById('listScroll').style.height = document.getElementsByClassName('search-result')[0].clientHeight +'px';
     }
 
     // function getCompleteList(_res){
