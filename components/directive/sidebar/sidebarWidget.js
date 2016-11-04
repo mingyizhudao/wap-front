@@ -1,5 +1,5 @@
 app.directive('sidebarWidget', [function () {
-    var ctrl = ['$scope', '$rootScope', 'helper', '$state', 'CMSDataConfig', 'StorageConfig', function ($scope, $rootScope, helper, $state, CMSDataConfig, StorageConfig) {
+    var ctrl = ['$scope', '$rootScope', 'helper', '$state', 'CMSDataConfig', 'StorageConfig', 'UserService', function ($scope, $rootScope, helper, $state, CMSDataConfig, StorageConfig, UserService) {
         var e_sidebar = document.getElementById('layoutSidebar');
         $scope.isOpen = false;
         function _open() {
@@ -29,6 +29,18 @@ app.directive('sidebarWidget', [function () {
             return $scope.isOpen;
         }
 
+        function getUserInfo(){
+            UserService.getUserInfo({}).then(
+                function(res){
+                    console.log('??')
+                    $scope.username = res.user.username;
+                },
+                function(res){
+                    dialog.alert(res.errorMsg);
+                }
+            );
+        }
+
         var indexTimeOut;
         function toggleSidebar(_toggle){
             if (!_toggle) {
@@ -38,6 +50,12 @@ app.directive('sidebarWidget', [function () {
                 }, 200);
             }else{
                 e_sidebar.style.zIndex = '9999';
+                if (!$scope.username){
+                    if (StorageConfig.TOKEN_STORAGE.getItem('authorization')) {
+                        console.log('?');
+                        getUserInfo();
+                    }
+                }
             }
         }
 
@@ -74,9 +92,9 @@ app.directive('sidebarWidget', [function () {
             });
         };
 
-        if (StorageConfig.TOKEN_STORAGE.getItem('authorization')){
-            $scope.username = 'popoAO'; //写死 用户名
-        }
+        // if (StorageConfig.TOKEN_STORAGE.getItem('authorization')) {
+        //     $scope.username = '测试A';
+        // }
 
     }];
     return {

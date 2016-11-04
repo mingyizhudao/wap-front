@@ -257,6 +257,9 @@
         >p:first-child{
             color: $color-light;
         }
+        >p{
+            font-size: px2rem(map_get($map-font-size, s));
+        }
     }
     .tab-box{
         flex: 1;
