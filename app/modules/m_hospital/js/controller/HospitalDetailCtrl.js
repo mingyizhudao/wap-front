@@ -1,5 +1,14 @@
 app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'HospitalService', '$state', function ($rootScope, $scope, dialog, $stateParams, HospitalService, $state) {
 
+    var contentScroll = new IScroll('#contentScroll', {
+        mouseWheel: false,
+        click: true
+    });
+
+    setInterval(function () {
+        contentScroll.refresh();
+    }, 500);
+
     /**
      * control the tab checked
      * @type {number}
@@ -49,8 +58,22 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
         }
     };
 
-    $scope.goDeptById = function (_id) {
-        getHospitalInfo(60);//无测试数据，暂时写死
+    var fakeSpinner;
+    $scope.goDeptById = function (_deps) {
+        $scope.curDeptId = _deps.id;
+        window.headerConfig.titleOperate = {
+            html: _deps.name + '<span class="select-icon triangle-down"></span>',
+            clickCall: changedDept
+        };
+        $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        $scope.isChangeDept = false;
+        $scope.isFilter = false;
+        //假刷新
+        fakeSpinner = dialog.showSpinner();
+        setTimeout(function() {
+            dialog.closeSpinner(fakeSpinner.id);
+        }, 500);
+        // getHospitalInfo(60);//无测试数据，暂时写死
     };
 
     $scope.goDoc = function (_id) {
@@ -79,17 +102,11 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
         HospitalService.getDepartmentInfo({}, urlOptions).then(function (res) {
             $scope.departmentInfo = res.results.department;
             $scope.dtList = [{dt: 0}, {dt: 0}, {dt: 0}, {dt: 0}];
-            // window.headerConfig.title = res.results.department.name;
-            // window.headerConfig.titleOperate = {
-            //     html: '',
-            //     clickCall: changedDept
-            // };
-            // window.headerConfig.otherRightOperate= {
-            //     enable: true,
-            //     html: '筛选',
-            //     clickCall: openFilter
-            // }
-            // $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+            window.headerConfig.titleOperate = {
+                html: $stateParams.hospitalDeptName + '<span class="select-icon triangle-down"></span>',
+                clickCall: changedDept
+            },
+            $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
             dialog.closeSpinner(spinner.id);
         }, function (res) {
             dialog.closeSpinner(spinner.id);
@@ -99,7 +116,6 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
 
     getHospitalInfo($stateParams.hospitalId)
     function getHospitalInfo(_id) {
-        console.log('_id', _id);
         var spinner = dialog.showSpinner();
         var params = {};
         var urlOptions = {
@@ -111,17 +127,13 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
             window.headerConfig = {
                 enableHeader: true,
                 enableBack: true,
-                enableRefresh: false
-                // title: $stateParams.hospitalDeptName
-            };
-            window.headerConfig.titleOperate = {
-                html: $stateParams.hospitalDeptName + '<span class="select-icon triangle-down"></span>',
-                clickCall: changedDept
-            };
-            window.headerConfig.otherRightOperate = {
-                enable: true,
-                html: '筛选',
-                clickCall: openFilter
+                enableRefresh: false,
+                title: $stateParams.hospitalDeptName,
+                otherRightOperate: {
+                    enable: true,
+                    html: '筛选',
+                    clickCall: openFilter
+                }
             };
             $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
             //获取科室信息
