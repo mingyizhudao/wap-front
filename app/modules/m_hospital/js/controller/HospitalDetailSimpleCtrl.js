@@ -35,6 +35,11 @@ app.controller('HospitalDetailSimpleCtrl', ['$scope', '$rootScope','$state','$st
         }
     ];
 
+    $scope.showMore = false;
+    // $scope.showMore = function(){
+    //     $scope.showMore = !$scope.showMore;
+    // }
+
     $scope.goDepartment = function(item){
         //TODO go to the hospital-detail page. and the default selected department base on the param item
         //In the demo the data is static

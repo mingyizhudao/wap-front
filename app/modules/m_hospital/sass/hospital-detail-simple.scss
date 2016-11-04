@@ -1,22 +1,55 @@
 .hospital-detail-simple-page{
+    $lines-to-show: 6;
     .hospital-desc{
-        padding:px2rem(10px);
+        padding:px2rem(10px) px2rem(10px) px2rem(20px) px2rem(10px);
         background: #fff;
         h3{
             font-size:px2rem(map_get($map-font-size, l));
             margin-bottom: px2rem(5px);
             color: #333;
         }
-        p{
-            font-size: px2rem(map_get($map-font-size, m));
-            text-align:justify;
+        .hp-info-text-m{
+            display: block; /* Fallback for non-webkit */
+            display: -webkit-box;
+            font-size: 1.16667rem;
+            text-align: justify;
             color: #666;
+            line-height: 1.5rem;
+        }
+        .hp-info-text-s{
+            display: block; /* Fallback for non-webkit */
+            display: -webkit-box;
+            font-size: 1.16667rem;
+            text-align: justify;
+            color: #666;
+            line-height: 1.5rem;
+            height: 9rem;
+            overflow: hidden;
+            -webkit-line-clamp: $lines-to-show;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            &:before{
+                content: '..[详情]';
+                display: inline-block;
+                transform: translateY(7.5rem);
+                background: #fff;
+                width: 5rem;
+                position: absolute;
+                right: px2rem(10px);
+                color: $color-primary;
+            }
         }
     }
     .department-recommend{
-        padding: px2rem(10px);
+        padding: px2rem(10px) px2rem(10px) px2rem(20px) px2rem(10px);
+        margin-top: px2rem(10px);
         background: #fff;
         width: 100%;
+        &:after{
+            display: block;
+            clear: both;
+            content: '';
+        }
         h3{
             font-size:px2rem(map_get($map-font-size, l));
             margin-bottom: px2rem(5px);

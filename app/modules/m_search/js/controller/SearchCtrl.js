@@ -156,7 +156,9 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
         // $state.go('layout.hospital-detail',{
         //     hospitalId: _id
         // });
-        $state.go('layout.hospital-detail-simple');
+        $state.go('layout.hospital-detail-simple',{
+            hospitalId: 0
+        });
         
     }
 

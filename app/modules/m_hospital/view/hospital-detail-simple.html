@@ -1,7 +1,7 @@
 <div class="hospital-detail-simple-page" ng-controller="HospitalDetailSimpleCtrl">
     <div class="hospital-desc">
-        <h3>医院简介</h3>
-        <p ng-bind="hospitalDesc"></p>
+        <h3>医院简介：</h3>
+        <p ng-class="{'hp-info-text-m':showMore,'hp-info-text-s':!showMore}" ng-click="showMore = !showMore;" ng-bind="hospitalDesc"></p>
     </div>
     <div class="department-recommend">
         <h3>本院顶尖科室推荐：</h3>

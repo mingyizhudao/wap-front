@@ -4,7 +4,13 @@
 	flex-direction: column;
 	$search-header-height: 40px;
 	$hp-btn-color: #F48124;
-	$doc-btn-color: #0168B7;
+	$doc-btn-color: #0168B7; 
+	.doc-span{
+		font-size: px2rem(map_get($map-font-size, xs));
+	}
+	.doc-span i{
+		font-size: px2rem(map_get($map-font-size, xs));
+	}
 	#listScroll{
 		height: 100%;
 		ul li{
@@ -156,6 +162,7 @@
 		i{
 			color: #bbb;
 			padding: 0 px2rem(5px);
+	    	font-size: px2rem(map_get($map-font-size, s));
 		}
 	}
 	.btn-hp,.btn-doc{

@@ -12,7 +12,7 @@
         width: 100%;
         float: left;
         p{
-            font-size: px2rem(map_get($map-font-size, m));
+            font-size: px2rem(map_get($map-font-size, s));
             font-weight: bold;
         }
 
@@ -21,7 +21,7 @@
             margin-right: px2rem(10px);
             border: 1px solid $color-border-default;
             border-radius: px2rem(4px);
-            font-size:px2rem(map_get($map-font-size, m));
+            font-size:px2rem(map_get($map-font-size, s));
             float:left;
             padding: px2rem(5px) px2rem(10px) px2rem(5px) px2rem(10px);
             color: #333;
@@ -35,7 +35,7 @@
         margin-top: px2rem(10px);
         padding: px2rem(20px) px2rem(10px) px2rem(20px) px2rem(10px);
         p{
-            font-size: px2rem(map_get($map-font-size, m));
+            font-size: px2rem(map_get($map-font-size, s));
             font-weight:bold;
         }
         .box{
