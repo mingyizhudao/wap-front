@@ -45,6 +45,11 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     };
     $scope.confirmFilter = function () {
         openFilter();
+        //假刷新
+        fakeSpinner = dialog.showSpinner();
+        setTimeout(function() {
+            dialog.closeSpinner(fakeSpinner.id);
+        }, 500);
         //TODO add the ajax to request the data by the isFilterxs, isFilteryx, curDeptId
     };
 
