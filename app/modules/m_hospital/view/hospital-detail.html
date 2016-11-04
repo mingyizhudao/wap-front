@@ -24,47 +24,49 @@
             <p>*参考最新复旦版专科分类医院排行榜*</p>
             <span ng-if="!deptList.length">暂无其他科室</span>
             <ul ng-if="deptList.length">
-                <li ng-repeat="dept in deptList" ng-click="goDeptById(dept.id)"><span ng-class="{'selected':dept.id == curDeptId}" ng-bind="dept.name"></span></li>
+                <li class="oline" ng-repeat="dept in deptList" ng-click="goDeptById(dept)"><span ng-class="{'selected':dept.id == curDeptId}" ng-bind="dept.name"></span></li>
             </ul>
         </div>
     </div>
-    <div class="tab-box">
+    <div class="tab-box hospital-detail-box">
         <div class="tab-header">
             <div class="tab-item" ng-class="{'active': selectedTab == 0}" ng-click="checkTab(0)">精选医生</div>
             <div class="tab-item" ng-class="{'active': selectedTab == 1}" ng-click="checkTab(1)">科室介绍</div>
             <div class="tab-item" ng-class="{'active': selectedTab == 2}" ng-click="checkTab(2)">医院介绍</div>
         </div>
-        <div class="tab-content">
-            <div class="item-content" ng-show="selectedTab == 0">
-                <ul>
-                    <li class="dt-li" ng-click="goDoc()" ng-repeat="dt in dtList">
-                        <div class="doc-description">
-                            <img src="app/images/img/head.jpg">
-                            <div>
-                                <p>
-                                    <span class="dt-name">白继</span>
-                                    <span>教授 主任医师</span>
-                                </p>
-                                <p>
-                                    <span>眼科</span>
-                                </p>
-                                <p>
-                                    <span>北京协和医院</span>
-                                </p>
+        <div id="contentScroll" class="tab-content wrap">
+            <div class="scroll">
+                <div class="item-content" ng-show="selectedTab == 0">
+                    <ul>
+                        <li class="dt-li" ng-click="goDoc()" ng-repeat="dt in dtList">
+                            <div class="doc-description">
+                                <img src="app/images/img/head.jpg">
+                                <div>
+                                    <p>
+                                        <span class="dt-name">白继</span>
+                                        <span>教授 主任医师</span>
+                                    </p>
+                                    <p>
+                                        <span>眼科</span>
+                                    </p>
+                                    <p>
+                                        <span>北京协和医院</span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <p class="doc-desc">
-                            <span>擅长：</span>
-                            <span class="doc-goodat-span">长期从事乳腺癌一线临床和科研工作，尤其在腺癌早起发现，早起诊断，早期手术...</span>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div class="item-content" ng-show="selectedTab == 1">
-                <p class="hp-des" ng-bind="departmentInfo.description"></p>
-            </div>
-            <div class="item-content" ng-show="selectedTab == 2">
-                <p class="hp-des" ng-bind="hospitalInfo.hospital.description"></p>
+                            <p class="doc-desc">
+                                <span>擅长：</span>
+                                <span class="doc-goodat-span">长期从事乳腺癌一线临床和科研工作，尤其在腺癌早起发现，早起诊断，早期手术...</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-content" ng-show="selectedTab == 1">
+                    <p class="hp-des" ng-bind="departmentInfo.description"></p>
+                </div>
+                <div class="item-content" ng-show="selectedTab == 2">
+                    <p class="hp-des" ng-bind="hospitalInfo.hospital.description"></p>
+                </div>
             </div>
         </div>
     </div>

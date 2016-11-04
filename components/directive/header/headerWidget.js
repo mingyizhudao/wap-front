@@ -113,6 +113,7 @@ app.directive('headerWidget', [function () {
         });
         $scope.goBack = function () {
             helper.closeAllPopAndDialog();
+                console.log(0);
             if ($scope.headerBackOptions && !helper.isEmptyObject($scope.headerBackOptions)) {
                 if ($scope.headerBackOptions.route) {
                     var route = $scope.headerBackOptions.route;

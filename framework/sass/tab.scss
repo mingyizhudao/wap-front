@@ -4,8 +4,8 @@ $tab-header-height: px2rem(48px);
     .tab-header{
         width: 100%;
         height: $tab-header-height;
-        display: -webkit-box;
         display: flex;
+        display: -webkit-box;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         flex-direction: row;
