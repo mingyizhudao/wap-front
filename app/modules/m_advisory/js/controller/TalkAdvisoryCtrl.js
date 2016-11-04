@@ -1,4 +1,4 @@
-app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', function ($rootScope, $scope, dialog,$state) {
+app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', 'StorageConfig', function ($rootScope, $scope, dialog, $state, StorageConfig) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -15,6 +15,7 @@ app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', f
         route: 'layout.home'
     });
 
+    StorageConfig.FAKE_STORAGE.putItem('advisory','1');
 
     function goBack(){
         dialog.confirm('您将退出本次对话（内容不做保留），欢迎您再次咨询！',{
@@ -24,6 +25,7 @@ app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', f
                 if(value == 0){
                 }
                 if(value == 1){
+                    StorageConfig.FAKE_STORAGE.putItem('advisory',null);
                     $state.go('layout.advisory-before');
                 }
             }

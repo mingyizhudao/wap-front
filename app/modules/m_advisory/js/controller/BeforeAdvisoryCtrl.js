@@ -6,6 +6,9 @@ app.controller('BeforeAdvisoryCtrl', ['$rootScope', '$scope', 'dialog', '$state'
         title: '在线咨询'
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+    $rootScope.$broadcast('setHeaderBack', {
+        route: 'layout.home'
+    });
     $scope.userGender = 'male';
     $scope.goSelectDisease = function () {
         $state.go('layout.disease', {

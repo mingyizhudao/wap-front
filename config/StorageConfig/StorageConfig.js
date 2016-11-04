@@ -13,6 +13,9 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
     var booking_storage = ngStorage.sessionStorage('myzd_booking');
     //存储科室信息
     var dept_storage = ngStorage.sessionStorage('myzd_dept');
+
+    //fake 在线咨询 保存本地提问信息
+    var fake_storage = ngStorage.sessionStorage('myzd_dept');
     return {
         COMMON_STORAGE: common_storage,
         FOOTER_STORAGE: footer_storage,
@@ -20,6 +23,7 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
         CITY_STORAGE: city_storage,
         FIND_STORAGE: find_storage,
         BOOKING_STORAGE: booking_storage,
-        DEPT_STORAGE: dept_storage
+        DEPT_STORAGE: dept_storage,
+        FAKE_STORAGE: fake_storage
     };
 }]);
