@@ -174,6 +174,7 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
                 function(res){
                     StorageConfig.DEPT_STORAGE.putItem('detpList',res.results);
                     $scope.deptList = res.results;
+                    console.log('id',$scope.deptList[0].id);
                     $scope.selectedDeptId = $scope.deptList[0].id;
                     defaultParams.disease_sub_category = $scope.selectedDeptId;
                     selectedCall();
