@@ -44,10 +44,22 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
         )    
     }
 
-    $scope.goDetail = function(_id){
-        $state.go('layout.orderDetail',{
-            bookingId: _id
-        })
+    $scope.goDetail = function(obj){
+        if (obj.bkStatus == 6) {
+            $state.go('layout.mark',{
+                status: 0 //未评
+            });
+        }
+        else if(obj.bkStatus == 8){
+            $state.go('layout.mark',{
+                status: 1 //已评
+            });
+        }
+        else{
+            $state.go('layout.orderDetail',{
+                bookingId: obj.id
+            })
+        }
     }
 
     var ordersContentScroll;

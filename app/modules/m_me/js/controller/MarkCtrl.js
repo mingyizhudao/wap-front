@@ -1,7 +1,8 @@
-app.controller('MarkCtrl',['$scope','$rootScope','StorageConfig','$state', 'dialog', function($scope,$rootScope,StorageConfig,$state,dialog){
+app.controller('MarkCtrl',['$scope','$rootScope','StorageConfig','$state', '$stateParams', 'dialog', function($scope,$rootScope,StorageConfig,$state,$stateParams,dialog){
     //修改评论状态
-    var orderStatus = 6;
-    if (orderStatus == 6) {
+
+    var orderStatus = $stateParams.status;
+    if (orderStatus == 0) {
         $scope.isMarked = false;
         window.headerConfig={
             enableHeader: true,
@@ -16,7 +17,7 @@ app.controller('MarkCtrl',['$scope','$rootScope','StorageConfig','$state', 'dial
         };
         $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
     }
-    else if(orderStatus == 8){
+    else if(orderStatus == 1){
         $scope.isMarked = true;
         window.headerConfig={
             enableHeader: true,

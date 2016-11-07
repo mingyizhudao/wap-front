@@ -140,7 +140,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_me/view/orders.html'
         })
         .state('layout.mark', {
-            url: '/me/mark',
+            url: '/me/mark/:status',
             templateUrl: 'app/modules/m_me/view/mark.html'
         })
         .state('layout.order', {
