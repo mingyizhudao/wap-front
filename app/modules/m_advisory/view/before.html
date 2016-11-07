@@ -29,14 +29,14 @@
                         <input type="radio" ng-model="userGender" value="female" id="female" name="userGender">
                         <label for="female">
                             <span class="check"><i class="circle-check" ng-class="{'uncheck': userGender != 'female'}"></i></span>
-                            <span class="text">女</span>
+                            <span class="text" ng-class="{'uncheck': userGender != 'female'}">女</span>
                         </label>
                     </div>
                     <div class="radio-inline fn-right">
                         <input type="radio" ng-model="userGender" value="male" id="male" name="userGender">
                         <label for="male">
                             <span class="check"><i class="circle-check" ng-class="{'uncheck': userGender != 'male'}"></i></span>
-                            <span class="text">男</span>
+                            <span class="text" ng-class="{'uncheck': userGender != 'male'}">男</span>
                         </label>
                     </div>
                 </div>

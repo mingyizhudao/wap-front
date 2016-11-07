@@ -6,16 +6,20 @@
 	flex-direction: column;
 	height: 100%;
 	.talk-input{
-		height: px2rem(40px);
+		height: px2rem(45px);
 		input{
 			width: 100%;
 			height: 100%;
-			border-width: 1px 0 0 0;
+			border-width: 0;
 			padding: 0 px2rem(10px);
 			border-color: #fff;
 		}
 	}
-	
+	.talk-tips{
+		text-align: center;
+		color: #bbb;
+		padding: 0 0 px2rem(10px) 0;
+	}
     .wrap{
         position: relative;
         width: 100%;
@@ -88,7 +92,7 @@
 			background: #fff;
 			align-self: flex-start;
 			color: #20343e;
-			width: px2rem(200px);
+			width: px2rem(250px);
 			max-width: none;
 			color: #888;
 			line-height: px2rem(25px);
@@ -167,10 +171,10 @@
 		}
 	}
 	.patient-info{
-		padding: px2rem(5px) px2rem(10px);
+		padding: px2rem(10px) px2rem(10px);
 		background: #fff;
 		border-radius: px2rem(5px);
-		line-height: px2rem(20px);
+		line-height: px2rem(30px);
 		margin-bottom: px2rem(20px);
 		>span{
 			color: #aaa;
