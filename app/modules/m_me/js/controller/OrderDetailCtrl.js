@@ -32,13 +32,45 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
     //     }
     // }
 
+    function initImgUpload(){
+
+        UploadImg.init({
+            id: 'uploadImgBox',
+            title: '请上传您的病例图片',
+            multiple: false, // enable the component can select multiple files in one time. In mobile, please use the false.
+            maxCount: 9, // the max number picture could upload.
+            // autoUpload: false,
+            required: false, //ctrl you must upload images files or not. if false, the UploadImg.isFinished() init is true.
+            // imgListArray: [],
+            upload: {
+                uploadUrl: 'https://up-z0.qbox.me/',
+                token: '',
+                tokenUrl: window.envs.api_url+'/apiwap/filetoken',
+                type: 'POST',
+                async: true,
+                nameSpace: '',
+                submitBtnId: 'btnBooking',
+                beforeCall: beforeCall,
+                afterCall: afterCall,
+                params: {}
+            }
+        });
+    }
+
+    function beforeCall(){
+
+    }
+
+    function afterCall(){
+
+    }
 
     getOrderDetail(_paramsObj);
     function getOrderDetail(_params){
         var spinner = dialog.showSpinner();
         OrderService.getOrderDetail(_params).then(
             function(res){
-                if (res.results.bkStatus!=5) {
+                if (res.results.bkStatus!=9) {
                     window.headerConfig={
                         enableHeader: true,
                         enableBack: true,
@@ -50,6 +82,7 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                             clickCall: cancelOrder
                         }
                     };
+                    initImgUpload();
                 }else{
                     window.headerConfig={
                         enableHeader: true,

@@ -58,7 +58,7 @@
 		color: #999;
 	}
 	.order-detail-group{
-        padding: px2rem(10px) px2rem(10px) px2rem(70px) px2rem(10px);
+        padding: px2rem(10px);
 	}
 	.order-detail-highlight{
 		color:#f07415;
@@ -70,6 +70,7 @@
 		background: #fff;
 		align-items: center;
 		padding: 0px;
+		border-top: 1px solid #ddd;
 		.order-account{
 			width: 60%;
 			text-align: center;
@@ -83,6 +84,11 @@
 	.s-label{
 		color: #666;
 	}
+	.s-content{
+		span{
+			font-size: px2rem(map_get($map-font-size, s));
+		}
+	}
 	.mulit-line{
 	    line-height: px2rem(20px);
 	    word-break: break-word;
@@ -95,6 +101,11 @@
 		p{
 			line-height: px2rem(25px);
 			color: #666;
+			font-size: px2rem(map_get($map-font-size, s));
+			span{
+				color: #666;
+				font-size: px2rem(map_get($map-font-size, s));
+			}
 		}
 	}
 	.order-status{
@@ -124,6 +135,8 @@
 			    text-align: center;
 			    top: px2rem(20px);
     			font-style: initial;
+    			font-size: px2rem(map_get($map-font-size, xs));
+    			color: inherit;
     		}
 		}
 		line{
