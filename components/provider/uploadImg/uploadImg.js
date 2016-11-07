@@ -34,6 +34,7 @@
         autoUpload: false,
         required: true,
         imgListArray: [],
+        firstTip: '',
         upload: {
             uploadUrl: 'https://up-z0.qbox.me/',
             token: '',
@@ -65,9 +66,10 @@
                 <div class="img-show" id="uploadImgShow_' + options.id + '">\
                 </div>\
                 <div class="form-box">\
-                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p></div></label>\
+                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p>' + (options.maxCount ? ('<p class="count-last-tip"' + options.id + '>还可上传<span id="uploadCountLast_'+options.id+'" >' + options.maxCount + '</span>张</p>') : '') + '</div></label>\
                     <input type="file" class="fn-hide" ' + (options.multiple ? 'multiple' : '') + ' id="uploadInputFile_' + options.id + '">\
                 </div>\
+                <div class="first-tip">'+options.firstTip+'</div>\
                 <div class="btn-dock"><button class="btn btn-info" id="uploadButton_' + options.id + '">上传图片</button></div>\
         </div>';
 
@@ -90,7 +92,7 @@
             var onceAddFilesList = {};
             var needCheckArray = [];
 
-            if (options.maxCount && upFileList.length + filesArray.length > options.maxCount) {
+            if (options.maxCount && (upFileList.length + filesArray.length > options.maxCount)) {
                 _toast('最多上传' + options.maxCount + '张图片，已选择了' + upFileList.length + '张。');
                 return false;
             }
@@ -164,6 +166,7 @@
                                                 }
                                             }
                                             document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
+                                            document.getElementById('uploadCountLast_'+options.id).innerHTML = (options.maxCount - upFileList.length).toString();
                                             isFinished[options.id] = upFileList.length ? false : !options.required;
                                             box.remove();
                                         }
@@ -196,6 +199,9 @@
                         }
 
                         //TODO change the finish flag to ture
+                        if(options.maxCount){
+                            document.getElementById('uploadCountLast_'+options.id).innerHTML = (options.maxCount - upFileList.length).toString();
+                        }
                         previewFinished = true;
                     }
                 }, 200);
@@ -226,17 +232,17 @@
             }
             if (options.upload.beforeCall && typeof(options.upload.beforeCall) === 'function') {
                 options.upload.beforeCall(doingCall);
-            }else{
+            } else {
                 doingCall();
             }
             function doingCall(config) {
-                if(config.upload){
+                if (config.upload) {
                     options.upload = extend(options.upload, config.upload);
-                }else{
+                } else {
                     options.upload = extend(options.upload, config);
                 }
                 var finishCount = 0;
-                if(upFileList.length){
+                if (upFileList.length) {
                     for (var i = 0, len = upFileList.length; i < len; i++) {
                         //judge if the file have uploaded, ignore it.
                         if (!upFileList[i].key && !upFileList[i].hash) {
@@ -309,7 +315,7 @@
         formData.append('lastModifiedDate', upFile.obj.lastModifiedDate);
         formData.append('size', upFile.obj.size);
         formData.append('token', token);// the qiniu upload accessKey.
-        formData.append('key', (new Date()).getTime() + Math.floor(Math.random() * 100)+'.'+upFile.obj.name.substr(0, upFile.obj.name.lastIndexOf('.')));//the upload file in qiniu server's show name. Include this type nameSpace + fileName. Or an other way you could make sure the file's name is single.
+        formData.append('key', (new Date()).getTime() + Math.floor(Math.random() * 100) + '.' + upFile.obj.name.substr(0, upFile.obj.name.lastIndexOf('.')));//the upload file in qiniu server's show name. Include this type nameSpace + fileName. Or an other way you could make sure the file's name is single.
         if (uploadDefaults.params) {
             for (key in uploadDefaults.params) {
                 formData.append(key, uploadDefaults.params[key]);

@@ -13,7 +13,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: px2rem(40px);
+        height: px2rem(48px);
         border-bottom: 1px solid #e6e6e6;
         background: #fff;
         padding: px2rem(10px) 0 ;
@@ -154,7 +154,7 @@
     .doctor-list{
         width: 100%;
         height: 100%;
-        padding-top: px2rem(40px);
+        padding-top: px2rem(48px);
         .doctor-item{
             width: 100%;
             height: px2rem(150px);
@@ -239,9 +239,10 @@
             color: #fff;
             padding-left: px2rem(15px);
         }
-        p{
+        p span{
             line-height: px2rem(25px);
             font-size: px2rem(map_get($map-font-size, m));
+            color: #fff;
         }
         &:after{
             content: '';

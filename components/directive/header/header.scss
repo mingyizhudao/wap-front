@@ -25,7 +25,7 @@
         text-align: center;
         line-height: px2rem($header-height);
         color: $header-color;
-        font-size: px2rem(map_get($map-font-size, m));
+        font-size: px2rem(map_get($map-font-size, l));
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -112,7 +112,7 @@
         height: 100%;
         line-height:px2rem($header-height);
         color: $header-color;
-        font-size: px2rem(map_get($map-font-size, s));
+        font-size: px2rem(map_get($map-font-size, m));
         text-align: right;
         padding-right: px2rem(10px);
     }

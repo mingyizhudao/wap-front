@@ -20,7 +20,13 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
         if ($scope.selectedTab == index) {
             return false;
         }
+        if(index == 0){
+            document.getElementById('headerRightOperate_other').style.display = 'block';
+        }else{
+            document.getElementById('headerRightOperate_other').style.display = 'none';
+        }
         $scope.selectedTab = index;
+
     };
 
     function openFilter() {

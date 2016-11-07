@@ -1,5 +1,5 @@
 <div ng-controller="DoctorRecommendCtrl" class="doctor-recommend-page">
-    <div class="filter-content" ng-show="filterShow && filterIndex == 0">
+    <div class="filter-content" ng-show="filterShow && filterIndex == 0" ng-click="closeFilter($event)">
         <div class="wrap" id="areaFilter">
             <div class="scroll">
                 <ul>
@@ -22,7 +22,7 @@
             <div class="nav" ng-repeat="item in letterNavList" ng-bind="item" ng-click="scrollToLetter(item)"></div>
         </div>
     </div>
-    <div class="filter-content" ng-show="filterShow && filterIndex == 1">
+    <div class="filter-content" ng-show="filterShow && filterIndex == 1" ng-click="closeFilter($event)">
         <div class="wrap" id="hospitalFilter">
             <div class="scroll">
                 <ul>
@@ -31,11 +31,11 @@
             </div>
         </div>
     </div>
-    <div class="filter-content" ng-show="filterShow && filterIndex == 2">
+    <div class="filter-content" ng-show="filterShow && filterIndex == 2" ng-click="closeFilter($event)">
         <div class="wrap" id="levelFilter">
             <div class="scroll">
                 <ul>
-                    <li class="usual" ng-repeat="item in levelList" ng-class="{'acive': selectedLevel.name == item.name}" ng-bind="item.name" ng-click="selectLevel(item)"></li>
+                    <li class="usual" ng-repeat="item in levelList" ng-class="{'active': selectedLevel.id == item.id}" ng-bind="item.name" ng-click="selectLevel(item)"></li>
                 </ul>
             </div>
         </div>

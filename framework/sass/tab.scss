@@ -18,7 +18,7 @@ $tab-header-height: px2rem(48px);
             line-height: $tab-header-height;
             border-bottom: px2rem(2px) solid $color-border-default;
             text-align: center;
-            color: #666;
+            color: #222;
             font-size: px2rem(map_get($map-font-size, m));
             &.active{
                 border-bottom: px2rem(2px) solid $color-light;

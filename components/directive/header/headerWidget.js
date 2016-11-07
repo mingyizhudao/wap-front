@@ -272,10 +272,10 @@ app.run(['$templateCache', function ($templateCache) {
             <div class="tab-options" ng-class="{\'active\':currentTab == $index}" ng-repeat="tabItem in defaults.tabOperate.options track by $index" ng-bind="tabItem.name" ng-click="clickHeaderTab(tabItem, $index)"></div>\
        </div>\
        <div class="right-operate">\
-           <div class="btn-refresh" ng-show="defaults.enableRefresh" ng-click="refresh()"></div>\
-           <div class="btn-share" ng-show="defaults.enableShare" ng-click="share()"><i class="iconfont icon-share"></i></div>\
-           <div class="other-right-operate" ng-show="defaults.otherRightOperate.enable" ng-click="clickOtherRightOperate()" ng-bind-html="defaults.otherRightOperate.html | trustAsHtml"></div>\
-           <div class="select-area" ng-show="defaults.areaOperate.enable">\
+           <div class="btn-refresh" id="headerRightOperate_refresh" ng-show="defaults.enableRefresh" ng-click="refresh()"></div>\
+           <div class="btn-share" id="headerRightOperate_share" ng-show="defaults.enableShare" ng-click="share()"><i class="iconfont icon-share"></i></div>\
+           <div class="other-right-operate" id="headerRightOperate_other" ng-show="defaults.otherRightOperate.enable" ng-click="clickOtherRightOperate()" ng-bind-html="defaults.otherRightOperate.html | trustAsHtml"></div>\
+           <div class="select-area" id="headerRightOperate_area" ng-show="defaults.areaOperate.enable">\
                 <div class="current-area" ng-click="showAreaList()"><span class="current-area-text" ng-bind="currentArea[defaults.areaOperate.trackKey]"></span><span class="select-icon" ng-class="{true:\'triangle-up\', false: \'triangle-down\'}[showAreas]"></span></div>\
                 <div class="all-area-box" ng-show="showAreas">\
                    <div class="wrap" id="headAreaFilter">\

@@ -155,6 +155,13 @@
         float: right;
         padding: 0 px2rem(10px) 0 px2rem(10px);
     }
+    .first-tip{
+        padding: 0 px2rem(10px) 0 px2rem( 10px);
+        max-width: 60%;
+        font-size: px2rem(map_get($map-font-size, s));
+        color: #999;
+        float: left;
+    }
     .title{
         // height: px2rem(36px);
         // line-height: px2rem(36px);
@@ -205,12 +212,20 @@
             height: 100%;
             left: 0;
             top: 0;
-            padding-top: px2rem(20px);
+            padding-top: px2rem(10px);
             p{
                 color: #666;
             }
             .text-lg{
                 font-size: px2rem(40px);
+            }
+            .count-last-tip{
+                font-size: px2rem(12px);
+                color: #666;
+                span{
+                    font-size: px2rem(13px);
+                    font-weight: bold;
+                }
             }
             // .text-sm{
             //     font-size: px2rem(20px);

@@ -175,7 +175,7 @@ app.controller('DoctorRecommendCtrl', ['$scope', '$rootScope', 'DoctorService', 
         },
         {
             name: '主治医师',
-            id: '1'
+            id: '4'
         }
     ];
 
@@ -234,6 +234,12 @@ app.controller('DoctorRecommendCtrl', ['$scope', '$rootScope', 'DoctorService', 
             $scope.filterShow = true;
         }
         $scope.filterIndex = index;
+    };
+    $scope.closeFilter = function(event){
+        var e = event.srcElement || event.target;
+        if(e.className == 'filter-content' || e.className == 'wrap'){
+            $scope.filterShow = false;
+        }
     };
     $scope.scrollToLetter = function(item){
         var ele = document.getElementById(item);

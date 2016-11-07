@@ -4,6 +4,7 @@
     flex-direction: column;
     .sub-line span{
         font-size: px2rem(map_get($map-font-size, s));
+        color: #999;
     }
     #hospitalNavScroll{
         .scroll{
@@ -38,7 +39,7 @@
     .hospital-nav{
         background: #fff;
         // overflow-x: scroll;
-        height: px2rem(40px);
+        height: px2rem(50px);
         position: relative;
         width: 100%;
         overflow: hidden;
@@ -54,11 +55,12 @@
             float: left;
             list-style-type: none;
             margin: 0 px2rem(10px);
-            padding: px2rem(10px) px2rem(5px);
-            font-size: px2rem(map_get($map-font-size, s));
+            line-height: px2rem(48px);
+            padding: 0 px2rem(10px) 0 px2rem(10px);
+            font-size: px2rem(map_get($map-font-size, m));
             &.selected{
                 color: $color-light;
-                border-bottom: $color-light px2rem(4px) solid;
+                border-bottom: px2rem(2px) solid $color-light;
             }
         }
     }
@@ -73,6 +75,13 @@
         flex: 1;
         height: 100%;
         overflow: hidden;
+        .double-line{
+            height: px2rem(100px);
+            padding-top: px2rem(10px);
+        }
+        .arrow-right{
+            top: 45%;
+        }
     }
     .left-box.clearly-width{
         width: px2rem(60px);
@@ -216,7 +225,7 @@
         .nav-box-in{
             background: #fff;
             min-height: px2rem(150px);
-            max-height: px2rem(250px);
+
             overflow-y: scroll;
             p{
                 font-size: px2rem(map_get($map-font-size, s));
@@ -227,7 +236,7 @@
         >div{
             padding: px2rem(10px);
             >p{
-                color: #666;
+                color: #999;
             }
             ul:after{
                 display:block;
@@ -237,8 +246,10 @@
             li{
                 list-style-type: none;
                 float:left;
-                padding:px2rem(5px) px2rem(10px);
+                padding:px2rem(4px) px2rem(12px);
                 margin: px2rem(10px);
+                font-size: px2rem(map_get($map-font-size, m));
+                color: #222;
                 &.selected{
                     color: $color-light;
                     border: $color-light 1px solid;
@@ -274,7 +285,7 @@
                 padding-bottom: px2rem(15px);
                 padding-top: px2rem(10px);
                 span{
-                    font-size: px2rem(map_get($map-font-size, s));
+                    font-size: px2rem(map_get($map-font-size, m));
                     padding:px2rem(5px);
                     &.selected{
                         color: $color-light;
