@@ -55,12 +55,12 @@ $base-font-size: map_get($map-font-size, s);
         }
         .contentHtml {
             padding: px2rem(5px) px2rem(5px) px2rem(10px) px2rem(5px);
-            text-align: center;
+            text-align: left;
             font-size: px2rem($base-font-size);
             color: #666;
             border-bottom: 1px solid $color-border-default;
             &.no-title{
-                padding: px2rem(30px) px2rem(5px);
+                padding: px2rem(30px) px2rem(20px);
             }
         }
         .alertButton {

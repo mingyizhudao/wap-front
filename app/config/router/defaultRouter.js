@@ -148,7 +148,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             templateUrl: 'app/modules/m_pay/view/order.html'
         })
         .state('layout.orderDetail', {
-            url: '/order/detail/:bookingId',
+            url: '/order/detail/:bookingId/:status',
             templateUrl: 'app/modules/m_me/view/orderDetail.html'
         })
 
