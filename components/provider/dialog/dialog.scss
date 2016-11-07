@@ -31,6 +31,7 @@ $base-font-size: map_get($map-font-size, s);
             margin: 0 auto;
             td {
                 padding: px2multi(6px, 12px, 6px, 12px);
+                color: #fff;
             }
         }
     }

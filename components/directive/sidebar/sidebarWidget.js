@@ -32,7 +32,6 @@ app.directive('sidebarWidget', [function () {
         function getUserInfo(){
             UserService.getUserInfo({}).then(
                 function(res){
-                    console.log('??')
                     $scope.username = res.user.username;
                 },
                 function(res){
@@ -52,8 +51,10 @@ app.directive('sidebarWidget', [function () {
                 e_sidebar.style.zIndex = '9999';
                 if (!$scope.username){
                     if (StorageConfig.TOKEN_STORAGE.getItem('authorization')) {
-                        console.log('?');
                         getUserInfo();
+                    }
+                    else{
+                        $scope.username = '';
                     }
                 }
             }
@@ -70,6 +71,10 @@ app.directive('sidebarWidget', [function () {
 
         $scope.menuList = CMSDataConfig.appMenus;
         $scope.clickItem = function (item) {
+            if (item.needLogin) {
+                $scope.goLogin();
+                return false;
+            }
             if (item.beforeCall && typeof(item.beforeCall) === 'function' && item.beforeCall()) {
                 if (item.beforeCall()) {
                     if (item.route) {

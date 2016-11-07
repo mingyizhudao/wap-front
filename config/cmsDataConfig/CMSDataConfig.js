@@ -31,22 +31,26 @@ app.factory('CMSDataConfig', ['StorageConfig', '$state', 'dialog', function (Sto
         {
             text: '我的预约单',
             class: 'icon-edit',
-            route: 'layout.orders'
+            route: 'layout.orders',
+            needLogin: true
         },
         {
             text: '历史浏览',
             class: 'icon-clock',
-            route: 'layout.history'
+            route: 'layout.history',
+            needLogin: true
         },
         {
             text: '常见问题',
             class: 'icon-question',
-            route: 'layout.problems'
+            route: 'layout.problems',
+            needLogin: false
         },
         {
             text: '联系客服',
             class: 'icon-phone',
             route: '',
+            needLogin: false,
             beforeCall: function(){
                 dialog.confirm('立即拨打免费客服热线400-6277-120',{
                     closeCallback: function(value){
@@ -62,12 +66,14 @@ app.factory('CMSDataConfig', ['StorageConfig', '$state', 'dialog', function (Sto
         {
             text: '关于我们',
             class: 'icon-information',
-            route: 'layout.aboutus'
+            route: 'layout.aboutus',
+            needLogin: false
         },
         {
             text: '设置',
             class: 'icon-setting',
-            route: 'layout.setting'
+            route: 'layout.setting',
+            needLogin: true
         }
     ];
     return data;
