@@ -93,6 +93,8 @@
         border-bottom: none;
         .cell{
             border-bottom: 1px solid #efefef;
+            height: px2rem(60px);
+            line-height: px2rem(60px);
             .left-box{
                 padding-left: px2rem(10px);
                 padding-right: px2rem(10px);
