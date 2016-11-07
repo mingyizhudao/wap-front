@@ -260,6 +260,7 @@
         }
         >p{
             font-size: px2rem(map_get($map-font-size, s));
+            line-height: px2rem(25px);
         }
     }
     .tab-box{

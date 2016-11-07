@@ -31,7 +31,7 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
         $scope.isShowService = !$scope.isShowService;
     }
     $scope.changeDise = function(){
-        dialog.confirm('如果选择其他疾病，我们将为您重新推荐医生。',{
+        dialog.confirm('如要选择其他疾病，我们将为您重新推荐医生。',{
             okText: '重新选择',
             cancelText: '关闭弹框',
             closeCallback: function(value){

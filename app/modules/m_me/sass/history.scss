@@ -3,8 +3,13 @@
 	.history-time{
 		background: #fff;
 		padding: px2rem(10px);
-		color: #888;
 		border-bottom: 1px solid #ddd;
+        color: #bbb;
+        font-size: px2rem(map_get($map-font-size, s));  
+        span{
+            color: #bbb;
+            font-size: px2rem(map_get($map-font-size, s));
+        }
 	}
     .wrap{
         position: relative;
@@ -63,7 +68,7 @@
             }
             >div{
                 margin: px2rem(10px) 0 0 0;
-                p{
+                span{
                     color:#666;
                     line-height:px2rem($doc-img-wh/3);
                     font-size: px2rem(map_get($map-font-size, s));
