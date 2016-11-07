@@ -1,5 +1,5 @@
 app.directive('sidebarWidget', [function () {
-    var ctrl = ['$scope', '$rootScope', 'helper', '$state', 'CMSDataConfig', 'StorageConfig', 'UserService', function ($scope, $rootScope, helper, $state, CMSDataConfig, StorageConfig, UserService) {
+    var ctrl = ['$scope', '$rootScope', 'helper', '$state', 'CMSDataConfig', 'StorageConfig', 'UserService', 'dialog', function ($scope, $rootScope, helper, $state, CMSDataConfig, StorageConfig, UserService, dialog) {
         var e_sidebar = document.getElementById('layoutSidebar');
         $scope.isOpen = false;
         function _open() {
@@ -72,7 +72,17 @@ app.directive('sidebarWidget', [function () {
         $scope.menuList = CMSDataConfig.appMenus;
         $scope.clickItem = function (item) {
             if (item.needLogin) {
-                $scope.goLogin();
+                dialog.confirm('您好！在进入'+item.text+'页面前请您先登录！',{
+                    okText: '马上登录',
+                    cancelText: '关闭弹框',
+                    closeCallback: function(value){
+                        if(value == 0){
+                        }
+                        if(value == 1){
+                            $scope.goLogin();
+                        }
+                    }
+                })
                 return false;
             }
             if (item.beforeCall && typeof(item.beforeCall) === 'function' && item.beforeCall()) {
