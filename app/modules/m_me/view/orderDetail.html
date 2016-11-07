@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div ng-if="orderStatusNum != 9" class="order-status">
+        <div ng-if="orderStatusNum != 9 && fakeNum != 8" class="order-status">
             <i class="now"><span>支付预约金</span></i>
             <line ng-class="{'now':orderStatusNum>1,'future':orderStatusNum<2}"></line>
             <i ng-class="{'now':orderStatusNum>1,'future':orderStatusNum<2}"><span>安排中</span></i>
@@ -22,7 +22,6 @@
             <line ng-class="{'now':orderStatusNum>5,'future':orderStatusNum<6}"></line>
             <i ng-class="{'now':orderStatusNum>5,'future':orderStatusNum<6}"><span>待评价</span></i>
         </div>
-
         <div class="cell-group border-none">
             <div class="cell">
                 <div class="left-box">
@@ -100,13 +99,13 @@
             <p class="order-detail-link" ng-click="">
                 订单编号：<span ng-bind="orderNum"></span>
             </p>
-            <p ng-if="orderStatusNum > 1" class="order-detail-link" ng-click="">
+            <p ng-if="orderStatusNum > 1 || fakeNum == 8" class="order-detail-link" ng-click="">
                 已付手术预约金：
                 <span>1000元</span>
                 <span>2016-02-20</span>
                 <span>23:23:23</span>
             </p>
-            <p ng-if="orderStatusNum == 8" class="order-detail-link" ng-click="">
+            <p ng-if="orderStatusNum == 8 || fakeNum == 8" class="order-detail-link" ng-click="">
                 已付平台咨询费：
                 <span>100元</span>
                 <span>2016-02-20</span>
@@ -114,8 +113,7 @@
             </p>
         </div>
     </div>
-    <div class="btn-dock"> 
-    <!-- ng-if="orderStatusNum==1" -->
+    <div class="btn-dock" ng-if="orderStatusNum==1">
         <div class="order-account">
             <span>200</span>元
         </div>

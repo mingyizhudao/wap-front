@@ -32,6 +32,30 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
     //     }
     // }
 
+    if ($stateParams.status == 8) {
+        $scope.fakeNum = 8;
+        window.headerConfig={
+            enableHeader: true,
+            enableBack: true,
+            title: '查看详情',
+            enableRefresh: false
+        };
+        $scope.orderDtName = '贾书菊';
+        $scope.orderHpName = '长海医院';
+        $scope.orderDeptName = '外科';
+        $scope.orderDeseName = '肿瘤';
+        $scope.orderNum = 'FK1231231';
+        $scope.orderDetail = '自稳调节紊乱而发生的异常生命活动过程';
+        $scope.orderAmount = 20000;
+        $scope.orderFiles = [];
+        $scope.patientName = '贾小明';
+        $scope.patientNum = '123';
+        $scope.mobile = '13402019921';
+        // initImgUpload();
+    }else{
+        getOrderDetail(_paramsObj);
+    }
+
     function initImgUpload(){
 
         UploadImg.init({
@@ -65,7 +89,7 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
 
     }
 
-    getOrderDetail(_paramsObj);
+    
     function getOrderDetail(_params){
         var spinner = dialog.showSpinner();
         OrderService.getOrderDetail(_params).then(
@@ -82,7 +106,6 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                             clickCall: cancelOrder
                         }
                     };
-                    initImgUpload();
                 }else{
                     window.headerConfig={
                         enableHeader: true,
@@ -106,6 +129,10 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                 $scope.mobile = res.results.mobile;
                 $scope.orderStatusNum = res.results.bkStatus;
                 $scope.orderCancelTime= res.results.dateUpdate;
+                //根据状态初始化图片上传组件
+                setTimeout(function() {
+                    initImgUpload();
+                }, 500);
                 var orderStatus = CMSDataConfig.orderStatus;
                 for(var i = 0; i<orderStatus.length; i++){
                     if(orderStatus[i].type == res.results.bkStatus){

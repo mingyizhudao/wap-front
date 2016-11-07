@@ -54,16 +54,24 @@
 }
 
 .order-detail-page{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 	.order-detail-tips{
 		color: #999;
 	}
 	.order-detail-group{
         padding: px2rem(10px);
+        flex: 1;
+    	overflow: scroll;
 	}
 	.order-detail-highlight{
 		color:#f07415;
 	}
 	.order-detail-link{
+	}
+	#uploadImgBox{
+		margin-bottom: px2rem(10px);
 	}
 	.btn-dock{
 		display: flex;

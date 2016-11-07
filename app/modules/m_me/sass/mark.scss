@@ -13,8 +13,14 @@
 		$a-wh: 16px;
 		.mark li{
 			margin: 0 0 px2rem(15px) 0;
-			font-size: px2rem(map_get($map-font-size, s)) !important;
     		line-height: px2rem(30px);
+    		display: flex;
+    		span{
+				font-size: px2rem(map_get($map-font-size, xs));
+    		}
+    		.radio-inline{
+    			margin: 0 0 0 px2rem(10px);
+    		}
 			a{
 				flex: 1;
 			    display: flex;
@@ -65,6 +71,7 @@
 			border: 1px solid #ddd;
 			line-height: px2rem(20px);
 			color: #888;
+			font-size: px2rem(map_get($map-font-size, s));
 		}
 		textarea{
 			width: 100%;
@@ -72,6 +79,7 @@
 			padding: px2rem(5px) px2rem(10px);
 			border-color: #ddd;
 			line-height: px2rem(20px);
+			font-size: px2rem(map_get($map-font-size, s));
 		}
 	}
 	.doc-description{
@@ -96,6 +104,8 @@
 			p{
 				color:#666;
 				line-height:px2rem($doc-img-wh/3);
+			}
+			span{
 				font-size: px2rem(map_get($map-font-size, s));
 			}
 			.dt-name{
