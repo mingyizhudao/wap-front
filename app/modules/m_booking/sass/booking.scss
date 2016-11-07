@@ -119,7 +119,7 @@
         background: rgba(0,0,0,0.4);
         top: 0px;
         left: 0px;
-        padding: px2rem(100px) px2rem(60px) 0 px2rem(60px);
+        padding: px2rem(100px) px2rem(40px) 0 px2rem(40px);
         z-index: 10;
     }
     .service-flow-box-in{
@@ -143,6 +143,7 @@
             padding: px2rem(10px) 0;
             color: #666;
             list-style-type: none;
+            font-size: px2rem(map_get($map-font-size, s));
         }
         .close-btn{
             $close-btn-wh: 20px;
