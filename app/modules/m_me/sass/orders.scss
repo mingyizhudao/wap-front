@@ -1,6 +1,6 @@
 .orders-page{
-
-	>ul{
+	height: 100%;
+	ul{
 		li{
 			padding: px2rem(10px) px2rem(10px) 0 px2rem(10px);
 			>div{
@@ -63,7 +63,6 @@
 	.order-detail-group{
         padding: px2rem(10px);
         flex: 1;
-    	overflow: scroll;
 	}
 	.order-detail-highlight{
 		color:#f07415;

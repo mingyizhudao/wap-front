@@ -151,4 +151,19 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
         $state.go('layout.mark');
     }
 
+
+    var contentScroll;
+    setTimeout(function() {
+        initIscroll();
+    }, 500);
+    function initIscroll(){
+        contentScroll = new IScroll('#contentScroll', {
+            mouseWheel: false,
+            click: true
+        });
+
+        setInterval(function () {
+            contentScroll.refresh();
+        }, 500);
+    }
 }]);

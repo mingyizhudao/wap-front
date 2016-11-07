@@ -29,6 +29,11 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
             function(res){
                 // $scope.orderList
                 $scope.orderList = res.results;
+                if ($scope.orderList.length >0) {
+                    setTimeout(function() {
+                        initIscroll();
+                    }, 500);
+                }
                 // $scope.orderList = [];
                 dialog.closeSpinner(spinner.id);
             },
@@ -43,5 +48,17 @@ app.controller('OrdersCtrl',['$scope','$rootScope','$state','$stateParams','User
         $state.go('layout.orderDetail',{
             bookingId: _id
         })
+    }
+
+    var ordersContentScroll;
+    function initIscroll(){
+        ordersContentScroll = new IScroll('#ordersList', {
+            mouseWheel: false,
+            click: true
+        });
+
+        setInterval(function () {
+            ordersContentScroll.refresh();
+        }, 500);
     }
 }]);
