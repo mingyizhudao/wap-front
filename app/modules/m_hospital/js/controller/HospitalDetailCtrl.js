@@ -50,6 +50,11 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
         }
     };
     $scope.confirmFilter = function () {
+        if (!$scope.isFilteryx && !$scope.isFilterxs) {
+            document.getElementsByClassName('other-right-operate')[0].className = 'other-right-operate ng-binding';
+        } else {
+            document.getElementsByClassName('other-right-operate')[0].className = 'other-right-operate ng-binding filtered';
+        }
         openFilter();
         //假刷新
         fakeSpinner = dialog.showSpinner();
@@ -62,11 +67,6 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     $scope.clickFilter = function (_isFilteryx, _isFilterxs) {
         $scope.isFilterxs = _isFilterxs;
         $scope.isFilteryx = _isFilteryx;
-        if (!_isFilteryx && !_isFilterxs) {
-            document.getElementsByClassName('other-right-operate')[0].className = 'other-right-operate ng-binding';
-        } else {
-            document.getElementsByClassName('other-right-operate')[0].className = 'other-right-operate ng-binding filtered';
-        }
     };
 
     var fakeSpinner;
