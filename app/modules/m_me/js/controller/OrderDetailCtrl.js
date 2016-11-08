@@ -56,7 +56,7 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
         getOrderDetail(_paramsObj);
     }
 
-    function initImgUpload(){
+    function initImgUpload(_enableUpdate){
 
         UploadImg.init({
             id: 'uploadImgBox',
@@ -66,6 +66,8 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
             // autoUpload: false,
             required: false, //ctrl you must upload images files or not. if false, the UploadImg.isFinished() init is true.
             // imgListArray: [],
+            firstTip: _enableUpdate?'':'暂无图片',
+            enableAdd: _enableUpdate,
             upload: {
                 uploadUrl: 'https://up-z0.qbox.me/',
                 token: '',
@@ -106,6 +108,10 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                             clickCall: cancelOrder
                         }
                     };
+                    //根据状态初始化图片上传组件
+                    setTimeout(function() {
+                        initImgUpload(true);
+                    }, 500);
                 }else{
                     window.headerConfig={
                         enableHeader: true,
@@ -113,6 +119,10 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                         title: '订单详情',
                         enableRefresh: false
                     };
+                    //根据状态初始化图片上传组件
+                    setTimeout(function() {
+                        initImgUpload(false);
+                    }, 500);
                 }
                 $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
 
@@ -129,10 +139,6 @@ app.controller('OrderDetailCtrl',['$scope','$rootScope','$state','$stateParams',
                 $scope.mobile = res.results.mobile;
                 $scope.orderStatusNum = res.results.bkStatus;
                 $scope.orderCancelTime= res.results.dateUpdate;
-                //根据状态初始化图片上传组件
-                setTimeout(function() {
-                    initImgUpload();
-                }, 500);
                 var orderStatus = CMSDataConfig.orderStatus;
                 for(var i = 0; i<orderStatus.length; i++){
                     if(orderStatus[i].type == res.results.bkStatus){
