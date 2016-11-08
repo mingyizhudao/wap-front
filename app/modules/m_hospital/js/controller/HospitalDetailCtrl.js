@@ -37,7 +37,7 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     }
 
     function changedDept() {
-        console.log('call title');
+        // console.log('call title');
         $scope.isChangeDept = !$scope.isChangeDept;
         $scope.isFilter = false;
     }

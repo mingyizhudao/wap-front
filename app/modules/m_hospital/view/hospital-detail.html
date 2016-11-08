@@ -62,10 +62,10 @@
                     </ul>
                 </div>
                 <div class="item-content" ng-show="selectedTab == 1">
-                    <p class="hp-des" ng-bind="departmentInfo.description"></p>
+                    <p class="hp-des" ng-bind="departmentInfo.description||'暂无介绍'"></p>
                 </div>
                 <div class="item-content" ng-show="selectedTab == 2">
-                    <p class="hp-des" ng-bind="hospitalInfo.hospital.description"></p>
+                    <p class="hp-des" ng-bind="hospitalInfo.hospital.description||'暂无介绍'"></p>
                 </div>
             </div>
         </div>
