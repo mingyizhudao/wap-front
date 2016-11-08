@@ -45,35 +45,32 @@
 
     .doctor-item {
         width: 100%;
-        padding: px2rem(10px);
-        border-bottom: 1px solid #eee;
+        padding: px2rem(26px) px2rem(10px) px2rem(10px) px2rem(26px);
         margin-bottom: px2rem(10px);
         background: #fff;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid $brand-danger;
+        border-radius: px2rem(4px);
+        .tag{
+            width: px2rem(84px);
+            height: px2rem(50px);
+            background: $brand-danger;
+            position: absolute;
+            transform: rotate(-45deg);
+            left: px2rem(-36px);
+            top: px2rem(-16px);
+            color: #fff;
+            text-align: center;
+            font-size:px2rem(map_get($map-font-size, s));
+            line-height: px2rem(76px);
+        }
     }
     .doctor-info {
-        display: -webkit-box;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-direction: row;
         width: 100%;
         height: px2rem(60px);
-        .img {
-            width: px2rem(50px);
-            height: px2rem(50px);
-            border-radius: px2rem(40px);
-            border: 1px solid $color-border-default;
-            overflow: hidden;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-        }
         .info {
-            -webkit-box-flex: 1;
-            -webkit-flex: 1;
-            flex: 1;
-            padding: 0 0 0 px2rem(10px);
+
         }
         span {
             font-size: px2rem(map_get($map-font-size, s));
@@ -82,6 +79,7 @@
             &.name {
                 color: #222;
                 font-size: px2rem(map_get($map-font-size, m));
+                font-weight:bold;
             }
         }
         p {
@@ -93,7 +91,7 @@
     .desc {
         width: 100%;
         font-size: px2rem(map_get($map-font-size, s));
-        line-height: px2rem(map_get($map-font-size, s)) * 1.5;
+        line-height: px2rem(map_get($map-font-size, s)) * 2;
         color: #999;
         text-overflow: ellipsis;
         overflow: hidden;
