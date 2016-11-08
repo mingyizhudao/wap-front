@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="btn-dock">
-            <button ng-click="goStartTalk()" class="btn btn-danger">开始咨询</button>
+            <button ng-disabled="advisoryForm.$invalid" ng-click="goStartTalk()" class="btn btn-danger">开始咨询</button>
         </div>
     </form>
 </div>

@@ -26,7 +26,7 @@
         height: 100%;
         overflow: hidden;
         .scroll{
-            position: absolute;
+            // position: absolute;
             width: 100%;
         }
     }
@@ -39,7 +39,11 @@
 		    display: flex;
 		    flex-direction: column;
 			list-style: none;
-			padding: px2rem(10px);
+			// padding: px2rem(10px);
+			li{
+				display: flex;
+				padding-right: px2rem(10px);
+			}
 		}
 		.l-talk>*{
 			float: left;
@@ -176,7 +180,8 @@
 		border-radius: px2rem(5px);
 		line-height: px2rem(30px);
 		margin-bottom: px2rem(20px);
-		>span{
+
+		.talk-c-info,.talk-c-info>span{
 			color: #aaa;
 		}
 	}
