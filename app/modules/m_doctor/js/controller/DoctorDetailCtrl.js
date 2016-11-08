@@ -32,6 +32,7 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         // console.log(res.results.doctor);
         window.headerConfig.title = res.results.doctor.name;
         $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        $scope.bookingDtName = '预约' + res.results.doctor.name;
         $scope.doctorInfo = res.results.doctor;
         $scope.comments = res.results.comment;
         $scope.commentNum = res.results.comment.length;

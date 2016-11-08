@@ -5,7 +5,7 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
         enableHeader: true,
         enableBack: true,
         enableRefresh: false,
-        title: '预约医生'
+        title: '填写预约单'
     };
     window.headerConfig.otherRightOperate= {
         enable: true,
