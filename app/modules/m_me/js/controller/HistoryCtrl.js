@@ -14,7 +14,7 @@ app.controller('HistoryCtrl',['$scope','$rootScope','StorageConfig','$state', 'd
 
 
     function clearHistory(){
-        dialog.confirm('是非清除当前所有历史记录?',{
+        dialog.confirm('是否清除当前所有历史记录?',{
             okText: '清除记录',
             cancelText: '关闭弹框',
             closeCallback: function(value){
