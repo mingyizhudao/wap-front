@@ -4,7 +4,9 @@
             <p class="talk-tips">下拉页面查看之前对话</p>
             <div class="patient-info">
                 <p>您正在咨询的患者信息：</p>
-                <span>女/ 23岁/ 耳鼻喉科-耳朵疼</span>
+                <p class="talk-c-info">
+                    <span ng-bind="cSex=='female'?'女':'男'"></span>/ <span ng-bind="cAge"></span>岁/ <span ng-bind="cDise">耳鼻喉科-耳朵疼</span>
+                </p>
             </div>
             <ul class="list-talk">
                 <li ng-class="{'l-talk':tli.from == 'myzd', 'r-talk':tli.from == 'client'}" ng-repeat="tli in talkList">

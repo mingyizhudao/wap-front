@@ -15,7 +15,7 @@ app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', '
         route: 'layout.home'
     });
 
-    StorageConfig.FAKE_STORAGE.putItem('advisory','1');
+    // StorageConfig.FAKE_STORAGE.putItem('advisory','1');
 
     function goBack(){
         dialog.confirm('您将退出本次对话（内容不做保留），欢迎您再次咨询！',{
@@ -32,22 +32,44 @@ app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', '
         })
     }
 
-    var talkList = [
-        {from: 'myzd', text: '您好'},
-        {from: 'myzd', text: '哈喽'},
-        {from: 'client', text: '吃饭起'},
-        {from: 'myzd', text: '好！'},
-        {
-            from: 'myzd', doc: {
-                name: '许三观',
-                hospital: '北京协和医院',
-                dept: '心血管外科',
-                title: '教授',
-                class: '主任医师',
-                id: '3131'
+    var aObjg = StorageConfig.FAKE_STORAGE.getItem('advisory');
+    var talkList;
+    if (aObjg) {
+        $scope.cSex = aObjg.csex;
+        $scope.cAge = aObjg.cage;
+        $scope.cDise = aObjg.cdise;
+        talkList = [
+            {from: 'myzd', text: '您好'+aObjg.cname},
+            {from: 'client', text: '你好！'},
+            {
+                from: 'myzd', doc: {
+                    name: '许三观',
+                    hospital: '北京协和医院',
+                    dept: '心血管外科',
+                    title: '教授',
+                    class: '主任医师',
+                    id: '3131'
+                }
             }
-        }
-    ];
+        ];
+    }else{
+        talkList = [
+            {from: 'myzd', text: '您好'},
+            {from: 'myzd', text: '哈喽'},
+            {from: 'client', text: '吃饭起'},
+            {from: 'myzd', text: '好！'},
+            {
+                from: 'myzd', doc: {
+                    name: '许三观',
+                    hospital: '北京协和医院',
+                    dept: '心血管外科',
+                    title: '教授',
+                    class: '主任医师',
+                    id: '3131'
+                }
+            }
+        ];
+    }
 
     $scope.talkList = talkList;
 
