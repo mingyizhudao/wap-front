@@ -105,28 +105,36 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
     //     );
     // }
 
-    UploadImg.init({
-        id: 'uploadImgBox',
-        title: '请上传您的病例图片',
-        multiple: false, // enable the component can select multiple files in one time. In mobile, please use the false.
-        maxCount: 9, // the max number picture could upload.
-        // autoUpload: false,
-        required: false, //ctrl you must upload images files or not. if false, the UploadImg.isFinished() init is true.
-        // imgListArray: [],
-        firstTip: '您可以上传影像资料、检查报告、门诊病历、住院病历、出院小结等病史资料（最多9张）',
-        upload: {
-            uploadUrl: 'https://up-z0.qbox.me/',
-            token: '',
-            tokenUrl: window.envs.file_url,
-            type: 'POST',
-            async: true,
-            nameSpace: '',
-            submitBtnId: 'btnBooking',
-            beforeCall: beforeCall,
-            afterCall: afterCall,
-            params: {}
-        }
-    });
+    function initUploadImg(_enableUpload){
+        UploadImg.init({
+            id: 'uploadImgBox',
+            title: '请上传您的病例图片',
+            multiple: false, // enable the component can select multiple files in one time. In mobile, please use the false.
+            maxCount: 9, // the max number picture could upload.
+            // autoUpload: false,
+            required: false, //ctrl you must upload images files or not. if false, the UploadImg.isFinished() init is true.
+            // imgListArray: [],
+            firstTip: '您可以上传影像资料、检查报告、门诊病历、住院病历、出院小结等病史资料（最多9张）',
+            enableAdd: _enableUpload,
+            upload: {
+                uploadUrl: 'https://up-z0.qbox.me/',
+                token: '',
+                tokenUrl: window.envs.file_url,
+                type: 'POST',
+                async: true,
+                nameSpace: '',
+                submitBtnId: 'btnBooking',
+                beforeCall: beforeCall,
+                afterCall: afterCall,
+                params: {}
+            }
+        });
+    }
+
+    setTimeout(function() {
+        initUploadImg(true);
+    }, 500);
+
     function beforeCall(doingCall){
 
         // var _paramsObj = {
