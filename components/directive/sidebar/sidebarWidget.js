@@ -74,7 +74,7 @@ app.directive('sidebarWidget', [function () {
 
         $scope.menuList = CMSDataConfig.appMenus;
         $scope.clickItem = function (item) {
-            if (item.needLogin) {
+            if (item.needLogin&&!StorageConfig.TOKEN_STORAGE.getItem('authorization')) {
                 dialog.confirm('您好！在进入'+item.text+'页面前请您先登录！',{
                     okText: '马上登录',
                     cancelText: '关闭弹框',
