@@ -27,8 +27,8 @@
                     <div class="scroll">
                         <ul>
                             <li class="doctor-item" ng-repeat="item in doctorList" ng-click="selectDoctor(item)">
+                                <div class="tag">专家</div>
                                 <div class="doctor-info">
-                                    <div class="img" ng-hide="isTooSmall"><img src="app/images/img/head.jpg" alt=""></div>
                                     <div class="info">
                                         <p><span class="name" ng-bind="item.name"></span><span ng-repeat="t in item.title" ng-bind="t"></span></p>
                                         <p><span ng-bind="item.department.department_name"></span></p>
