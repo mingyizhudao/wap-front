@@ -33,6 +33,9 @@ app.directive('sidebarWidget', [function () {
             UserService.getUserInfo({}).then(
                 function(res){
                     $scope.username = res.user.username;
+                    StorageConfig.USERINFO_STORAGE.putItem('user',{
+                        name: res.user.username
+                    });
                 },
                 function(res){
                     dialog.alert(res.errorMsg);

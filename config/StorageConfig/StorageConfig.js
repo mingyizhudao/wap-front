@@ -3,6 +3,8 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
     var common_storage = ngStorage.localStorage('myzd_common_storage');
     //默认token的sessionStorage，用来存放当前的token。用户关闭浏览器后即删除
     var session_token = ngStorage.sessionStorage('myzd_session_token');
+    //用户信息
+    var userinfo_storage = ngStorage.sessionStorage('myzd_userinfo');
     //底部菜单按钮本地session记录
     var footer_storage = ngStorage.sessionStorage('myzd_footer');
     //临时存储城市等数据
@@ -20,6 +22,7 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
         COMMON_STORAGE: common_storage,
         FOOTER_STORAGE: footer_storage,
         TOKEN_STORAGE: session_token,
+        USERINFO_STORAGE: userinfo_storage,
         CITY_STORAGE: city_storage,
         FIND_STORAGE: find_storage,
         BOOKING_STORAGE: booking_storage,
