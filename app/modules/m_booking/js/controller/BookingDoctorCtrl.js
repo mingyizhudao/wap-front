@@ -1,4 +1,4 @@
-app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService', 'StorageConfig', '$state', function ($rootScope, $scope, dialog, $stateParams, BookingService, StorageConfig, $state) {
+app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$stateParams', 'BookingService', 'StorageConfig', '$state', 'DoctorStorage', function ($rootScope, $scope, dialog, $stateParams, BookingService, StorageConfig, $state,  DoctorStorage) {
     $scope.sendSMSText = '获取验证码';
     $scope.isShowService = false;
     window.headerConfig = {
@@ -17,6 +17,14 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
     $scope.treatmentDoctorName = $stateParams.doctorName;
     $scope.treatmentHospitalName = $stateParams.hospitalName;
     $scope.treatmentDeptName = $stateParams.departmentName;
+
+    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDisease')? DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease : '请选择您的疾病名称';
+
+    var user = StorageConfig.USERINFO_STORAGE.getItem('user');
+    $scope.user = false;
+    if (user) {
+        $scope.user = user;
+    }
 
     $scope.isCheck = false;
     if(StorageConfig.BOOKING_STORAGE.getItem('booking_doctor')){

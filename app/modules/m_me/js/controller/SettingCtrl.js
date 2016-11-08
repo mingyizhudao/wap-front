@@ -15,7 +15,8 @@ app.controller('SettingCtrl',['$scope','$rootScope','StorageConfig','$state', 'd
                 if(value == 0){
                 }
                 if(value == 1){
-                    StorageConfig.TOKEN_STORAGE.putItem('authorization','');
+                    StorageConfig.TOKEN_STORAGE.putItem('authorization',null);
+                    StorageConfig.USERINFO_STORAGE.putItem('user',null);
                     $state.go('layout.login',{
                         redirectRoute: 'layout.me',
                         backRoute: 'layout.home'
