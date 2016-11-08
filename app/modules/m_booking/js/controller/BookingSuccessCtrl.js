@@ -5,6 +5,9 @@ app.controller('BookingSuccessCtrl', ['$rootScope', '$scope', '$stateParams', '$
         enableRefresh: false,
         title: '订单详情'
     };
+    $rootScope.$broadcast('setHeaderBack', {
+        route: 'layout.home'
+    });
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
 
     // $scope.treatmentHospital = $stateParams.hospitalName;
