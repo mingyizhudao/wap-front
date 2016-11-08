@@ -35,6 +35,7 @@
         required: true,
         imgListArray: [],
         firstTip: '',
+        enableAdd: true,
         upload: {
             uploadUrl: 'https://up-z0.qbox.me/',
             token: '',
@@ -66,12 +67,14 @@
                 <div class="img-show" id="uploadImgShow_' + options.id + '">\
                 </div>\
                 <div class="form-box">\
-                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p>' + (options.maxCount ? ('<p class="count-last-tip"' + options.id + '>还可上传<span id="uploadCountLast_'+options.id+'" >' + options.maxCount + '</span>张</p>') : '') + '</div></label>\
+                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p>' + (options.maxCount ? ('<p class="count-last-tip">还可上传<span id="uploadCountLast_' + options.id + '" >' + options.maxCount + '</span>张</p>') : '') + '</div></label>\
                     <input type="file" class="fn-hide" ' + (options.multiple ? 'multiple' : '') + ' id="uploadInputFile_' + options.id + '">\
                 </div>\
-                <div class="first-tip">'+options.firstTip+'</div>\
+                <div class="first-tip" id="firstTip_' + options.id + '">' + options.firstTip + '</div>\
                 <div class="btn-dock"><button class="btn btn-info" id="uploadButton_' + options.id + '">上传图片</button></div>\
         </div>';
+
+        _setEnableAdd(options.id, options.enableAdd);
 
         /**
          * the flag to control ReadFile obj is success. Then you can click the submit button. Because the user could
@@ -166,7 +169,8 @@
                                                 }
                                             }
                                             document.getElementById('forUploadAdd_' + options.id).style.display = (options.maxCount && upFileList.length >= options.maxCount) ? 'none' : 'block';
-                                            document.getElementById('uploadCountLast_'+options.id).innerHTML = (options.maxCount - upFileList.length).toString();
+                                            document.getElementById('uploadCountLast_' + options.id).innerHTML = (options.maxCount - upFileList.length).toString();
+                                            document.getElementById('firstTip_'+options.id).style.display = upFileList.length ?'none':'block';
                                             isFinished[options.id] = upFileList.length ? false : !options.required;
                                             box.remove();
                                         }
@@ -199,9 +203,10 @@
                         }
 
                         //TODO change the finish flag to ture
-                        if(options.maxCount){
-                            document.getElementById('uploadCountLast_'+options.id).innerHTML = (options.maxCount - upFileList.length).toString();
+                        if (options.maxCount) {
+                            document.getElementById('uploadCountLast_' + options.id).innerHTML = (options.maxCount - upFileList.length).toString();
                         }
+                        document.getElementById('firstTip_'+options.id).style.display = upFileList.length ?'none':'block';
                         previewFinished = true;
                     }
                 }, 200);
@@ -396,6 +401,17 @@
         }
     }
 
+    /**
+     * set the enabled about the add button.
+     * @param id //the upload widget id
+     * @param flag //enabled  true|false
+     * @private
+     */
+    function _setEnableAdd(id, flag){
+        document.getElementById('forUploadAdd_'+id).style.display = flag?'block':'none';
+        return flag;
+    }
+
     UploadImg.init = function (config) {
         return new _init(config);
     };
@@ -404,6 +420,9 @@
     };
     UploadImg.getImgInfo = function (id) {
         return imgInfo[id];
+    };
+    UploadImg.setEnableAdd = function(id, flag){
+        return _setEnableAdd(id, flag);
     };
     if (!noGlobal) {
         window.UploadImg = UploadImg;
