@@ -88,7 +88,7 @@
         font-size: .8rem;
         color: #999;
         line-height: px2rem(map_get($map-font-size, xs));
-        transform: translateY(px2rem(-8px));
+        transform: translateY(px2rem(-6px));
     }
     .middle-box{
         &.sim{
