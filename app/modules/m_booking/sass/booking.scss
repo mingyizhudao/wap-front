@@ -85,9 +85,10 @@
         position: absolute;
         bottom: px2rem(6px);
         left: 0;
-        font-size:px2rem(map_get($map-font-size, xs));
+        font-size: .8rem;
         color: #999;
         line-height: px2rem(map_get($map-font-size, xs));
+        transform: translateY(px2rem(-8px));
     }
     .middle-box{
         &.sim{
@@ -106,6 +107,13 @@
     }
     .v-code-w{
         width: 40%;
+    }
+    .cell-group .middle-box.d-m-box{
+        padding-right: 0px;
+    }
+    .cell-group .right-box.d-r-box{
+        min-width: inherit;
+        width: px2rem(30px);
     }
     .getCode{
         color: $color-light;

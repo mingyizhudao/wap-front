@@ -67,7 +67,7 @@
                 <div class="img-show" id="uploadImgShow_' + options.id + '">\
                 </div>\
                 <div class="form-box">\
-                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p>' + (options.maxCount ? ('<p class="count-last-tip">还可上传<span id="uploadCountLast_' + options.id + '" >' + options.maxCount + '</span>张</p>') : '') + '</div></label>\
+                    <label for="uploadInputFile_' + options.id + '" id="forUploadAdd_' + options.id + '" class="add-icon"><div class="text"><p class="text-lg">+</p></div></label>\
                     <input type="file" class="fn-hide" ' + (options.multiple ? 'multiple' : '') + ' id="uploadInputFile_' + options.id + '">\
                 </div>\
                 <div class="first-tip" id="firstTip_' + options.id + '">' + options.firstTip + '</div>\

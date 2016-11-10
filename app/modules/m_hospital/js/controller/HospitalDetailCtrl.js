@@ -88,6 +88,9 @@ app.controller('HospitalDetailCtrl', ['$rootScope', '$scope', 'dialog', '$stateP
     };
 
     $scope.goDoc = function (_id) {
+        if(document.getElementsByClassName('filtered').length > 0){
+            document.getElementsByClassName('filtered')[0].className = document.getElementsByClassName('filtered')[0].className.split('filtered')[0];
+        }
         $state.go('layout.doctor-detail', {//无测试数据，暂时写死
             doctorId: 3131
         })
