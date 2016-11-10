@@ -13,7 +13,7 @@
             <div class="wrap" id="diseaseScroll">
                 <div class="scroll">
                     <ul>
-                        <li ng-repeat="item in allDiseaseList" ng-class="{'tag':item.type ==='tag', 'active':(item.type != 'tag' && selectedDiseaseIndex == $index)}" ng-bind="item.disease" id="{{item.id}}" ng-click="selectDisease(item, $index)"></li>
+                        <li ng-repeat="item in allDiseaseList" ng-class="{'tag':item.type ==='tag','title':item.type ==='title', 'active':(item.type != 'tag' && selectedDiseaseIndex == $index)}" ng-bind="item.disease" id="{{item.id}}" ng-click="selectDisease(item, $index)"></li>
                     </ul>
                 </div>
             </div>

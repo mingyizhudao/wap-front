@@ -41,7 +41,7 @@
         .box{
             float: left;
             width: 100%;
-            height: px2rem(160px);
+            height: px2rem(140px);
             overflow: hidden;
             margin-top: px2rem(10px);
         }
@@ -49,9 +49,10 @@
             text-align: center;
             border: 1px solid $color-border-default;
             float: left;
-            width: px2rem(140px);
+            width: px2rem(110px);
             margin-right: px2rem(10px);
-            height: px2rem(160px);
+            // height: px2rem(160px);
+            padding-bottom: px2rem(10px);
             border-radius: px2rem(4px);
             &.more-tip{
                 line-height:px2rem(160px);

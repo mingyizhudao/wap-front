@@ -137,8 +137,8 @@ input[type="email"]{
         min-width: px2rem(30px);
         .check{
             display: block;
-            width: px2rem($input-height * 0.7);
-            height:px2rem($input-height * 0.7);
+            width: px2rem($input-height * 0.6);
+            height:px2rem($input-height * 0.6);
             margin-top: px2rem($input-height * 0.15);
             float:left;
             .circle-check{

@@ -228,6 +228,8 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
 
     $scope.clickNav = function(_id){
         if($scope.selectedDeptId != _id){
+            setTimeout(function() {
+            }, 500);
             $scope.selectedDeptId = _id;
             defaultParams.disease_sub_category = _id;
             StorageConfig.DEPT_STORAGE.putItem('curDetpId',_id);
@@ -250,6 +252,7 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
         var spinner = dialog.showSpinner();
         HospitalService.getHospitalByQuery(defaultParams).then(function(res){
             dialog.closeSpinner(spinner.id);
+            hospitalNavScroll.scrollToElement('.selected');
             if(res.results && res.results.length){
                 $scope.hospitalList = res.results;
             }else{

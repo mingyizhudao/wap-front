@@ -1,7 +1,7 @@
 <div ng-controller="BookingDoctorCtrl" class="booking-doctor-page">
     <div ng-if="isShowService" class="service-flow-box-out">
         <div class="service-flow-box-in">
-            <a ng-click="serviceFlow()" class="close-btn">X</a>
+            <a ng-click="serviceFlow()" class="circle-close clear-input-btn close-btn"></a>
             <ul>
                 <li><i>1</i>提交预约单并支付手术预约金</li>
                 <li><i>2</i>客服回访确认并联系专家</li>
@@ -61,14 +61,10 @@
                         <p ng-if="!user" class="mobile-tip">如该手机号未注册，则默认注册并登录</p>
                     </div>
                     <div ng-if="!user" class="cell">
-                        <div class="left-box">
+                        <div class="left-box v-input-w">
                             <input type="text" class="s-content" minlength="6" maxlength="6" placeholder="请输入验证码" validate-base="请输入至少6个数字的验证码" ng-model="patient.verifyCode" required>
                         </div>
-                        <div class="middle-box text-right">
-                            <!--<a class="getCode" ng-bind="sendSMSText"></a>-->
-                            <!-- <button class="btn btn-small btn-primary in-cell" ng-disabled="codeLoginForm.codeLogin_phone.$invalid || codeLoginForm.codeLogin_captcha.$invalid || lockEnabled" ng-click="sendSMSCode()" ng-bind="sendSMSText"></button> -->
-                        </div>
-                        <div class="right-box text-right">
+                        <div class="right-box text-center v-code-w">
                             <a class="getCode" ng-bind="sendSMSText"></a>
                         </div>
                     </div>
@@ -87,7 +83,7 @@
                             <span class="s-label">疾病名称</span>
                         </div>
                         <div class="middle-box text-right">
-                            <span class="s-label" ng-bind="selectedDiseaseName"></span>
+                            <span class="s-label" ng-bind="selectedDiseaseName||'请选择您的疾病名称'"></span>
                         </div>
                         <div class="right-box">
                             <span class="arrow-right"></span>

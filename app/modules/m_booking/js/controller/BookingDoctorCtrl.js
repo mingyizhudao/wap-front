@@ -18,7 +18,7 @@ app.controller('BookingDoctorCtrl', ['$rootScope', '$scope', 'dialog', '$statePa
     $scope.treatmentHospitalName = $stateParams.hospitalName;
     $scope.treatmentDeptName = $stateParams.departmentName;
 
-    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDisease')? DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease : '请选择您的疾病名称';
+    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDepartment').department + ' - ' + DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease;
 
     var user = StorageConfig.USERINFO_STORAGE.getItem('user');
     $scope.user = false;

@@ -98,10 +98,13 @@
 			color: #20343e;
 			width: px2rem(250px);
 			max-width: none;
-			color: #888;
 			line-height: px2rem(25px);
+			span,p{
+				color: #666;
+				font-size: px2rem(map_get($map-font-size, s));
+			}
 			.doc-name{
-				color: #555;
+				color: #222;
 				font-size: px2rem(map_get($map-font-size, m));
 			}
 			>p:last-child{
@@ -109,6 +112,7 @@
 				line-height: px2rem(20px);
 				border-top: 1px solid #eee;
 				text-align: right;
+				padding-right: px2rem(10px);
 			}
 			&:after{
 				right: 100%;
@@ -119,9 +123,6 @@
 				width: 0;
 				position: absolute;
 				pointer-events: none;
-			}
-
-			&:after {
 				border-color: rgba(136, 183, 213, 0);
 				border-right-color: #fff;
 				border-width: px2rem(10px);

@@ -36,5 +36,5 @@ app.controller('BeforeAdvisoryCtrl', ['$rootScope', '$scope', 'dialog', '$state'
         });
         $state.go('layout.advisory-talk');
     };
-    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDisease')? DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease : '请选择您的疾病名称';
+    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDepartment').department + ' - ' + DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease;
 }]);

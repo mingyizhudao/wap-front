@@ -15,7 +15,7 @@
         left: 0;
         width: 100%;
         height: px2rem($filter-height);
-        border-bottom: 1px solid #e6e6e6;
+        border-bottom: 2px solid #e6e6e6;
         background: #fff;
         padding: px2rem(10px) 0 ;
         z-index: 99;
@@ -40,7 +40,7 @@
                 top: px2rem(4px);
                 margin-left: px2rem(5px);
                 &:before{
-                    border: px2rem(6px) transparent solid;
+                    border: px2rem(5px) transparent solid;
                     border-top-color: #999;
                 }
             }
@@ -54,7 +54,7 @@
                 .triangle-down{
                     &:before{
                         border-bottom-color: $brand-danger;
-                        margin-bottom: px2rem(5px);
+                        transform: translateY(px2rem(-5px));
                         border-top-color: #fff;
                     }
                 }

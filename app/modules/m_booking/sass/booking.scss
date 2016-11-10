@@ -101,16 +101,24 @@
     .booking-content{
         height: 100%;
     }
+    .v-input-w{
+        width: 60%;
+    }
+    .v-code-w{
+        width: 40%;
+    }
     .getCode{
         color: $color-light;
         padding: 0 px2rem(5px) 0 px2rem(10px);
         border-left: 1px solid $color-border-default;
         height: 100%;
         display: block;
+        font-size: px2rem(map_get($map-font-size, s));
     }
     .booking-tips{
         font-size: px2rem(map_get($map-font-size, m));
         color: #222;
+        font-weight: bold;
     }
     .service-flow-box-out{
         position: absolute;
@@ -146,21 +154,35 @@
             font-size: px2rem(map_get($map-font-size, s));
         }
         .close-btn{
+            // $close-btn-wh: 20px;
+            // width: px2rem($close-btn-wh);
+            // height: px2rem($close-btn-wh);
+            // border-radius: px2rem($close-btn-wh/2);
+            // display: inline-block;
+            // background: #eee;
+            // text-align: center;
+            // float: right;
+            // margin-top: px2rem(-45px);
+            // line-height: px2rem($close-btn-wh);
             $close-btn-wh: 20px;
             width: px2rem($close-btn-wh);
             height: px2rem($close-btn-wh);
-            border-radius: px2rem($close-btn-wh/2);
-            display: inline-block;
-            background: #eee;
-            text-align: center;
+            position: relative;
             float: right;
+            z-index: 1;
             margin-top: px2rem(-45px);
             line-height: px2rem($close-btn-wh);
-
+            background: #fff;
+            &:before,&:after{
+                background: #999;
+            }
         }
     }
     .main-info{
-        padding: px2rem(15px);
+        background: #fff;
+        margin: px2rem(10px) 0 px2rem(10px) 0;
+        padding: px2rem(5px) px2rem(10px);
+        border-radius: px2rem(5px);
         >img{
             $doc-wh: 60px;
             width: px2rem($doc-wh);
@@ -212,9 +234,12 @@
             padding-top: px2rem(10px);
             font-size: px2rem(map_get($map-font-size, xs));
         }
-        i{
-            font-size: px2rem(50px);
-            color: $color-light;
+        .success-icon{
+            display: inline-block;
+            width: px2rem(50px);
+            height: px2rem(50px);
+            background: url('images/icon/icon-success.png') no-repeat;
+            background-size: cover;
         }
     }
     .booking-flow{

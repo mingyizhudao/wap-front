@@ -2,6 +2,7 @@ app.controller('DiseaseCtrl', ['$scope', '$rootScope', '$state', 'DoctorStorage'
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
+        enableRefresh: false,
         title: '疾病选择'
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
@@ -294,6 +295,7 @@ app.controller('DiseaseCtrl', ['$scope', '$rootScope', '$state', 'DoctorStorage'
     $scope.selectDepartment = function (item, index) {
         $scope.selectedDepartmentIndex = index;
         DoctorStorage.DISEASE_STORAGE.putItem('departmentIndex', index);
+        DoctorStorage.DISEASE_STORAGE.putItem('currentDepartment', item);
         $scope.selectedDiseaseIndex = '';
         var formatRes = formatList(item);
         $scope.allDiseaseList = formatRes.diseaseList;
@@ -339,7 +341,7 @@ app.controller('DiseaseCtrl', ['$scope', '$rootScope', '$state', 'DoctorStorage'
         tempArray.push({
             disease: '常见疾病',
             id: 'tag_usually',
-            type: 'tag'
+            type: 'title'
         });
         for (var k = 0; k < uList.length; k++) {
             tempArray.push(uList[k]);
@@ -347,7 +349,7 @@ app.controller('DiseaseCtrl', ['$scope', '$rootScope', '$state', 'DoctorStorage'
         tempArray.push({
             disease: '全部疾病',
             id: 'tag_all',
-            type: 'tag'
+            type: 'title'
         });
         for (var i = 0; i < aList.length; i++) {
             tempArray.push({

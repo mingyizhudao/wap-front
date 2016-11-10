@@ -94,7 +94,7 @@
     .left-box.clearly-width{
         width: px2rem(60px);
         line-height: normal;
-        padding: px2rem(10px) 0 0 px2rem(10px);
+        padding: px2rem(5px) 0 0 px2rem(10px);
     }
     .hp-img{
         background: url('images/icon/icon-top-hospital.png') no-repeat;
@@ -291,9 +291,10 @@
             li{
                 text-align: center;
                 float: left;
-                width: 33%;
+                // width: 33%;
                 padding-bottom: px2rem(15px);
                 padding-top: px2rem(10px);
+                padding-left: px2rem(10px);
                 span{
                     font-size: px2rem(map_get($map-font-size, m));
                     padding:px2rem(5px);
@@ -322,6 +323,7 @@
                 content:'';
                 display:block;
                 clear: both;
+                height: px2rem(5px);
             }
             >div,>img{
                 float: left;
