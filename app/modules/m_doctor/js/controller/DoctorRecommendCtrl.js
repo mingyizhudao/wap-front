@@ -157,25 +157,29 @@ app.controller('DoctorRecommendCtrl', ['$scope', '$rootScope', 'DoctorService', 
         },
     ];
     var level = [
+        // {
+        //     name: '教授',
+        //     id: '0'
+        // },
+        // {
+        //     name: '副教授',
+        //     id: '1'
+        // },
+        // {
+        //     name: '主任医师',
+        //     id: '2'
+        // },
         {
-            name: '教授',
+            name: '全部',
             id: '0'
         },
         {
-            name: '副教授',
+            name: '主任医师',
             id: '1'
         },
         {
-            name: '主任医师',
-            id: '2'
-        },
-        {
             name: '副主任医师',
-            id: '3'
-        },
-        {
-            name: '主治医师',
-            id: '4'
+            id: '2'
         }
     ];
 

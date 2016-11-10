@@ -136,6 +136,9 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
 
+    //写死默认在普外科
+    // $scope.selectedDeptId = $scope.deptList[0].id;
+
     var hospitalNavScroll = new IScroll('#hospitalNavScroll', {
         scrollX: true,
         scrollY: false,
@@ -165,7 +168,8 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
     function getDeptList(){
         if (StorageConfig.DEPT_STORAGE.getItem('detpList')) {
             $scope.deptList = StorageConfig.DEPT_STORAGE.getItem('detpList');
-            $scope.selectedDeptId = StorageConfig.DEPT_STORAGE.getItem('curDetpId');
+            $scope.selectedDeptId = $scope.deptList[0].id;
+            // StorageConfig.DEPT_STORAGE.getItem('curDetpId');
             defaultParams.disease_sub_category = $scope.selectedDeptId;
             selectedCall();
         }
@@ -174,7 +178,6 @@ app.controller('HospitalCtrl', ['$scope', '$rootScope', 'CommonService', 'dialog
                 function(res){
                     StorageConfig.DEPT_STORAGE.putItem('detpList',res.results);
                     $scope.deptList = res.results;
-                    console.log('id',$scope.deptList[0].id);
                     $scope.selectedDeptId = $scope.deptList[0].id;
                     defaultParams.disease_sub_category = $scope.selectedDeptId;
                     selectedCall();

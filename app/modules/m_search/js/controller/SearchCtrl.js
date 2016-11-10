@@ -32,6 +32,9 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
         $state.go(url);
     }
 
+    //仅在第一次进入搜索时显示tips
+    $scope.isShowTipsDise = true;
+
     // 点击查看更多
     $scope.getMoreResult = function(index){// 1des 2doc 3hos
         //显示back button
@@ -77,6 +80,7 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
             };
             SearchService.searchInfo(params).then(
                 function (res) {
+                    $scope.isShowTipsDise = false;
                     SearchStorage.SEARCH_STORAGE.putItem('searchResult', {
                         results: res.results,
                         text: searchText
@@ -85,9 +89,11 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
                         if(res.results.hasOwnProperty(obj)){
                             $scope.searchTips = false;
                             getSimpleList(res.results);
+
                             return true;
                         }
                     }
+
                     $scope.searchTips = '抱歉，没有找到任何关于"'+searchText+'"的结果。';
                 }, 
                 function (res) {

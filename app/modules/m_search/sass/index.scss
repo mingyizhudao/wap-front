@@ -60,7 +60,7 @@
 		// border-bottom: 1px solid #c2c0c0;
 		&.search-more{
 			.centerOpt{
-				width: 70%;
+				width: 75%;
 				padding: px2rem(5px) 0;
 			}
 		}
@@ -69,7 +69,7 @@
 			float:left;
 		}
 		.centerOpt{
-			width: 80%;
+			width: 85%;
 			padding: px2rem(5px) 0 px2rem(5px) px2rem(5px);
 			.clear-input-btn{
 			    position: relative;
@@ -92,13 +92,16 @@
 			font-size: px2rem(map_get($map-font-size, s));
 		}
 		input{
+			&.i-p-l{
+				padding-right: px2rem(25px);
+			}
 			background: #fff url("http://static.mingyizhudao.com/146243645256928") no-repeat px2rem(10px) 50%;
     		background-size: 1.25rem;
     		border: 0px;
 			border-radius: px2rem(5px);
 			width: 100%;
 			height: 100%;
-			padding: 0 px2rem(25px) 0 px2rem(30px);
+			padding: 0 0 0 px2rem(30px);
 			font-size: px2rem(map_get($map-font-size, s));
 		}
 	}

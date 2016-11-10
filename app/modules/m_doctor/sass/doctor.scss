@@ -1,4 +1,5 @@
 .doctor-recommend-page{
+    $filter-height: 40px;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -13,13 +14,13 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: px2rem(48px);
+        height: px2rem($filter-height);
         border-bottom: 1px solid #e6e6e6;
         background: #fff;
         padding: px2rem(10px) 0 ;
         z-index: 99;
         .item{
-            line-height: px2rem(28px);
+            line-height: px2rem(20px);
             width: 33.333%;
             height: 100%;
             border-right: 1px solid $color-border-default;
@@ -82,7 +83,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        padding-top: px2rem(48px);
+        padding-top: px2rem($filter-height);
         z-index: 9;
         background: rgba(0,0,0,.5);
         li.usual{
@@ -157,7 +158,7 @@
     .doctor-list{
         width: 100%;
         height: 100%;
-        padding-top: px2rem(48px);
+        padding-top: px2rem($filter-height);
         .doctor-item{
             width: 100%;
             height: px2rem(150px);
@@ -171,7 +172,8 @@
             -webkit-box-direction: normal;
             flex-direction: row;
             width: 100%;
-            height: px2rem(80px);
+            // height: px2rem(80px);
+            padding: px2rem(5px) 0;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
@@ -225,7 +227,8 @@
     display: flex;
     flex-direction: column;
     .main-info{
-        background: url('images/img/doc-bg.png') no-repeat;//http://static.mingyizhudao.com/147062699107071
+        // background: url('images/img/doc-bg.png') no-repeat;//http://static.mingyizhudao.com/147062699107071
+        background: #fff;
         background-size: 100%;
         padding: px2rem(15px);
         >img{
@@ -239,13 +242,12 @@
         >div{
             text-align: left;
             float: left;
-            color: #fff;
             padding-left: px2rem(15px);
         }
         p span{
             line-height: px2rem(25px);
             font-size: px2rem(map_get($map-font-size, m));
-            color: #fff;
+            color: #000;
         }
         &:after{
             content: '';
@@ -325,8 +327,8 @@
         padding-top: 0px;
     }
 }
-.header-doc-img{
-    .header {
-        background: url('images/img/doc-header-bg.png') no-repeat;
-    }
-}
+// .header-doc-img{
+//     .header {
+//         background: url('images/img/doc-header-bg.png') no-repeat;
+//     }
+// }

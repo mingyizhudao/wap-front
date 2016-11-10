@@ -94,6 +94,7 @@ body {
     color: #666;
     text-align: center;
     padding: px2rem(10px) 0;
+    font-size: px2rem(map_get($map-font-size, s));
 }
 
 .wrap{

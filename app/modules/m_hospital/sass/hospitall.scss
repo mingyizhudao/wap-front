@@ -37,9 +37,10 @@
         text-size-adjust: none;
     }
     .hospital-nav{
+        $nav-height: 40px;
         background: #fff;
         // overflow-x: scroll;
-        height: px2rem(50px);
+        height: px2rem($nav-height);
         position: relative;
         width: 100%;
         overflow: hidden;
@@ -55,7 +56,7 @@
             float: left;
             list-style-type: none;
             margin: 0 px2rem(10px);
-            line-height: px2rem(48px);
+            line-height: px2rem($nav-height);
             padding: 0 px2rem(10px) 0 px2rem(10px);
             font-size: px2rem(map_get($map-font-size, m));
             &.selected{
@@ -76,8 +77,15 @@
         height: 100%;
         overflow: hidden;
         .double-line{
-            height: px2rem(100px);
-            padding-top: px2rem(10px);
+            height: auto;
+            padding: px2rem(15px) 0;
+            line-height: normal;
+            .middle-box{
+                padding: 0px;
+            }
+            .right-box{
+                margin-top: px2rem(25px);
+            }
         }
         .arrow-right{
             top: 45%;
@@ -85,6 +93,8 @@
     }
     .left-box.clearly-width{
         width: px2rem(60px);
+        line-height: normal;
+        padding: px2rem(10px) 0 0 px2rem(10px);
     }
     .hp-img{
         background: url('images/icon/icon-top-hospital.png') no-repeat;
@@ -92,7 +102,7 @@
         width: px2rem(35px);
         height: px2rem(35px);
         display: inline-block;
-        margin: px2rem(20px) 0 0 px2rem(20px);
+        // margin: px2rem(20px) 0 0 px2rem(20px);
     }
 }
 .hospital-rank-page{

@@ -11,8 +11,8 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
         enableBack: true,
         enableRefresh: false,
         enableShare: true,
-        otherThemeClass: 'header-doc-img',
-        title: '医生名'
+        // otherThemeClass: 'header-doc-img',
+        title: '医生详情'
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
 
@@ -30,8 +30,9 @@ app.controller('DoctorDetailCtrl', ['$rootScope', '$scope', 'dialog', '$statePar
     DoctorService.getDoctorDetail(urlOptions).then(function (res) {
         dialog.closeSpinner(spinner.id);
         // console.log(res.results.doctor);
-        window.headerConfig.title = res.results.doctor.name;
-        $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        // window.headerConfig.title = res.results.doctor.name+'教授';
+        // $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
+        $scope.doctorName = res.results.doctor.name;
         $scope.bookingDtName = '预约' + res.results.doctor.name;
         $scope.doctorInfo = res.results.doctor;
         $scope.comments = res.results.comment;

@@ -1,12 +1,13 @@
 <div class="search-page" ng-controller="SearchCtrl">
     <div class="search-header" ng-class="{'search-more':isShowBackBtn}">
         <div ng-if="isShowBackBtn" class="leftOpt" ng-click="backStep()"><i class="iconfont icon-back"></i></div>
-        <div class="centerOpt"><input id="searchInput" type="text" name="" placeholder="请输入疾病名称、医生姓名、医院名称" ng-model="searchContent" ng-change="searchInfo(searchContent)">
+        <div class="centerOpt"><input id="searchInput" type="text" name="" ng-class="{'i-p-l':searchContent!=''}" placeholder="请输入疾病名称、医生姓名、医院名称" ng-model="searchContent" ng-change="searchInfo(searchContent)">
         <i ng-click="cleatInput()" ng-if="searchContent" class="circle-close clear-input-btn"></i></div>
         <div class="rightOpt" ng-click="routerGo('layout.home')">取消</div>
     </div>
     <div class="search-result">
-        <div ng-if="!resDes&&!resDoc&&!resHp&&!searchTips" class="recommend">
+        <div ng-if="isShowTipsDise" class="recommend">
+        <!-- !resDes&&!resDoc&&!resHp&&!searchTips -->
             <p>常见手术疾病：</p>
             <ul>
                 <li ng-click="goDesDetail()">甲状腺肿瘤</li>
@@ -48,7 +49,7 @@
                             </div>
                             <div class="middle-box">
                                 <span class="content doc-span">(<i ng-bind="doc.hpName"></i>)</span>
-                                <span class="minor doc-span"><i ng-bind="doc.hpDeptName"></i>，<i ng-bind="doc.mTitle"></i></span>
+                                <span class="minor doc-span"><i ng-bind="doc.hpDeptName"></i>，<i ng-bind="doc.mTitle"></i>，<i ng-bind="doc.aTitle"></i></span>
                             </div>
                             <div class="right-box">
                             </div>
