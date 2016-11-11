@@ -286,6 +286,7 @@ app.controller('DiseaseCtrl', ['$scope', '$rootScope', '$state', 'DoctorStorage'
 
     if(!DoctorStorage.DISEASE_STORAGE.getItem('departmentIndex')){
         DoctorStorage.DISEASE_STORAGE.putItem('departmentIndex', 0);
+        DoctorStorage.DISEASE_STORAGE.putItem('currentDepartment', {department: '普外科'});
     }
     $scope.selectedDepartmentIndex = DoctorStorage.DISEASE_STORAGE.getItem('departmentIndex');
     var formatRes = formatList($scope.allList[$scope.selectedDepartmentIndex]);
