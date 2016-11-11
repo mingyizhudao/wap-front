@@ -33,13 +33,16 @@
             .text{
                 font-size:px2rem(map_get($map-font-size, s));
                 color: #222;
+                width: 7rem;
+                display: inline-block;
+                text-align: center;
             }
             .triangle-down{
                 display: inline-block;
                 position: relative;
                 top: px2rem(4px);
                 margin-left: px2rem(5px);
-                margin-bottom: px2rem(2px);
+                margin-bottom: px2rem(4px);
                 &:before{
                     border: px2rem(5px) transparent solid;
                     border-top-color: #999;
@@ -106,7 +109,7 @@
         }
         li.hot{
             width: 100%;
-            padding: px2rem(10px) px2rem(10px) px2rem(10px) px2rem(10px);
+            padding: px2rem(10px) px2rem(30px) px2rem(10px) px2rem(10px);
             background: $color-main-bg;
             border-bottom: 1px solid $color-border-default;
             p{
@@ -146,7 +149,8 @@
             top: 0;
             width: px2rem(20px);
             height: 100%;
-            padding-top:px2rem(100px);
+            padding-top:px2rem(120px);
+            background: #fff;
             .nav{
                 width: 100%;
                 text-align: center;
@@ -246,10 +250,14 @@
             float: left;
             padding-left: px2rem(15px);
         }
-        p span{
-            line-height: px2rem(25px);
-            font-size: px2rem(map_get($map-font-size, m));
-            color: #000;
+        span{
+            &.dr-name{
+                color: #222;     
+                font-size:px2rem(map_get($map-font-size, m));
+            }
+            line-height: px2rem(25px);       
+            font-size:px2rem(map_get($map-font-size, s));
+            color: #666;
         }
         &:after{
             content: '';

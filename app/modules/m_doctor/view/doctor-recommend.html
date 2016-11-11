@@ -42,11 +42,11 @@
     </div>
     <div class="filter">
         <div class="item" ng-class="{'active':filterIndex == 0 && filterShow}" ng-click="ctrlFilter(0)"><span
-                class="text" ng-bind="selectedCity.city"></span><span class="triangle-down"></span></div>
+                class="text oline" ng-bind="selectedCity.city"></span><span class="triangle-down"></span></div>
         <div class="item" ng-class="{'active':filterIndex == 1 && filterShow}" ng-click="ctrlFilter(1)"><span
-                class="text" ng-bind="selectedHospital.short_name || selectedHospital.hospital_name"></span><span class="triangle-down"></span></div>
+                class="text oline" ng-bind="selectedHospital.short_name || selectedHospital.hospital_name"></span><span class="triangle-down"></span></div>
         <div class="item" ng-class="{'active':filterIndex == 2 && filterShow}" ng-click="ctrlFilter(2)"><span
-                class="text" ng-bind="selectedLevel.name"></span><span class="triangle-down"></span></div>
+                class="text oline" ng-bind="selectedLevel.name"></span><span class="triangle-down"></span></div>
     </div>
     <div class="doctor-list">
         <div class="wrap" id="doctorScroll">

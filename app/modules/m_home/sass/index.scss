@@ -1,5 +1,7 @@
 .home-page{
 	background: #fff;
+    height: 100%;
+    overflow: hidden;
 	.h-ad{
 		width: 100%;
 		img{
@@ -40,7 +42,7 @@
             line-height: px2rem(34px);
             .iconfont{
                 font-size: px2rem(26px);
-                color: rgba(0,0,0,.5);
+                color: rgba(255.0,255.0,255.0,1);
             }
         }
         .right{
@@ -58,7 +60,7 @@
             input{
                 font-size: px2rem(map_get($map-font-size, m));
                 padding: 0 px2rem(5px) 0 px2rem(30px);
-                background: rgba(0,0,0,.5);
+                background: rgba(255.0,255.0,255.0,.5);
                 background-size: px2rem(15px);
                 width: 100%;
                 height: px2rem(34px);
@@ -87,6 +89,9 @@
                 }
             }
         }
+    }
+    .cell-group{
+        padding-left: 0px;
     }
     .h-top{
         p{
@@ -120,12 +125,13 @@
             .label,
             .content{
                 line-height: px2rem(30px);
+                color: #999;
             }
             .label{
                 font-size:px2rem(map_get($map-font-size, l));
                 color: #222;
                 margin-top: px2rem(18px);
-                font-weight: bold;
+                // font-weight: bold;
             }
         }
         .right-box{
@@ -168,7 +174,7 @@
             }
             .item{
                 display: block;
-                width: px2rem(240px);
+                width: px2rem(250px);
                 height: 100%;
                 float: left;
                 position: relative;
@@ -177,7 +183,7 @@
                     height: 100%;
                     position: absolute;
                     top: 0;
-                    left: 0;
+                    left: px2rem(10px);
                     padding-right: px2rem(10px);
                 }
                 &:last-child{
@@ -196,7 +202,7 @@
             padding: px2rem(5px);
             position: absolute;
             top: px2rem(10px);
-            left: 0;
+            left:  px2rem(10px);
             &.active{
                 background: $color-primary;
                 color: #fff;

@@ -129,7 +129,7 @@
 		text-align: center;
 		font-size: px2rem(map_get($map-font-size, xs));
 		color: #999;
-		padding-bottom: px2rem(10px);
+		padding: px2rem(10px) 0;
 		span{
 			font-size: inherit;
 			color: inherit;

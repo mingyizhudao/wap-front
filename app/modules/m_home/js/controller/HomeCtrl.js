@@ -4,7 +4,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$state', 'SearchStorage', '
     };
     $rootScope.$broadcast('setHeaderConfig', window.headerConfig);
 
-    document.getElementById('h-ad').style.height = (190 / 375)*window.innerWidth + 'px';
+    // document.getElementById('h-ad').style.height = (190 / 375)*window.innerWidth + 'px';
 
     //清楚搜索记录
     SearchStorage.SEARCH_STORAGE.removeItem('searchResult');
@@ -88,7 +88,7 @@ app.controller('HomeCtrl', ['$scope', '$rootScope', '$state', 'SearchStorage', '
     ];
     var container = document.getElementById('scrollAd');
     var content = document.getElementById('scrollAd_content');
-    content.style.width = $scope.adList.length * (240 / 12) + 'rem';
+    content.style.width = $scope.adList.length * (250 / 12) + 'rem';
     var adScroll = new IScroll('#scrollAd', {
         scrollX: true,
         scrollY: false,
