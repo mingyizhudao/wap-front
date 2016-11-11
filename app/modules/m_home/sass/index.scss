@@ -44,7 +44,8 @@
         -webkit-box-direction: normal;
         flex-direction: row;
         .left{
-            width: px2rem(40px);
+            // width: px2rem(40px);
+            padding-right: px2rem(10px);
             line-height: px2rem(34px);
             .iconfont{
                 font-size: px2rem(26px);
@@ -116,7 +117,7 @@
     }
     .nav{
         .cell{
-            height: px2rem(100px);
+            height: px2rem(90px);
             border-bottom:1px solid #e6e6e6;
         }
         .left-box{
