@@ -17,7 +17,7 @@
                     <span class="label">患者年龄</span>
                 </div>
                 <div class="middle-box">
-                    <input class="text-right" type="number" placeholder="请输入年龄，如20" ng-model="userAge" validate-base="请输入患者年龄，如20" required>
+                    <input class="text-right" type="tel" placeholder="请输入年龄，如20" ng-model="userAge" validate-base="请输入患者年龄，如20" required>
                 </div>
             </div>
             <div class="cell">
@@ -45,8 +45,8 @@
                 <div class="left-box">
                     <span class="label">疾病名称</span>
                 </div>
-                <div class="middle-box">
-                    <span class="content fn-right" ng-bind="selectedDiseaseName||'请选择您的疾病名称'"></span>
+                <div class="middle-box dise-box">
+                    <span class="content fn-right" ng-class="{'dise-color':selectedDiseaseName}" ng-bind="selectedDiseaseName||'请选择您的疾病名称'"></span>
                 </div>
                 <div class="right-box">
                     <i class="arrow-right"></i>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="btn-dock">
-            <button ng-disabled="advisoryForm.$invalid" ng-click="goStartTalk()" class="btn btn-danger">开始咨询</button>
+            <button ng-disabled="advisoryForm.$invalid||selectedDiseaseName==null||userAge<130" ng-click="goStartTalk()" class="btn btn-danger">开始咨询</button>
         </div>
     </form>
 </div>

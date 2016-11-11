@@ -36,5 +36,7 @@ app.controller('BeforeAdvisoryCtrl', ['$rootScope', '$scope', 'dialog', '$state'
         });
         $state.go('layout.advisory-talk');
     };
-    $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDepartment').department + ' - ' + DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease;
+    if (DoctorStorage.DISEASE_STORAGE.getItem('currentDepartment')&&DoctorStorage.DISEASE_STORAGE.getItem('currentDisease')) {
+        $scope.selectedDiseaseName = DoctorStorage.DISEASE_STORAGE.getItem('currentDepartment').department + ' - ' + DoctorStorage.DISEASE_STORAGE.getItem('currentDisease').disease;
+    }
 }]);

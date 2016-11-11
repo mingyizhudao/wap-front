@@ -56,12 +56,12 @@
             float: left;
             list-style-type: none;
             margin: 0 px2rem(10px);
-            line-height: px2rem($nav-height);
+            line-height: px2rem(38px);
             padding: 0 px2rem(10px) 0 px2rem(10px);
             font-size: px2rem(map_get($map-font-size, m));
             &.selected{
                 color: $color-light;
-                border-bottom: px2rem(2px) solid $color-light;
+                border-bottom: px2rem(4px) solid $color-light;
             }
         }
     }
@@ -69,6 +69,7 @@
         text-align: center;
         color: #bbb;
         padding: px2rem(15px) 0;
+        font-size: px2rem(map_get($map-font-size, s));
     }
     .hospital-list{
         position: relative;
@@ -84,7 +85,7 @@
                 padding: 0px;
             }
             .right-box{
-                margin-top: px2rem(25px);
+                margin-top: px2rem(21px);
             }
         }
         .arrow-right{
@@ -213,6 +214,7 @@
     height: 100%;
     overflow: hidden;
     .doc-desc span{
+        color:#666;
         font-size: px2rem(map_get($map-font-size, s));
     }
     .hospital-detail-box{
@@ -297,7 +299,7 @@
                 padding-left: px2rem(10px);
                 span{
                     font-size: px2rem(map_get($map-font-size, m));
-                    padding:px2rem(5px);
+                    padding:px2rem(1px) px2rem(5px);
                     &.selected{
                         color: $color-light;
                         border: $color-light 1px solid;

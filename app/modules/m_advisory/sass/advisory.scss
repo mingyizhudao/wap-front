@@ -1,5 +1,27 @@
 .before-advisory-page{
-
+	.radio-inline:first-child{
+		margin-left: px2rem(15px);
+	}
+	.radio-inline{
+		margin-right: 0px;
+	}
+	.radio-inline label .text{
+		padding-right: 0px;
+		// padding-left: px2rem(10px);
+	}
+	.cell-group .content{
+		font-size: px2rem(map_get($map-font-size, s));
+		color: #ccc;
+		&.dise-color{
+			color: #666;
+		}
+	}
+	.cell-group .right-box{
+		min-width: inherit;
+	}
+	.cell-group .dise-box{
+		padding-right:px2rem(2px);
+	}
 }
 .talk-advisory-page{
 	display: flex;

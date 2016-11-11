@@ -107,7 +107,6 @@ app.controller('SearchCtrl', ['$scope', '$rootScope', '$state', 'SearchService',
     var resDoc,resHp,resDes;
     function getSimpleList(_res){
         var res = _res;
-        $scope.resMoveNum = null;
 
         if (res.doctors) {
             resDoc = {

@@ -128,7 +128,8 @@ input[type="email"]{
     input[type="radio"]{
         position: absolute;
         top: px2rem(5px);
-        left: px2rem(5px);
+        // left: px2rem(0px);
+        display: none;
     }
     label{
         display: block;

@@ -1,6 +1,7 @@
 .find-disease-page{
     .i-tip{
         color: $brand-danger;
+        font-size: px2rem(map_get($map-font-size, s));
     }
     .arrow-red{
         border-top-color: $brand-danger;
@@ -55,7 +56,7 @@
             padding-bottom: px2rem(10px);
             border-radius: px2rem(4px);
             &.more-tip{
-                line-height:px2rem(160px);
+                line-height:px2rem(120px);
             }
             .img{
                 width: px2rem(60px);

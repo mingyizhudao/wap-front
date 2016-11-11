@@ -38,6 +38,7 @@
                         </div>
                     </div>
                     <div ng-if="resDesNum>3" class="search-move" ng-click="getMoreResult(1)">搜索更多<span>共<i ng-bind="resDesNum"></i>条</span></div>
+                    <div ng-if="resDesNum<=3&&!resMoveNum" class="search-more-num">共为您找到<span ng-bind="resDesNum"></span>条结果</div>
                 </li>
                 <!-- 医生 -->
                 <li ng-if="resDoc">
@@ -56,6 +57,7 @@
                         </div>
                     </div>
                     <div ng-if="resDocNum>3" class="search-move" ng-click="getMoreResult(2)">搜索更多<span>共<i ng-bind="resDocNum"></i>条</span></div>
+                    <div ng-if="resDocNum<=3&&!resMoveNum" class="search-more-num">共为您找到<span ng-bind="resDocNum"></span>条结果</div>
                 </li>
                 <!-- 医院 -->
                 <li ng-if="resHp">
@@ -68,6 +70,7 @@
                         </div>
                     </div>
                     <div ng-if="resHpNum>3" class="search-move" ng-click="getMoreResult(3)">搜索更多<span>共<i ng-bind="resHpNum"></i>条</span></div>
+                    <div ng-if="resHpNum<=3&&!resMoveNum" class="search-more-num">共为您找到<span ng-bind="resHpNum"></span>条结果</div>
                 </li>
                 <li class="search-more-num" ng-if="resMoveNum">
                     已为您显示完<span ng-bind="resMoveNum"></span>条

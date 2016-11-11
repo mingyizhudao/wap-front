@@ -1,4 +1,4 @@
-app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', 'StorageConfig', function ($rootScope, $scope, dialog, $state, StorageConfig) {
+app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', 'StorageConfig', 'DoctorStorage', function ($rootScope, $scope, dialog, $state, StorageConfig, DoctorStorage) {
     window.headerConfig = {
         enableHeader: true,
         enableBack: true,
@@ -25,6 +25,8 @@ app.controller('TalkAdvisoryCtrl', ['$rootScope', '$scope', 'dialog','$state', '
                 if(value == 0){
                 }
                 if(value == 1){
+                    DoctorStorage.DISEASE_STORAGE.putItem('currentDepartment',null);
+                    DoctorStorage.DISEASE_STORAGE.putItem('currentDisease',null);
                     StorageConfig.FAKE_STORAGE.putItem('advisory',null);
                     $state.go('layout.advisory-before');
                 }
